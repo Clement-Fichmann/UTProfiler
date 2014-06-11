@@ -27,6 +27,8 @@ int main(int argc, char *argv[]) {
     fenetre.setLayout(&couche);
 
     try {
+        CategorieManager& c=CategorieManager::getInstance();
+        NoteManager& n=NoteManager::getInstance();
         UVManager& m=UVManager::getInstance();
         QString chemin = QFileDialog::getOpenFileName();
         m.load(chemin);

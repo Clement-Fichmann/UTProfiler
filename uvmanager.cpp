@@ -7,56 +7,97 @@
 #include <QtXml>
 #include <QMessageBox>
 
-QTextStream& operator<<(QTextStream& f, const UV& uv){
-    return f<<uv.getCode()<<", "<<uv.getCategorie()<<", "<<uv.getNbCredits()<<" credits, "<<uv.getTitre();
+
+CategorieManager::CategorieManager() {
+    categories.insert("CS", "Connaissances Scientifiques");
+    categories.insert("TM", "Techniques et Méthodes");
+    categories.insert("TSH", "Technologies et Sciences de l'Homme");
+    categories.insert("SP", "Stage et Projet");
 }
 
-QTextStream& operator>>(QTextStream& f, Categorie& cat){
-    QString str;
-    f>>str;
-    if (str=="CS") cat=CS;
-    else
-    if (str=="TM") cat=TM;
-    else
-    if (str=="SP") cat=SP;
-    else
-    if (str=="TSH") cat=TSH;
-    else {
-        throw UTProfilerException("erreur, lecture categorie");
+CategorieManager::~CategorieManager() {
+}
+
+void CategorieManager::addItem(const QString& code, const QString& desc) {
+    categories.insert(code, desc);
+}
+
+int CategorieManager::removeItem(const QString& code) {
+    return categories.remove(code);
+}
+
+QString& CategorieManager::getDesc(const QString& code) const {
+    QString result = categories.value(code);
+    return result;
+}
+
+bool CategorieManager::isCat(const QString& code) {
+    return categories.contains(code);
+}
+
+CategorieManager::Handler CategorieManager::handler=Handler();
+
+CategorieManager& CategorieManager::getInstance(){
+    if (!handler.instance) handler.instance = new CategorieManager; /* instance créée une seule fois lors de la première utilisation*/
+    return *handler.instance;
+}
+
+void CategorieManager::libererInstance(){
+    if (handler.instance) { delete handler.instance; handler.instance=0; }
+}
+
+NoteManager::NoteManager() {
+    notes.insert("A");
+    notes.insert("B");
+    notes.insert("C");
+    notes.insert("D");
+    notes.insert("E");
+    notes.insert("F");
+    notes.insert("FX");
+    notes.insert("ABS");
+    notes.insert("RES");
+    notes.insert("EC");
+}
+
+NoteManager::~NoteManager() {
+}
+
+void NoteManager::addItem(const QString& code) {
+    notes.insert(code);
+}
+
+int NoteManager::removeItem(const QString& code) {
+    return notes.remove(code);
+}
+
+bool NoteManager::isNote(const QString& code) {
+    return notes.contains(code);
+}
+
+NoteManager::Handler NoteManager::handler=Handler();
+
+NoteManager& NoteManager::getInstance(){
+    if (!handler.instance) handler.instance = new NoteManager; /* instance créée une seule fois lors de la première utilisation*/
+    return *handler.instance;
+}
+
+void NoteManager::libererInstance(){
+    if (handler.instance) { delete handler.instance; handler.instance=0; }
+}
+
+
+unsigned int UV::getNbCreditsTotal() const {
+    QList<int> credits = categories.values();
+    unsigned int total = 0;
+    foreach (int c, credits) {
+        if (c > 0)
+            total += c;
     }
-    return f;
 }
 
-Categorie StringToCategorie(const QString& str){
-    if (str=="CS") return CS;
-    else
-    if (str=="TM") return TM;
-    else
-    if (str=="SP") return SP;
-    else
-    if (str=="TSH") return TSH;
-    else {
-        throw UTProfilerException(QString("erreur, StringToCategorie, categorie ")+str+" inexistante");
-    }
-}
-
-QString CategorieToString(Categorie c){
-    switch(c){
-    case CS: return "CS";
-    case TM: return "TM";
-    case SP: return "SP";
-    case TSH: return "TSH";
-    default: throw UTProfilerException("erreur, categorie non traitee",__FILE__,__LINE__);
-    }
-}
-
-QTextStream& operator<<(QTextStream& f, const Categorie& cat){
-    return f<<CategorieToString(cat);
-}
 
 UVManager::UVManager():uvs(0),nbUV(0),nbMaxUV(0),file(""),modification(false){
 }
-
 
 void UVManager::load(const QString& f){
     if (file!=f) this->~UVManager();
@@ -67,6 +108,7 @@ void UVManager::load(const QString& f){
     if (!fin.open(QIODevice::ReadOnly | QIODevice::Text)) {
         throw UTProfilerException("Erreur ouverture fichier UV");
     }
+
     // QXmlStreamReader takes any QIODevice.
     QXmlStreamReader xml(&fin);
     // We'll parse the XML until we reach end of it.
@@ -83,8 +125,7 @@ void UVManager::load(const QString& f){
             if(xml.name() == "uv") {
                 QString code;
                 QString titre;
-                unsigned int nbCredits;
-                Categorie cat;
+                QMap<QString, int> categories;
                 bool automne=false;
                 bool printemps=false;
 
@@ -116,17 +157,21 @@ void UVManager::load(const QString& f){
                         }
                         // We've found credits.
                         if(xml.name() == "credits") {
-                            xml.readNext(); nbCredits=xml.text().toString().toUInt();
-                        }
-                        // We've found categorie
-                        if(xml.name() == "categorie") {
-                            xml.readNext(); cat=StringToCategorie(xml.text().toString());
+                            QString cat;
+                            int nbC;
+
+                            QXmlStreamAttributes attributes = xml.attributes();
+                            foreach (QXmlStreamAttribute attribute, attributes) {
+                                cat=attribute.name().toString();
+                                nbC=attribute.value().toInt();
+                                categories.insert(cat, nbC);
+                            }
                         }
                     }
                     // ...and next...
                     xml.readNext();
                 }
-                ajouterUV(code,titre,nbCredits,cat,automne,printemps);
+                ajouterUV(code,titre,categories,automne,printemps);
 
             }
         }
@@ -141,34 +186,34 @@ void UVManager::load(const QString& f){
 
 
 
-void UVManager::save(const QString& f){
+/*void UVManager::save(const QString& f){
     file=f;
     QFile newfile( file);
     if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
-     QXmlStreamWriter stream(&newfile);
-     stream.setAutoFormatting(true);
-     stream.writeStartDocument();
-     stream.writeStartElement("uvs");
-     for(unsigned int i=0; i<nbUV; i++){
-         stream.writeStartElement("uv");
-         stream.writeAttribute("automne", (uvs[i]->ouvertureAutomne())?"true":"false");
-         stream.writeAttribute("printemps", (uvs[i]->ouverturePrintemps())?"true":"false");
-         stream.writeTextElement("code",uvs[i]->getCode());
-         stream.writeTextElement("titre",uvs[i]->getTitre());
-         QString cr; cr.setNum(uvs[i]->getNbCredits());
-         stream.writeTextElement("credits",cr);
-         stream.writeTextElement("categorie",CategorieToString(uvs[i]->getCategorie()));
-         stream.writeEndElement();
-     }
-     stream.writeEndElement();
-     stream.writeEndDocument();
+    QXmlStreamWriter stream(&newfile);
+    stream.setAutoFormatting(true);
+    stream.writeStartDocument();
+    stream.writeStartElement("uvs");
+    for(unsigned int i=0; i<nbUV; i++){
+        stream.writeStartElement("uv");
+        stream.writeAttribute("automne", (uvs[i]->ouvertureAutomne())?"true":"false");
+        stream.writeAttribute("printemps", (uvs[i]->ouverturePrintemps())?"true":"false");
+        stream.writeTextElement("code",uvs[i]->getCode());
+        stream.writeTextElement("titre",uvs[i]->getTitre());
+        QString cr; cr.setNum(uvs[i]->getNbCredits());
+        stream.writeTextElement("credits",cr);
+        stream.writeTextElement("categorie",CategorieToString(uvs[i]->getCategorie()));
+        stream.writeEndElement();
+    }
+    stream.writeEndElement();
+    stream.writeEndDocument();
 
-     newfile.close();
+    newfile.close();
 
-}
+}*/
 
 UVManager::~UVManager(){
-    if (file!="") save(file);
+    //if (file!="") save(file);
     for(unsigned int i=0; i<nbUV; i++) delete uvs[i];
     delete[] uvs;
 }
@@ -185,11 +230,11 @@ void UVManager::addItem(UV* uv){
     uvs[nbUV++]=uv;
 }
 
-void UVManager::ajouterUV(const QString& c, const QString& t, unsigned int nbc, Categorie cat, bool a, bool p){
+void UVManager::ajouterUV(const QString& c, const QString& t, QMap<QString, int> cat, bool a, bool p){
     if (trouverUV(c)) {
-        throw UTProfilerException(QString("erreur, UVManager, UV ")+c+QString("déja existante"));
+        throw UTProfilerException(QString("erreur, UVManager, UV ")+c+QString("déjà existante"));
     }else{
-        UV* newuv=new UV(c,t,nbc,cat,a,p);
+        UV* newuv=new UV(c,t,cat,a,p);
         addItem(newuv);
         modification=true;
     }
@@ -210,7 +255,7 @@ UV& UVManager::getUV(const QString& code){
 
 const UV& UVManager::getUV(const QString& code)const{
     return const_cast<UVManager*>(this)->getUV(code);
-        // on peut aussi dupliquer le code de la méthode non-const
+    // on peut aussi dupliquer le code de la méthode non-const
 }
 
 UVManager::Handler UVManager::handler=Handler();

@@ -4,23 +4,54 @@
 #include "utprofilerexception.h"
 #include <QString>
 #include <QTextStream>
+#include <QMap>
+#include <QSet>
 
 using namespace std;
 
 
-enum Categorie {
-    /* Connaissances Scientifiques */ CS,  /* Techniques et Méthodes */ TM,
-    /* Technologies et Sciences de l'Homme */ TSH, /* Stage et Projet */ SP
+class CategorieManager {
+private:
+    QMap<QString, QString> categories;
+    CategorieManager();
+    ~CategorieManager();
+    friend struct Handler;
+    struct Handler{
+        CategorieManager* instance;
+        Handler():instance(0){}
+        ~Handler(){ if (instance) delete instance; instance=0; }
+    };
+    static Handler handler;
+public:
+    void addItem(const QString& code, const QString& desc);
+    int removeItem(const QString& code);
+    QString& getDesc(const QString& code) const;
+    bool isCat(const QString& code);
+    static CategorieManager& getInstance();
+    static void libererInstance();
 };
 
-QTextStream& operator<<(QTextStream& f, const Categorie& s);
-Categorie StringToCategorie(const QString& s);
-QString CategorieToString(Categorie c);
-QTextStream& operator>>(QTextStream& f, Categorie& cat);
+class NoteManager {
+private:
+    QSet<QString> notes;
+    NoteManager();
+    ~NoteManager();
+    friend struct Handler;
+    struct Handler{
+        NoteManager* instance;
+        Handler():instance(0){}
+        ~Handler(){ if (instance) delete instance; instance=0; }
+    };
+    static Handler handler;
+public:
+    void addItem(const QString& code);
+    int removeItem(const QString& code);
+    bool isNote(const QString& code);
+    static NoteManager& getInstance();
+    static void libererInstance();
+};
 
-enum Note { A, B, C, D, E, F, FX, RES, ABS, /* en cours */ EC  };
 enum Saison { Automne, Printemps };
-inline QTextStream& operator<<(QTextStream& f, const Saison& s) { if (s==Automne) f<<"A"; else f<<"P"; return f;}
 
 class Semestre {
     Saison saison;
@@ -31,36 +62,30 @@ public:
     unsigned int getAnnee() const { return annee; }
 };
 
-inline QTextStream& operator<<(QTextStream& f, const Semestre& s) { return f<<s.getSaison()<<s.getAnnee()%100; }
-
 class UV {
     QString code;
     QString titre;
-    unsigned int nbCredits;
-    Categorie categorie;
+    QMap<QString, int> categories;
     bool automne;
     bool printemps;
     UV(const UV& u);
     UV& operator=(const UV& u);
-    UV(const QString& c, const QString& t, unsigned int nbc, Categorie cat, bool a, bool p):
-        code(c),titre(t),nbCredits(nbc),categorie(cat),automne(a),printemps(p){}
+    UV(const QString& c, const QString& t, QMap<QString, int> cat, bool a, bool p): code(c),titre(t),categories(cat),automne(a),printemps(p){}
     friend class UVManager;
 public:
     QString getCode() const { return code; }
     QString getTitre() const { return titre; }
-    unsigned int getNbCredits() const { return nbCredits; }
-    Categorie getCategorie() const { return categorie; }
+    unsigned int getNbCredits(QString cat) const { return categories.value(cat, -1); }
+    unsigned int getNbCreditsTotal() const;
+    QMap<QString, int> getCategories() const { return categories; }
     bool ouvertureAutomne() const { return automne; }
     bool ouverturePrintemps() const { return printemps; }
     void setCode(const QString& c) { code=c; }
     void setTitre(const QString& t) { titre=t; }
-    void setNbCredits(unsigned int n) { nbCredits=n; }
-    void setCategorie(Categorie c) { categorie=c; }
+    void setCategorie(QString cat, int nbC) { categories.insert(cat, nbC); }
     void setOuvertureAutomne(bool b) { automne=b; }
     void setOuverturePrintemps(bool b) { printemps=b; }
 };
-
-QTextStream& operator<<(QTextStream& f, const UV& uv);
 
 
 class UVManager {
@@ -87,13 +112,13 @@ private:
 public:
 
     void load(const QString& f);
-    void save(const QString& f);
+   // void save(const QString& f);
     static UVManager& getInstance();
     static void libererInstance();
-    void ajouterUV(const QString& c, const QString& t, unsigned int nbc, Categorie cat, bool a, bool p);
+    void ajouterUV(const QString& c, const QString& t, QMap<QString, int> cat, bool a, bool p);
     const UV& getUV(const QString& code) const;
     UV& getUV(const QString& code);
-    class Iterator {
+    /*class Iterator {
         friend class UVManager;
         UV** currentUV;
         unsigned int nbRemain;
@@ -122,7 +147,7 @@ public:
         iterator(UV** u):current(u){}
         friend class UVManager;
     public:
-        iterator():current(0){};
+        iterator():current(0){}
         UV& operator*() const { return **current; }
         bool operator!=(iterator it) const { return current!=it.current; }
         iterator& operator++(){ ++current; return *this; }
@@ -134,9 +159,9 @@ public:
         friend class UVManager;
         UV** currentUV;
         unsigned int nbRemain;
-        Categorie categorie;
-        FilterIterator(UV** u, unsigned nb, Categorie c):currentUV(u),nbRemain(nb),categorie(c){
-            while(nbRemain>0 && (*currentUV)->getCategorie()!=categorie){
+        QMap<QString, int> categories;
+        FilterIterator(UV** u, unsigned nb, QMap<QString, int> c):currentUV(u),nbRemain(nb),categories(c){
+            while(nbRemain>0 && (*currentUV)->getCategories().keys()!=categorie){
                 nbRemain--; currentUV++;
             }
         }
@@ -156,13 +181,13 @@ public:
             return **currentUV;
         }
     };
-    FilterIterator getFilterIterator(Categorie c) {
+    FilterIterator getFilterIterator(QMap<QString, int> c) {
         return FilterIterator(uvs,nbUV,c);
-    }
+    }*/
 };
 
 
-class Inscription {
+/*class Inscription {
     const UV* uv;
     Semestre semestre;
     Note resultat;
@@ -172,7 +197,7 @@ public:
     Semestre getSemestre() const { return semestre; }
     Note getResultat() const { return resultat; }
     void setResultat(Note newres) { resultat=newres; }
-};
+};*/
 
 class Dossier {
 };

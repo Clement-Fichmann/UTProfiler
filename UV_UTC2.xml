@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<uvs>
+    <uv automne="false" printemps="true">
+        <code>LO21</code>
+        <titre>Programmation Et Conception Orientees Objet </titre>
+        <credits CS="4" TM="2"></credits>
+    </uv>
+    <uv automne="false" printemps="true">
+        <code>UXD01</code>
+        <titre>Design D'Experience</titre>
+	<credits CS="1" TM="5"></credits>
+    </uv>
+</uvs>
