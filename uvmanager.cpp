@@ -98,6 +98,10 @@ unsigned int UV::getNbCreditsTotal() const {
 
 
 UVManager::UVManager():file(""),modification(false){
+    CategorieManager& cM=CategorieManager::getInstance();
+    NoteManager& nM=NoteManager::getInstance();
+    categorieM=cM;
+    NoteManager=nM;
 }
 
 void UVManager::load(const QString& f){
@@ -219,6 +223,8 @@ void UVManager::save(const QString& f){
 UVManager::~UVManager(){
     if (file!="") save(file);
     this->deleteAllUV();
+    categorieM->libererInstance();
+    noteM->libererInstance();
 }
 
 void UVManager::addUV(const QString& c, const QString& t, QMap<QString, int> cat, bool a, bool p){

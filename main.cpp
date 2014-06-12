@@ -30,20 +30,11 @@ int main(int argc, char *argv[]) {
 
     try {
         /*CategorieManager& c=CategorieManager::getInstance();
-        NoteManager& n=NoteManager::getInstance();
-        UVManager& m=UVManager::getInstance();
         QString chemin = QFileDialog::getOpenFileName();
         m.load(chemin);
         UV& uv=m.getUV("UXD01");
-<<<<<<< HEAD
-        code.setText(QString::number(uv.getNbCreditsTotal()));
-        titre.setText(uv.getTitre());*/
-
-=======
-        m.save(chemin);
         code.setText(uv.getCode());
-        titre.setText(uv.getTitre());
->>>>>>> origin/master
+        titre.setText(uv.getTitre()); */
     }catch(UTProfilerException e){
         QMessageBox msgBox;
         msgBox.setText(e.getInfo());
