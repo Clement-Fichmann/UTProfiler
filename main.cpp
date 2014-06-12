@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "uvmanager.h"
 #include "utprofilerexception.h"
+#include "openingwindow.h"
 #include <QApplication>
 #include <QPushButton>
 #include <QLineEdit>
@@ -12,7 +13,8 @@
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
-    QWidget fenetre;
+    OpeningWindow intro;
+    /*QWidget fenetre;
     fenetre.setFixedSize(200, 400);
     QLineEdit code(&fenetre);
     QTextEdit titre(&fenetre);
@@ -24,22 +26,23 @@ int main(int argc, char *argv[]) {
     couche.addWidget(&code);
     couche.addWidget(&titre);
     couche.addWidget(&save);
-    fenetre.setLayout(&couche);
+    fenetre.setLayout(&couche);*/
 
     try {
-        CategorieManager& c=CategorieManager::getInstance();
+        /*CategorieManager& c=CategorieManager::getInstance();
         NoteManager& n=NoteManager::getInstance();
         UVManager& m=UVManager::getInstance();
         QString chemin = QFileDialog::getOpenFileName();
         m.load(chemin);
         UV& uv=m.getUV("UXD01");
         code.setText(QString::number(uv.getNbCreditsTotal()));
-        titre.setText(uv.getTitre());
+        titre.setText(uv.getTitre());*/
+
     }catch(UTProfilerException e){
         QMessageBox msgBox;
         msgBox.setText(e.getInfo());
         msgBox.exec();
     }
-    fenetre.show();
+    intro.show();
     return app.exec();
 }

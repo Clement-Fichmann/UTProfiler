@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OpeningWindow</class>
+ <widget class="QDialog" name="OpeningWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>493</width>
+    <height>243</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>OpeningWindow</string>
+  </property>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>30</y>
+     <width>378</width>
+     <height>89</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="mainlayout">
+    <item>
+     <layout class="QHBoxLayout" name="layoutUV">
+      <item>
+       <widget class="QLabel" name="lblUV">
+        <property name="text">
+         <string>Choisir un fichier d'UV</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="txtUV"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnParcourirUV">
+        <property name="text">
+         <string>Parcourir</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="layoutFormation">
+      <item>
+       <widget class="QLabel" name="lblFormation">
+        <property name="text">
+         <string>Choisir un fichier de formations</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="txtFormation"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnParcourirFormation">
+        <property name="text">
+         <string>Parcourir</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="layoutEtudiant">
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Choisir un dossier étudiant</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="txtEtudiant"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnParcourirEtudiant">
+        <property name="text">
+         <string>Parcourir</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="btnValider">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>140</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Valider</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
