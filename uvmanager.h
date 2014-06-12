@@ -108,7 +108,7 @@ private:
 public:
 
     void load(const QString& f);
-   // void save(const QString& f);
+    void save(const QString& f);
     static UVManager& getInstance();
     static void libererInstance();
     void addUV(const QString& c, const QString& t, QMap<QString, int> cat, bool a, bool p);
