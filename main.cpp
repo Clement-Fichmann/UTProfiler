@@ -32,8 +32,8 @@ int main(int argc, char *argv[]) {
         UVManager& m=UVManager::getInstance();
         QString chemin = QFileDialog::getOpenFileName();
         m.load(chemin);
-        UV& uv=m.getUV("LO21");
-        code.setText(uv.getCode());
+        UV& uv=m.getUV("UXD01");
+        code.setText(QString::number(uv.getNbCreditsTotal()));
         titre.setText(uv.getTitre());
     }catch(UTProfilerException e){
         QMessageBox msgBox;

@@ -93,14 +93,15 @@ unsigned int UV::getNbCreditsTotal() const {
         if (c > 0)
             total += c;
     }
+    return total;
 }
 
 
-UVManager::UVManager():uvs(0),nbUV(0),nbMaxUV(0),file(""),modification(false){
+UVManager::UVManager():file(""),modification(false){
 }
 
 void UVManager::load(const QString& f){
-    if (file!=f) this->~UVManager();
+    if (file!=f) this->deleteAllUV();
     file=f;
 
     QFile fin(file);
@@ -171,7 +172,7 @@ void UVManager::load(const QString& f){
                     // ...and next...
                     xml.readNext();
                 }
-                ajouterUV(code,titre,categories,automne,printemps);
+                addUV(code,titre,categories,automne,printemps);
 
             }
         }
@@ -214,48 +215,33 @@ void UVManager::load(const QString& f){
 
 UVManager::~UVManager(){
     //if (file!="") save(file);
-    for(unsigned int i=0; i<nbUV; i++) delete uvs[i];
-    delete[] uvs;
+    this->deleteAllUV();
 }
 
-void UVManager::addItem(UV* uv){
-    if (nbUV==nbMaxUV){
-        UV** newtab=new UV*[nbMaxUV+10];
-        for(unsigned int i=0; i<nbUV; i++) newtab[i]=uvs[i];
-        nbMaxUV+=10;
-        UV** old=uvs;
-        uvs=newtab;
-        delete[] old;
-    }
-    uvs[nbUV++]=uv;
-}
-
-void UVManager::ajouterUV(const QString& c, const QString& t, QMap<QString, int> cat, bool a, bool p){
-    if (trouverUV(c)) {
+void UVManager::addUV(const QString& c, const QString& t, QMap<QString, int> cat, bool a, bool p){
+    if (uvs.contains(c)) {
         throw UTProfilerException(QString("erreur, UVManager, UV ")+c+QString("déjà existante"));
     }else{
         UV* newuv=new UV(c,t,cat,a,p);
-        addItem(newuv);
+        uvs.insert(c, newuv);
         modification=true;
     }
 }
 
-UV* UVManager::trouverUV(const QString& c)const{
-    for(unsigned int i=0; i<nbUV; i++)
-        if (c==uvs[i]->getCode()) return uvs[i];
-    return 0;
-}
-
 UV& UVManager::getUV(const QString& code){
-    UV* uv=trouverUV(code);
+    UV* uv=uvs.value(code);
     if (!uv) throw UTProfilerException("erreur, UVManager, UV inexistante",__FILE__,__LINE__);
     return *uv;
 }
 
-
 const UV& UVManager::getUV(const QString& code)const{
     return const_cast<UVManager*>(this)->getUV(code);
-    // on peut aussi dupliquer le code de la méthode non-const
+}
+
+void UVManager::deleteAllUV() {
+    foreach (UV* uv, uvs)
+        delete uv;
+    uvs.clear();
 }
 
 UVManager::Handler UVManager::handler=Handler();

@@ -90,12 +90,8 @@ public:
 
 class UVManager {
 private:
-    UV** uvs;
-    unsigned int nbUV;
-    unsigned int nbMaxUV;
-    void addItem(UV* uv);
+    QMap<QString, UV*> uvs;
     bool modification;
-    UV* trouverUV(const QString& c) const;
     UVManager(const UVManager& um);
     UVManager& operator=(const UVManager& um);
     UVManager();
@@ -115,75 +111,11 @@ public:
    // void save(const QString& f);
     static UVManager& getInstance();
     static void libererInstance();
-    void ajouterUV(const QString& c, const QString& t, QMap<QString, int> cat, bool a, bool p);
+    void addUV(const QString& c, const QString& t, QMap<QString, int> cat, bool a, bool p);
     const UV& getUV(const QString& code) const;
     UV& getUV(const QString& code);
-    /*class Iterator {
-        friend class UVManager;
-        UV** currentUV;
-        unsigned int nbRemain;
-        Iterator(UV** u, unsigned nb):currentUV(u),nbRemain(nb){}
-    public:
-        Iterator():nbRemain(0),currentUV(0){}
-        bool isDone() const { return nbRemain==0; }
-        void next() {
-            if (isDone())
-                throw UTProfilerException("error, next on an iterator which is done");
-            nbRemain--;
-            currentUV++;
-        }
-        UV& current() const {
-            if (isDone())
-                throw UTProfilerException("error, indirection on an iterator which is done");
-            return **currentUV;
-        }
-    };
-    Iterator getIterator() {
-        return Iterator(uvs,nbUV);
-    }
-
-    class iterator {
-        UV** current;
-        iterator(UV** u):current(u){}
-        friend class UVManager;
-    public:
-        iterator():current(0){}
-        UV& operator*() const { return **current; }
-        bool operator!=(iterator it) const { return current!=it.current; }
-        iterator& operator++(){ ++current; return *this; }
-    };
-    iterator begin() { return iterator(uvs); }
-    iterator end() { return iterator(uvs+nbUV); }
-
-    class FilterIterator {
-        friend class UVManager;
-        UV** currentUV;
-        unsigned int nbRemain;
-        QMap<QString, int> categories;
-        FilterIterator(UV** u, unsigned nb, QMap<QString, int> c):currentUV(u),nbRemain(nb),categories(c){
-            while(nbRemain>0 && (*currentUV)->getCategories().keys()!=categorie){
-                nbRemain--; currentUV++;
-            }
-        }
-    public:
-        FilterIterator():nbRemain(0),currentUV(0){}
-        bool isDone() const { return nbRemain==0; }
-        void next() {
-            if (isDone())
-                throw UTProfilerException("error, next on an iterator which is done");
-            do {
-                nbRemain--; currentUV++;
-            }while(nbRemain>0 && (*currentUV)->getCategorie()!=categorie);
-        }
-        UV& current() const {
-            if (isDone())
-                throw UTProfilerException("error, indirection on an iterator which is done");
-            return **currentUV;
-        }
-    };
-    FilterIterator getFilterIterator(QMap<QString, int> c) {
-        return FilterIterator(uvs,nbUV,c);
-    }*/
+    const QMap<QString, UV*>& getAllUV() const {return uvs;}
+    void deleteAllUV();
 };
 
 
