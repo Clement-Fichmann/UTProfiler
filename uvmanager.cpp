@@ -173,7 +173,6 @@ void UVManager::load(const QString& f){
                     xml.readNext();
                 }
                 addUV(code,titre,categories,automne,printemps);
-
             }
         }
     }
@@ -187,23 +186,27 @@ void UVManager::load(const QString& f){
 
 
 
-/*void UVManager::save(const QString& f){
+void UVManager::save(const QString& f){
     file=f;
-    QFile newfile( file);
+    QFile newfile(file);
     if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
     QXmlStreamWriter stream(&newfile);
     stream.setAutoFormatting(true);
     stream.writeStartDocument();
     stream.writeStartElement("uvs");
-    for(unsigned int i=0; i<nbUV; i++){
+    foreach(UV* uv, uvs){
         stream.writeStartElement("uv");
-        stream.writeAttribute("automne", (uvs[i]->ouvertureAutomne())?"true":"false");
-        stream.writeAttribute("printemps", (uvs[i]->ouverturePrintemps())?"true":"false");
-        stream.writeTextElement("code",uvs[i]->getCode());
-        stream.writeTextElement("titre",uvs[i]->getTitre());
-        QString cr; cr.setNum(uvs[i]->getNbCredits());
-        stream.writeTextElement("credits",cr);
-        stream.writeTextElement("categorie",CategorieToString(uvs[i]->getCategorie()));
+        stream.writeAttribute("automne", (uv->ouvertureAutomne())?"true":"false");
+        stream.writeAttribute("printemps", (uv->ouverturePrintemps())?"true":"false");
+        stream.writeTextElement("code",uv->getCode());
+        stream.writeTextElement("titre",uv->getTitre());
+        stream.writeStartElement("credits");
+        foreach (QString cat, uv->getCategories().keys()) {
+            QString nbC;
+            nbC.setNum(uv->getCategories().value(cat));
+            stream.writeAttribute(cat, nbC);
+        }
+        stream.writeEndElement();
         stream.writeEndElement();
     }
     stream.writeEndElement();
@@ -211,10 +214,10 @@ void UVManager::load(const QString& f){
 
     newfile.close();
 
-}*/
+}
 
 UVManager::~UVManager(){
-    //if (file!="") save(file);
+    if (file!="") save(file);
     this->deleteAllUV();
 }
 
