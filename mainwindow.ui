@@ -24,9 +24,9 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
-    <widget class="QWidget" name="tabUV">
+    <widget class="QWidget" name="uvTab">
      <attribute name="title">
       <string>Gestion des UV</string>
      </attribute>
@@ -40,6 +40,19 @@
        </rect>
       </property>
       <layout class="QVBoxLayout" name="mainLayout">
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
        <item>
         <widget class="QPushButton" name="btnAjouter">
          <property name="text">
@@ -100,6 +113,19 @@
        <item>
         <layout class="QHBoxLayout" name="layoutSemestre">
          <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
           <widget class="QCheckBox" name="chkAutomne">
            <property name="enabled">
             <bool>false</bool>
@@ -110,6 +136,19 @@
           </widget>
          </item>
          <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
           <widget class="QCheckBox" name="chkPrintemps">
            <property name="enabled">
             <bool>false</bool>
@@ -118,6 +157,19 @@
             <string>Printemps</string>
            </property>
           </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </item>
@@ -134,7 +186,7 @@
       </layout>
      </widget>
     </widget>
-    <widget class="QWidget" name="FormationTab">
+    <widget class="QWidget" name="formationTab">
      <attribute name="title">
       <string>Gestion des formations</string>
      </attribute>
@@ -167,7 +219,15 @@
     <property name="title">
      <string>Fichier</string>
     </property>
-    <addaction name="actionChoisir_le_fichier_des_UV"/>
+    <widget class="QMenu" name="menuOuvrir">
+     <property name="title">
+      <string>Ouvrir nouveau fichier</string>
+     </property>
+     <addaction name="actionChoisir_le_fichier_des_UV"/>
+     <addaction name="actionCharger_un_nouveau_fichier_formations"/>
+     <addaction name="actionDossier_tudiant"/>
+    </widget>
+    <addaction name="menuOuvrir"/>
     <addaction name="actionQuitter"/>
    </widget>
    <addaction name="menuFichier"/>
@@ -175,12 +235,27 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionChoisir_le_fichier_des_UV">
    <property name="text">
-    <string>Choisir le fichier des UV</string>
+    <string>UV</string>
    </property>
   </action>
   <action name="actionQuitter">
    <property name="text">
     <string>Quitter</string>
+   </property>
+  </action>
+  <action name="actionCharger_un_nouveau_fichier_formations">
+   <property name="text">
+    <string>Formations</string>
+   </property>
+  </action>
+  <action name="actionB">
+   <property name="text">
+    <string>b</string>
+   </property>
+  </action>
+  <action name="actionDossier_tudiant">
+   <property name="text">
+    <string>Dossier étudiant</string>
    </property>
   </action>
  </widget>
