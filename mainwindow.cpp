@@ -8,6 +8,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 }
 
+void MainWindow::on_btnUV_clicked(){
+    UVWindow *uvw = new UVWindow();
+    uvw->show();
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;

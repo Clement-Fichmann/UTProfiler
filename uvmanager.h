@@ -96,8 +96,8 @@ private:
     UVManager& operator=(const UVManager& um);
     UVManager();
     ~UVManager();
-    CategorieManager* categorieM;
-    NoteManager* noteM;
+    CategorieManager& categorieM;
+    NoteManager& noteM;
     friend struct Handler;
     struct Handler{
         UVManager* instance;
@@ -117,8 +117,8 @@ public:
     UV& getUV(const QString& code);
     const QMap<QString, UV*>& getAllUV() const {return uvs;}
     void deleteAllUV();
-    const CategorieManager* getCategorieManager() const {return cast_const<CategorieManager*>(categorieM);}
-    const NoteManager* getNoteManager() const {return cast_const<NoteManager*>(noteM);}
+    const CategorieManager& getCategorieManager() const {return categorieM;}
+    const NoteManager& getNoteManager() const {return noteM;}
 };
 
 
