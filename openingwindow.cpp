@@ -15,12 +15,12 @@ void OpeningWindow::on_btnParcourirUV_clicked(){
 
 void OpeningWindow::on_btnValider_clicked(){
     QString cheminUV = ui->txtUV->text();
-    if (cheminUV.isEmpty()){
+    if (cheminUV.isEmpty()){ //si aucun fichier d'UV renseigné
         QMessageBox::warning(this, "Attention", "Veuillez choisir un fichier d'UV.");
     }
-    else {
+    else { //si les fichiers nécessaires sont présents, on charge le programme principal
         UVManager& uvM=UVManager::getInstance();
-        uvM.file=cheminUV;
+        uvM.load(cheminUV);
         MainWindow* m=new MainWindow();
         m->show();
         this->hide();

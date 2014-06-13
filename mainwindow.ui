@@ -208,7 +208,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QPushButton" name="btnSauver">
+        <widget class="QPushButton" name="btnSauverUV">
          <property name="enabled">
           <bool>false</bool>
          </property>
@@ -259,7 +259,7 @@
      </property>
      <addaction name="actionChoisir_le_fichier_des_UV"/>
      <addaction name="actionCharger_un_nouveau_fichier_formations"/>
-     <addaction name="actionDossier_tudiant"/>
+     <addaction name="actionDossier_Etudiant"/>
     </widget>
     <addaction name="menuOuvrir"/>
     <addaction name="actionQuitter"/>
@@ -287,7 +287,7 @@
     <string>b</string>
    </property>
   </action>
-  <action name="actionDossier_tudiant">
+  <action name="actionDossier_Etudiant">
    <property name="text">
     <string>Dossier étudiant</string>
    </property>

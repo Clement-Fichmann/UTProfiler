@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uvs>
+    <uv automne="true" printemps="true">
+        <code>BL10</code>
+        <titre>Structures Et Physicochimie Des Molécules Biologiques</titre>
+        <credits/>
+    </uv>
+    <uv automne="true" printemps="true">
+        <code>BL11</code>
+        <titre>Structures Et Physicochimie Des Molécules Biologiques</titre>
+        <credits CS="6"/>
+    </uv>
     <uv automne="false" printemps="true">
         <code>LO21</code>
         <titre>Programmation Et Conception Orientees Objet </titre>

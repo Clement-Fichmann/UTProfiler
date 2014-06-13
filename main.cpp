@@ -3,17 +3,21 @@
 #include "openingwindow.h"
 #include <QApplication>
 #include <QMessageBox>
+#include <QTranslator>
+#include <QLibraryInfo>
+#include <QLocale>
 
 int main(int argc, char *argv[]) {
-    try {
-        UVManager& uvM=UVManager::getInstance();
+     QApplication app(argc, argv);
+     try {
+        UVManager& uvM = UVManager::getInstance();
     }catch(UTProfilerException e){
         QMessageBox msgBox;
         msgBox.setText(e.getInfo());
         msgBox.exec();
     }
-    QApplication app(argc, argv);
     OpeningWindow intro;
     intro.show();
+
     return app.exec();
 }
