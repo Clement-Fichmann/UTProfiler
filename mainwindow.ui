@@ -6,46 +6,152 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>301</width>
-    <height>198</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>UTProfiler - Par Clément Fichmann et Alexandre Keil</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="verticalLayoutWidget">
+   <widget class="QTabWidget" name="mainTabWidget">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>40</y>
-      <width>160</width>
-      <height>83</height>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>581</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="mainlayout">
-     <item>
-      <widget class="QPushButton" name="btnUV">
-       <property name="text">
-        <string>Gestion des UV</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btnFormation">
-       <property name="text">
-        <string>Gestion des formations</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btnEtudiant">
-       <property name="text">
-        <string>Dossier étudiant</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tabUV">
+     <attribute name="title">
+      <string>Gestion des UV</string>
+     </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>20</y>
+        <width>691</width>
+        <height>311</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="mainLayout">
+       <item>
+        <widget class="QPushButton" name="btnAjouter">
+         <property name="text">
+          <string>Ajouter une nouvelle UV</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="lblChoixUV">
+         <property name="text">
+          <string>Choisir une UV :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="listUV">
+         <property name="currentIndex">
+          <number>-1</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layoutCode">
+         <item>
+          <widget class="QLabel" name="lblCode">
+           <property name="text">
+            <string>Code de l'UV</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="txtCodeUV">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layoutDescription">
+         <item>
+          <widget class="QLabel" name="lblDescription">
+           <property name="text">
+            <string>Description</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTextEdit" name="txtDescription">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layoutSemestre">
+         <item>
+          <widget class="QCheckBox" name="chkAutomne">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Automne</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="chkPrintemps">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Printemps</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnSauver">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Sauvegarder les modifications</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="FormationTab">
+     <attribute name="title">
+      <string>Gestion des formations</string>
+     </attribute>
+     <widget class="QLabel" name="lblBientot">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>30</y>
+        <width>46</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>A venir...</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -53,12 +159,30 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>301</width>
+     <width>800</width>
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFichier">
+    <property name="title">
+     <string>Fichier</string>
+    </property>
+    <addaction name="actionChoisir_le_fichier_des_UV"/>
+    <addaction name="actionQuitter"/>
+   </widget>
+   <addaction name="menuFichier"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionChoisir_le_fichier_des_UV">
+   <property name="text">
+    <string>Choisir le fichier des UV</string>
+   </property>
+  </action>
+  <action name="actionQuitter">
+   <property name="text">
+    <string>Quitter</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
