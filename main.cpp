@@ -1,4 +1,3 @@
-#include "mainwindow.h"
 #include "uvmanager.h"
 #include "utprofilerexception.h"
 #include "openingwindow.h"

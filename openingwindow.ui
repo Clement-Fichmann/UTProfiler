@@ -16,92 +16,130 @@
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>30</y>
-     <width>378</width>
-     <height>89</height>
+     <x>10</x>
+     <y>10</y>
+     <width>471</width>
+     <height>221</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="mainlayout">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
-     <layout class="QHBoxLayout" name="layoutUV">
-      <item>
-       <widget class="QLabel" name="lblUV">
-        <property name="text">
-         <string>Choisir un fichier d'UV</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="txtUV"/>
-      </item>
-      <item>
-       <widget class="QPushButton" name="btnParcourirUV">
-        <property name="text">
-         <string>Parcourir</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <spacer name="verticalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="layoutFormation">
-      <item>
-       <widget class="QLabel" name="lblFormation">
-        <property name="text">
-         <string>Choisir un fichier de formations</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="txtFormation"/>
-      </item>
-      <item>
-       <widget class="QPushButton" name="btnParcourirFormation">
-        <property name="text">
-         <string>Parcourir</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="layoutEtudiant">
-      <item>
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Choisir un dossier étudiant</string>
-        </property>
-       </widget>
-      </item>
-      <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="2" column="1">
        <widget class="QLineEdit" name="txtEtudiant"/>
       </item>
-      <item>
+      <item row="2" column="2">
        <widget class="QPushButton" name="btnParcourirEtudiant">
         <property name="text">
          <string>Parcourir</string>
         </property>
        </widget>
       </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="lblUV">
+        <property name="text">
+         <string>Choisir un fichier d'UV</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="btnParcourirUV">
+        <property name="text">
+         <string>Parcourir</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="txtUV"/>
+      </item>
+      <item row="1" column="2">
+       <widget class="QPushButton" name="btnParcourirFormation">
+        <property name="text">
+         <string>Parcourir</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="txtFormation"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="lblFormation">
+        <property name="text">
+         <string>Choisir un fichier de formations</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Choisir un dossier étudiant</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnValider">
+        <property name="text">
+         <string>Valider</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
      </layout>
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="btnValider">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>140</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Valider</string>
-   </property>
-  </widget>
  </widget>
+ <tabstops>
+  <tabstop>txtUV</tabstop>
+  <tabstop>btnParcourirUV</tabstop>
+  <tabstop>txtFormation</tabstop>
+  <tabstop>btnParcourirFormation</tabstop>
+  <tabstop>txtEtudiant</tabstop>
+  <tabstop>btnParcourirEtudiant</tabstop>
+  <tabstop>btnValider</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

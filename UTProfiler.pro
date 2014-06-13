@@ -16,15 +16,12 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     uvmanager.cpp \
-    openingwindow.cpp \
-    uvwindow.cpp
+    openingwindow.cpp
 
 HEADERS  += mainwindow.h \
     uvmanager.h \
     utprofilerexception.h \
-    openingwindow.h \
-    uvwindow.h
+    openingwindow.h
 
 FORMS    += mainwindow.ui \
-    openingwindow.ui \
-    uvwindow.ui
+    openingwindow.ui
