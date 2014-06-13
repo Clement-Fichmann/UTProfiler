@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include "mainwindow.h"
+#include "uvmanager.h"
 
 namespace Ui {
 class OpeningWindow;

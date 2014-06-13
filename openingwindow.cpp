@@ -19,6 +19,8 @@ void OpeningWindow::on_btnValider_clicked(){
         QMessageBox::warning(this, "Attention", "Veuillez choisir un fichier d'UV.");
     }
     else {
+        UVManager& uvM=UVManager::getInstance();
+        uvM.file=cheminUV;
         MainWindow* m=new MainWindow();
         m->show();
         this->hide();

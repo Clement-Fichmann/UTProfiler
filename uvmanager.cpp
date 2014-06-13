@@ -182,6 +182,7 @@ void UVManager::load(const QString& f){
     }
     // Removes any device() or data from the reader * and resets its internal state to the initial state.
     xml.clear();
+    fin.close();
 }
 
 
@@ -217,7 +218,8 @@ void UVManager::save(const QString& f){
 }
 
 UVManager::~UVManager(){
-    if (file!="") save(file);
+    if (file!="" && !uvs.isEmpty())
+        save(file);
     this->deleteAllUV();
     categorieM.libererInstance();
     noteM.libererInstance();
