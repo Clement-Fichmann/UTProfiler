@@ -279,7 +279,17 @@
      <addaction name="actionCharger_un_nouveau_fichier_formations"/>
      <addaction name="actionDossier_Etudiant"/>
     </widget>
+    <widget class="QMenu" name="menuSauvegarder">
+     <property name="title">
+      <string>Sauvegarder</string>
+     </property>
+     <addaction name="actionSaveUV"/>
+     <addaction name="actionSaveFormations"/>
+     <addaction name="actionSaveDossier_Etudiant"/>
+     <addaction name="actionTous_les_fichiers"/>
+    </widget>
     <addaction name="menuOuvrir"/>
+    <addaction name="menuSauvegarder"/>
     <addaction name="actionQuitter"/>
    </widget>
    <addaction name="menuFichier"/>
@@ -308,6 +318,26 @@
   <action name="actionDossier_Etudiant">
    <property name="text">
     <string>Dossier étudiant</string>
+   </property>
+  </action>
+  <action name="actionSaveUV">
+   <property name="text">
+    <string>UV</string>
+   </property>
+  </action>
+  <action name="actionSaveFormations">
+   <property name="text">
+    <string>Formations</string>
+   </property>
+  </action>
+  <action name="actionSaveDossier_Etudiant">
+   <property name="text">
+    <string>Dossier étudiant</string>
+   </property>
+  </action>
+  <action name="actionTous_les_fichiers">
+   <property name="text">
+    <string>Tous les fichiers</string>
    </property>
   </action>
  </widget>

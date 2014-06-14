@@ -6,6 +6,7 @@ ajouterUVWindow::ajouterUVWindow(QWidget *parent) :
     ui(new Ui::ajouterUVWindow)
 {
     ui->setupUi(this);
+    ui->tableCredits->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
 }
 
 void ajouterUVWindow::on_btnAnnuler_clicked(){

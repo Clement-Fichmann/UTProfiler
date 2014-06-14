@@ -16,60 +16,127 @@
   <property name="windowTitle">
    <string>UTProfiler - Ajouter une nouvelle UV</string>
   </property>
-  <widget class="QWidget" name="verticalLayoutWidget">
+  <widget class="QWidget" name="verticalLayoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>30</y>
-     <width>441</width>
-     <height>461</height>
+     <x>10</x>
+     <y>10</y>
+     <width>461</width>
+     <height>621</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="mainLayout">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <layout class="QHBoxLayout" name="layoutCode">
-      <item>
+     <layout class="QFormLayout" name="formLayout">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+      </property>
+      <item row="1" column="0">
        <widget class="QLabel" name="lblCode">
         <property name="text">
          <string>Code de la nouvelle UV</string>
         </property>
        </widget>
       </item>
-      <item>
+      <item row="1" column="1">
        <widget class="QLineEdit" name="txtCodeNewUV"/>
       </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="layoutDescription">
-      <item>
+      <item row="3" column="0">
        <widget class="QLabel" name="lblDescription">
         <property name="text">
          <string>Description de la nouvelle UV</string>
         </property>
        </widget>
       </item>
-      <item>
+      <item row="3" column="1">
        <widget class="QTextEdit" name="txtDescNewUV"/>
       </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="layoutCredits">
-      <item>
+      <item row="5" column="0">
        <widget class="QLabel" name="lblCredits">
         <property name="text">
          <string>Crédits</string>
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QTableWidget" name="tableCredits"/>
+      <item row="5" column="1">
+       <widget class="QTableWidget" name="tableCredits">
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>155</number>
+        </attribute>
+        <attribute name="horizontalHeaderMinimumSectionSize">
+         <number>155</number>
+        </attribute>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
+        <column>
+         <property name="text">
+          <string>Catégorie</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Nombre de crédits</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="2" column="0">
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="0">
+       <spacer name="verticalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="layoutSemestres">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
       <item>
        <widget class="QCheckBox" name="chkAutomne">
         <property name="text">
@@ -78,16 +145,42 @@
        </widget>
       </item>
       <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
        <widget class="QCheckBox" name="chkPrintemps">
         <property name="text">
          <string>Printemps</string>
         </property>
        </widget>
       </item>
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="layoutBtns">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QPushButton" name="btnAccepter">
         <property name="text">
@@ -106,6 +199,8 @@
     </item>
    </layout>
   </widget>
+  <zorder>verticalLayoutWidget_2</zorder>
+  <zorder>formLayoutWidget</zorder>
  </widget>
  <resources/>
  <connections/>
