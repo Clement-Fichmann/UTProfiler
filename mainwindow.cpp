@@ -1,12 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow),
-    uvM(UVManager::getInstance())
-{
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow), uvM(UVManager::getInstance()) {
     ui->setupUi(this);
+    ui->tableCredits->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     foreach(QString code, uvM.getAllUV().keys()){
         ui->listUV->addItem(code);
     }
