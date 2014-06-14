@@ -134,7 +134,6 @@ void MainWindow::on_btnAjouterUV_clicked(){
     a->exec();
 }
 
-<<<<<<< HEAD
 void MainWindow::on_btnSauverUV_clicked(){
     UV& uvADelete = uvM.getUV(ui->listUV->currentText());
     int indexUV = ui->listUV->currentIndex();
@@ -144,7 +143,7 @@ void MainWindow::on_btnSauverUV_clicked(){
         ui->listUV->removeItem(indexUV);
         ui->listUV->setCurrentIndex(index-1<0?0:index-1);
     }
-=======
+
 void MainWindow::on_actionSaveUV_triggered() {
     uvM.save(uvM.file);
 }
@@ -152,7 +151,6 @@ void MainWindow::on_actionSaveUV_triggered() {
 void MainWindow::on_actionSaveTous_les_fichiers_triggered() {
     uvM.save(uvM.file);
     // TODO save formation et dossir étudiant
->>>>>>> origin/master
 }
 
 MainWindow::~MainWindow()

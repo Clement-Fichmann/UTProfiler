@@ -193,9 +193,6 @@
      </layout>
     </item>
     <item>
-<<<<<<< HEAD
-     <layout class="QHBoxLayout" name="layoutBoutons">
-=======
      <spacer name="verticalSpacer_5">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -209,8 +206,7 @@
      </spacer>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
->>>>>>> origin/master
+     <layout class="QHBoxLayout" name="layoutBoutons">
       <item>
        <widget class="QPushButton" name="btnAccepter">
         <property name="text">
