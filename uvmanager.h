@@ -91,7 +91,6 @@ public:
 class UVManager {
 private:
     QMap<QString, UV*> uvs;
-    bool modification;
     UVManager(const UVManager& um);
     UVManager& operator=(const UVManager& um);
     UVManager();
@@ -113,6 +112,7 @@ public:
     static UVManager& getInstance();
     static void libererInstance();
     void addUV(const QString& c, const QString& t, QMap<QString, int> cat, bool a, bool p);
+    void deleteUV(const QString& c);
     const UV& getUV(const QString& code) const;
     UV& getUV(const QString& code);
     const QMap<QString, UV*>& getAllUV() const {return uvs;}

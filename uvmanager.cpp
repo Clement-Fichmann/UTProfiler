@@ -97,12 +97,11 @@ unsigned int UV::getNbCreditsTotal() const {
 }
 
 
-UVManager::UVManager():categorieM(CategorieManager::getInstance()), noteM(NoteManager::getInstance()), file(""),modification(false){
+UVManager::UVManager():categorieM(CategorieManager::getInstance()), noteM(NoteManager::getInstance()), file("") {
 }
 
 void UVManager::load(const QString& f){
-    if (!file.isEmpty()) {
-        save(file);
+    if (!uvs.isEmpty()) {
         deleteAllUV();
     }
     file=f;
@@ -234,7 +233,15 @@ void UVManager::addUV(const QString& c, const QString& t, QMap<QString, int> cat
     }else{
         UV* newuv=new UV(c,t,cat,a,p);
         uvs.insert(c, newuv);
-        modification=true;
+    }
+}
+
+void UVManager::deleteUV(const QString& c){
+    if (!uvs.contains(c)) {
+        throw UTProfilerException(QString("erreur, UVManager, UV ")+c+QString("déjà existante"));
+    }else{
+        delete uvs.value(c);
+        uvs.remove(c);
     }
 }
 

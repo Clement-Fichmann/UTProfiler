@@ -293,7 +293,7 @@
      <addaction name="actionSaveUV"/>
      <addaction name="actionSaveFormations"/>
      <addaction name="actionSaveDossier_Etudiant"/>
-     <addaction name="actionTous_les_fichiers"/>
+     <addaction name="actionSaveTous_les_fichiers"/>
     </widget>
     <addaction name="menuOuvrir"/>
     <addaction name="menuSauvegarder"/>
@@ -342,7 +342,7 @@
     <string>Dossier étudiant</string>
    </property>
   </action>
-  <action name="actionTous_les_fichiers">
+  <action name="actionSaveTous_les_fichiers">
    <property name="text">
     <string>Tous les fichiers</string>
    </property>

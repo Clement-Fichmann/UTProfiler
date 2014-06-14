@@ -21,6 +21,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 }
 
 void MainWindow::on_actionChoisir_le_fichier_des_UV_triggered(){
+    int sauvegarder = QMessageBox::question(this, "Sauvegarder fichier UV", "Voulez-vous sauvegarder le fichier des UV avant d'en charger un nouveau ?", QMessageBox::Yes | QMessageBox::No);
+    if (sauvegarder == QMessageBox::Yes)
+        uvM.save(uvM.file);
     QString newChemin = QFileDialog::getOpenFileName();
     if (!newChemin.isEmpty()){
         disconnect(ui->listUV, 0, 0, 0);
@@ -57,9 +60,13 @@ void MainWindow::on_actionDossier_Etudiant_triggered(){
 }
 
 void MainWindow::on_actionQuitter_triggered(){
-    int quitter = QMessageBox::question(this, "Fermer UTProfiler", "Voulez-vous quitter UTProfiler? Vous lui manquerez.", QMessageBox::Yes | QMessageBox::No);
-    if (quitter == QMessageBox::Yes)
-            this->close();
+    int quitter = QMessageBox::question(this, "Fermer UTProfiler", "Voulez-vous quitter UTProfiler ? Vous lui manquerez.", QMessageBox::Yes | QMessageBox::No);
+    if (quitter == QMessageBox::Yes) {
+        int sauvegarder = QMessageBox::question(this, "Sauvegarder tous les fichiers", "Voulez-vous sauvegarder tous les fichiers avant de quitter ?", QMessageBox::Yes | QMessageBox::No);
+        if (sauvegarder == QMessageBox::Yes)
+            on_actionSaveTous_les_fichiers_triggered();
+        this->close();
+    }
 }
 
 void MainWindow::on_listUV_currentIndexChanged(){
@@ -127,6 +134,7 @@ void MainWindow::on_btnAjouterUV_clicked(){
     a->exec();
 }
 
+<<<<<<< HEAD
 void MainWindow::on_btnSauverUV_clicked(){
     UV& uvADelete = uvM.getUV(ui->listUV->currentText());
     int indexUV = ui->listUV->currentIndex();
@@ -136,6 +144,15 @@ void MainWindow::on_btnSauverUV_clicked(){
         ui->listUV->removeItem(indexUV);
         ui->listUV->setCurrentIndex(index-1<0?0:index-1);
     }
+=======
+void MainWindow::on_actionSaveUV_triggered() {
+    uvM.save(uvM.file);
+}
+
+void MainWindow::on_actionSaveTous_les_fichiers_triggered() {
+    uvM.save(uvM.file);
+    // TODO save formation et dossir étudiant
+>>>>>>> origin/master
 }
 
 MainWindow::~MainWindow()
