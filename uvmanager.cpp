@@ -101,8 +101,7 @@ UVManager::UVManager():categorieM(CategorieManager::getInstance()), noteM(NoteMa
 }
 
 void UVManager::load(const QString& f){
-    if (!file.isEmpty()) {
-        save(file);
+    if (!uvs.isEmpty()) {
         deleteAllUV();
     }
     file=f;

@@ -8,8 +8,8 @@
 #include <QLocale>
 
 int main(int argc, char *argv[]) {
-     QApplication app(argc, argv);
-     try {
+    QApplication app(argc, argv);
+    try {
         UVManager& uvM = UVManager::getInstance();
     }catch(UTProfilerException e){
         QMessageBox msgBox;

@@ -33,7 +33,8 @@ public slots:
     void UVEditee();
     void on_btnSauverUV_clicked();
     void on_btnAjouterUV_clicked();
-
+    void on_actionSaveUV_triggered();
+    void on_actionSaveTous_les_fichiers_triggered();
 private:
     UVManager& uvM;
     Ui::MainWindow *ui;
