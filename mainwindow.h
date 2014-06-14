@@ -33,6 +33,7 @@ public slots:
     void UVEditee();
     void on_btnSauverUV_clicked();
     void on_btnAjouterUV_clicked();
+    void on_btnDeleteUV_clicked();
 
 private:
     UVManager& uvM;

@@ -22,27 +22,29 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 void MainWindow::on_actionChoisir_le_fichier_des_UV_triggered(){
     QString newChemin = QFileDialog::getOpenFileName();
-    disconnect(ui->listUV, 0, 0, 0);
-    ui->listUV->clear();
-    connect(ui->listUV, SIGNAL(currentIndexChanged(int)), this, SLOT(on_listUV_currentIndexChanged()));
-    uvM.load(newChemin);
-    foreach(QString code, uvM.getAllUV().keys()){
-        ui->listUV->addItem(code);
-    }
-    if (ui->listUV->count() != 0){
-        ui->btnSauverUV->setEnabled(false);
-        ui->listUV->setCurrentIndex(1);
-        ui->listUV->setCurrentIndex(0); //sert à simuler un changement d'index
-    } else {
-        ui->txtCodeUV->setEnabled(false);
-        ui->txtDescription->setEnabled(false);
-        ui->chkAutomne->setEnabled(false);
-        ui->chkPrintemps->setEnabled(false);
-        ui->txtCodeUV->setText("");
-        ui->txtDescription->setText("");
-        ui->chkAutomne->setChecked(false);
-        ui->chkPrintemps->setChecked(false);
-        ui->btnSauverUV->setEnabled(false);
+    if (!newChemin.isEmpty()){
+        disconnect(ui->listUV, 0, 0, 0);
+        ui->listUV->clear();
+        connect(ui->listUV, SIGNAL(currentIndexChanged(int)), this, SLOT(on_listUV_currentIndexChanged()));
+        uvM.load(newChemin);
+        foreach(QString code, uvM.getAllUV().keys()){
+            ui->listUV->addItem(code);
+        }
+        if (ui->listUV->count() != 0){
+            ui->btnSauverUV->setEnabled(false);
+            ui->listUV->setCurrentIndex(1);
+            ui->listUV->setCurrentIndex(0); //sert à simuler un changement d'index
+        } else {
+            ui->txtCodeUV->setEnabled(false);
+            ui->txtDescription->setEnabled(false);
+            ui->chkAutomne->setEnabled(false);
+            ui->chkPrintemps->setEnabled(false);
+            ui->txtCodeUV->setText("");
+            ui->txtDescription->setText("");
+            ui->chkAutomne->setChecked(false);
+            ui->chkPrintemps->setChecked(false);
+            ui->btnSauverUV->setEnabled(false);
+        }
     }
 }
 
@@ -72,9 +74,9 @@ void MainWindow::on_listUV_currentIndexChanged(){
     //récupération des crédits de l'UV
 
     //TODO chargement crédits
-    /*foreach(QString cat, uvSelectionnee.getCategories().keys()){
-        ui->tableCredits->setItem(0, 1, cat.);
-    }*/
+    foreach(QString cat, uvSelectionnee.getCategories().keys()){
+
+    }
 
     ui->btnSauverUV->setEnabled(false);
     //on débloque les champs pour la modification
@@ -123,6 +125,17 @@ void MainWindow::on_btnSauverUV_clicked(){
 void MainWindow::on_btnAjouterUV_clicked(){
     ajouterUVWindow *a = new ajouterUVWindow();
     a->exec();
+}
+
+void MainWindow::on_btnSauverUV_clicked(){
+    UV& uvADelete = uvM.getUV(ui->listUV->currentText());
+    int indexUV = ui->listUV->currentIndex();
+    int reponse = QMessageBox::warning(this, "Suppression de l'UV", "Voulez-vous vraiment supprimer l'UV" + ui->listUV->currentText() + " ?", QMessageBox::Yes | QMessageBox::No);
+    if (reponse == QMessageBox::Yes){
+        //TODO deleteUV
+        ui->listUV->removeItem(indexUV);
+        ui->listUV->setCurrentIndex(index-1<0?0:index-1);
+    }
 }
 
 MainWindow::~MainWindow()

@@ -235,6 +235,13 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QPushButton" name="btnDeleteUV">
+         <property name="text">
+          <string>Supprimer l'UV</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </widget>

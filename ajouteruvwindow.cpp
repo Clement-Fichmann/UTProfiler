@@ -13,6 +13,13 @@ void ajouterUVWindow::on_btnAnnuler_clicked(){
     this->close();
 }
 
+void ajouterUVWindow::on_btnAccepter_clicked(){
+    UVManager& uvm = UVManager::getInstance();
+    QMap<QString, int> credits; //TODO
+    uvm.addUV(ui->txtCodeNewUV->text(), ui->txtDescNewUV->toPlainText(), credits, ui->chkAutomne->isChecked(), ui->chkPrintemps->isChecked());
+    this->close();
+}
+
 ajouterUVWindow::~ajouterUVWindow()
 {
     delete ui;

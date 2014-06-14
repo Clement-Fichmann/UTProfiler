@@ -2,6 +2,7 @@
 #define AJOUTERUVWINDOW_H
 
 #include <QDialog>
+#include "uvmanager.h"
 
 namespace Ui {
 class ajouterUVWindow;
@@ -17,6 +18,7 @@ public:
 
 public slots:
     void on_btnAnnuler_clicked();
+    void on_btnAccepter_clicked();
 
 private:
     Ui::ajouterUVWindow *ui;
