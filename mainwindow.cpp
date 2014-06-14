@@ -4,6 +4,7 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow), uvM(UVManager::getInstance()) {
     ui->setupUi(this);
     ui->tableCredits->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+    ui->tableCredits->verticalHeader()->hide();
     foreach(QString code, uvM.getAllUV().keys()){
         ui->listUV->addItem(code);
     }
@@ -77,12 +78,32 @@ void MainWindow::on_listUV_currentIndexChanged(){
     ui->txtDescription->setText(uvSelectionnee.getTitre());
     ui->chkAutomne->setChecked(uvSelectionnee.ouvertureAutomne());
     ui->chkPrintemps->setChecked(uvSelectionnee.ouverturePrintemps());
-
+    ui->tableCredits->clearContents();
+    while (ui->tableCredits->rowCount() > 0){
+        ui->tableCredits->removeRow(0);
+    }
     //récupération des crédits de l'UV
 
     //TODO chargement crédits
-    foreach(QString cat, uvSelectionnee.getCategories().keys()){
-
+    QMap<QString, QString> categories = uvM.getCategorieManager().getAllCategories();
+    foreach(QString cat, categories.keys()){
+        int creditsCat = uvSelectionnee.getNbCredits(cat);
+        int ligne = ui->tableCredits->rowCount();
+        ui->tableCredits->insertRow(ligne);
+        QPointer<QLabel> ptCat = new QLabel(this);
+        QPointer<QSpinBox> ptCredits = new QSpinBox(this);
+        ptCat.data()->setText(cat);
+        ptCredits.data()->setValue(creditsCat);
+        ui->tableCredits->setCellWidget(ligne, 0, ptCat);
+        ui->tableCredits->setCellWidget(ligne, 1, ptCredits);
+    }
+    int rowCountDebut = ui->tableCredits->rowCount();
+    for (int cpt = rowCountDebut; cpt < rowCountDebut +2 ; cpt++){
+        ui->tableCredits->insertRow(cpt);
+        QPointer<QLineEdit> ptCat = new QLineEdit(this);
+        QPointer<QSpinBox> ptCredits = new QSpinBox(this);
+        ui->tableCredits->setCellWidget(cpt, 0, ptCat);
+        ui->tableCredits->setCellWidget(cpt, 1, ptCredits);
     }
 
     ui->btnSauverUV->setEnabled(false);
@@ -134,21 +155,21 @@ void MainWindow::on_btnAjouterUV_clicked(){
     a->exec();
 }
 
-void MainWindow::on_btnSauverUV_clicked(){
-    UV& uvADelete = uvM.getUV(ui->listUV->currentText());
+void MainWindow::on_btnDeleteUV_clicked(){
     int indexUV = ui->listUV->currentIndex();
     int reponse = QMessageBox::warning(this, "Suppression de l'UV", "Voulez-vous vraiment supprimer l'UV" + ui->listUV->currentText() + " ?", QMessageBox::Yes | QMessageBox::No);
     if (reponse == QMessageBox::Yes){
-        //TODO deleteUV
+        uvM.deleteUV(ui->listUV->currentText());
         ui->listUV->removeItem(indexUV);
-        ui->listUV->setCurrentIndex(index-1<0?0:index-1);
+        ui->listUV->setCurrentIndex(indexUV-1<0?0:indexUV-1);
     }
+}
 
-void MainWindow::on_actionSaveUV_triggered() {
+void MainWindow::on_actionSaveUV_triggered(){
     uvM.save(uvM.file);
 }
 
-void MainWindow::on_actionSaveTous_les_fichiers_triggered() {
+void MainWindow::on_actionSaveTous_les_fichiers_triggered(){
     uvM.save(uvM.file);
     // TODO save formation et dossir étudiant
 }

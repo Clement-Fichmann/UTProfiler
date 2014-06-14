@@ -29,6 +29,7 @@ public:
     bool isCat(const QString& code);
     static CategorieManager& getInstance();
     static void libererInstance();
+    const QMap<QString, QString>& getAllCategories() const {return categories;}
 };
 
 class NoteManager {
@@ -75,7 +76,7 @@ class UV {
 public:
     QString getCode() const { return code; }
     QString getTitre() const { return titre; }
-    unsigned int getNbCredits(QString cat) const { return categories.value(cat, -1); }
+    unsigned int getNbCredits(QString cat) const { return categories.value(cat, 0); }
     unsigned int getNbCreditsTotal() const;
     QMap<QString, int> getCategories() const { return categories; }
     bool ouvertureAutomne() const { return automne; }
