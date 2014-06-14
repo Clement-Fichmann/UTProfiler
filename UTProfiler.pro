@@ -23,7 +23,8 @@ HEADERS  += mainwindow.h \
     uvmanager.h \
     utprofilerexception.h \
     openingwindow.h \
-    ajouteruvwindow.h
+    ajouteruvwindow.h \
+    formationmanager.h
 
 FORMS    += mainwindow.ui \
     openingwindow.ui \

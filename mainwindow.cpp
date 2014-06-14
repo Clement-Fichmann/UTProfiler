@@ -134,15 +134,15 @@ void MainWindow::on_btnAjouterUV_clicked(){
     a->exec();
 }
 
-void MainWindow::on_btnSauverUV_clicked(){
-    UV& uvADelete = uvM.getUV(ui->listUV->currentText());
+void MainWindow::on_btnDeleteUV_clicked(){
     int indexUV = ui->listUV->currentIndex();
     int reponse = QMessageBox::warning(this, "Suppression de l'UV", "Voulez-vous vraiment supprimer l'UV" + ui->listUV->currentText() + " ?", QMessageBox::Yes | QMessageBox::No);
     if (reponse == QMessageBox::Yes){
-        //TODO deleteUV
+        uvM.deleteUV(ui->listUV->currentText());
         ui->listUV->removeItem(indexUV);
-        ui->listUV->setCurrentIndex(index-1<0?0:index-1);
+        ui->listUV->setCurrentIndex(indexUV-1<0?0:indexUV-1);
     }
+}
 
 void MainWindow::on_actionSaveUV_triggered() {
     uvM.save(uvM.file);

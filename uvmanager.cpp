@@ -168,6 +168,10 @@ void UVManager::load(const QString& f){
                                 cat=attribute.name().toString();
                                 nbC=attribute.value().toInt();
                                 categories.insert(cat, nbC);
+
+                                if (!categorieM.getAllCategories().contains(cat)) {
+                                    categorieM.addItem(cat, "");
+                                }
                             }
                         }
                     }
