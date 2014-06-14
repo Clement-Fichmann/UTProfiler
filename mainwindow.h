@@ -6,6 +6,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include "uvmanager.h"
+#include "ajouteruvwindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -30,7 +31,8 @@ public slots:
     void on_chkAutomne_stateChanged();
     void on_chkPrintemps_stateChanged();
     void UVEditee();
-    //void on_btnSauverUV_clicked();
+    void on_btnSauverUV_clicked();
+    void on_btnAjouterUV_clicked();
 
 private:
     UVManager& uvM;

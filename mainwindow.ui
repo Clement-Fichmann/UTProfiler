@@ -41,7 +41,7 @@
       </property>
       <layout class="QVBoxLayout" name="mainLayout">
        <item>
-        <widget class="QPushButton" name="btnAjouter">
+        <widget class="QPushButton" name="btnAjouterUV">
          <property name="text">
           <string>Ajouter une nouvelle UV</string>
          </property>

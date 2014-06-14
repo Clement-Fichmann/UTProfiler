@@ -97,6 +97,24 @@ void MainWindow::UVEditee(){
     ui->btnSauverUV->setEnabled(true);
 }
 
+void MainWindow::on_btnSauverUV_clicked(){
+    //on récupère la clé (code UV) de l'UV en cours d'édition
+    QString codeUVEditee = ui->listUV->currentText();
+    //puis l'UV correspondant dans la map
+    UV& uvEditee = uvM.getUV(codeUVEditee);
+    uvEditee.setCode(ui->txtCodeUV->text());
+    uvEditee.setTitre(ui->txtDescription->toPlainText());
+    uvEditee.setOuvertureAutomne(ui->chkAutomne->isChecked());
+    uvEditee.setOuverturePrintemps(ui->chkPrintemps->isChecked());
+
+    //les changements ont été enregistrés, on verrouille le bouton "Sauver" jusqu'à la prochaine édition
+    ui->btnSauverUV->setEnabled(false);
+}
+
+void MainWindow::on_btnAjouterUV_clicked(){
+    ajouterUVWindow *a = new ajouterUVWindow();
+    a->exec();
+}
 
 MainWindow::~MainWindow()
 {
