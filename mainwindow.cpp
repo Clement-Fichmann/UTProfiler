@@ -69,6 +69,13 @@ void MainWindow::on_listUV_currentIndexChanged(){
     ui->chkAutomne->setChecked(uvSelectionnee.ouvertureAutomne());
     ui->chkPrintemps->setChecked(uvSelectionnee.ouverturePrintemps());
 
+    //récupération des crédits de l'UV
+
+    //TODO chargement crédits
+    /*foreach(QString cat, uvSelectionnee.getCategories().keys()){
+        ui->tableCredits->setItem(0, 1, cat.);
+    }*/
+
     ui->btnSauverUV->setEnabled(false);
     //on débloque les champs pour la modification
     /*ui->txtCodeUV->setEnabled(true);
@@ -106,6 +113,8 @@ void MainWindow::on_btnSauverUV_clicked(){
     uvEditee.setTitre(ui->txtDescription->toPlainText());
     uvEditee.setOuvertureAutomne(ui->chkAutomne->isChecked());
     uvEditee.setOuverturePrintemps(ui->chkPrintemps->isChecked());
+
+    //TODO gestion sauvegarde crédits
 
     //les changements ont été enregistrés, on verrouille le bouton "Sauver" jusqu'à la prochaine édition
     ui->btnSauverUV->setEnabled(false);
