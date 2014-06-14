@@ -5,6 +5,8 @@
 #include <QWidget>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QSpinBox>
+#include <QPointer>
 #include "uvmanager.h"
 #include "ajouteruvwindow.h"
 
