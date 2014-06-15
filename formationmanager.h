@@ -31,7 +31,7 @@ public:
     QMap<QString, int> getCreditsNeeded() const { return creditsNeeded; }
     QSet<QString> getFormationsNeeded() const { return formationsNeeded; }
     QSet<QString> getUVNeeded() const { return uvNeeded;}
-    QMap<QMap<QString, int>, QSet<QString>> getCreditsNeededInUVSet() const {return creditsNeededInUVSet;}
+    CreditsInUV getCreditsNeededInUVSet() const {return creditsNeededInUVSet;}
     void setCode(const QString& c) { code=c; }
     void setTitre(const QString& t) { titre=t; }
     void setCreditsNeeded(QString cat, int nbC) { creditsNeeded.insert(cat, nbC); }
@@ -65,7 +65,7 @@ public:
     void addFormation(const QString& c, const QString& t, QMap<QString, int> credits, QSet<QString> formations, QSet<QString> uvs, CreditsInUV cInUV);
     void deleteFormation(const QString& c);
     const formation& getFormation(const QString& code) const;
-    UV& getFormation(const QString& code);
+    formation& getFormation(const QString& code);
     const QMap<QString, formation*>& getAllFormations() const {return formations;}
     void deleteAllFormations();
 };

@@ -1,4 +1,5 @@
 #include "formationmanager.h"
+#include "uvmanager.h"
 #include "utprofilerexception.h"
 
 #include <sstream>
@@ -12,16 +13,15 @@ formationManager::formationManager(): file("") {
 }
 
 void formationManager::load(const QString& f){
-    /* TO DO
-    if (!uvs.isEmpty()) {
-        deleteAllUV();
+    if (!formations.isEmpty()) {
+        deleteAllFormations();
     }
     file=f;
 
     QFile fin(file);
     // If we can't open it, let's show an error message.
     if (!fin.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        throw UTProfilerException("Erreur ouverture fichier UV");
+        throw UTProfilerException("Erreur ouverture fichier formations");
     }
 
     // QXmlStreamReader takes any QIODevice.
@@ -29,38 +29,30 @@ void formationManager::load(const QString& f){
     // We'll parse the XML until we reach end of it.
     while(!xml.atEnd() && !xml.hasError()) {
         // Read next element.
+        QStringRef test;
         QXmlStreamReader::TokenType token = xml.readNext();
+        test = xml.name();
         // If token is just StartDocument, we'll go to next.
         if(token == QXmlStreamReader::StartDocument) continue;
         // If token is StartElement, we'll see if we can read it.
         if(token == QXmlStreamReader::StartElement) {
-            // If it's named uvs, we'll go to the next.
-            if(xml.name() == "uvs") continue;
-            // If it's named uv, we'll dig the information from there.
-            if(xml.name() == "uv") {
+            // If it's named formations, we'll go to the next.
+            if(xml.name() == "formations") continue;
+            // If it's named formation, we'll dig the information from there.
+            if(xml.name() == "formation") {
                 QString code;
                 QString titre;
-                QMap<QString, int> categories;
-                bool automne=false;
-                bool printemps=false;
-
-                QXmlStreamAttributes attributes = xml.attributes();
-                // Let's check that uvs has attribute.
-                if(attributes.hasAttribute("automne")) {
-                    QString val =attributes.value("automne").toString();
-                    automne=(val == "true" ? true : false);
-                }
-                if(attributes.hasAttribute("printemps")) {
-                    QString val =attributes.value("printemps").toString();
-                    printemps=(val == "true" ? true : false);
-                }
+                QMap<QString, int> creditsNeeded;
+                QSet<QString> formationsNeeded;
+                QSet<QString> uvNeeded;
+                CreditsInUV creditsNeededInUVSet;
 
                 xml.readNext();
                 //We're going to loop over the things because the order might change.
-                //We'll continue the loop until we hit an EndElement named uv.
+                //We'll continue the loop until we hit an EndElement named formation.
 
 
-                while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "uv")) {
+                while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "formation")) {
                     if(xml.tokenType() == QXmlStreamReader::StartElement) {
                         // We've found code.
                         if(xml.name() == "code") {
@@ -70,8 +62,8 @@ void formationManager::load(const QString& f){
                         if(xml.name() == "titre") {
                             xml.readNext(); titre=xml.text().toString();
                         }
-                        // We've found credits.
-                        if(xml.name() == "credits") {
+                        // We've found creditsNeeded.
+                        if(xml.name() == "creditsNeeded") {
                             QString cat;
                             int nbC;
 
@@ -79,28 +71,64 @@ void formationManager::load(const QString& f){
                             foreach (QXmlStreamAttribute attribute, attributes) {
                                 cat=attribute.name().toString();
                                 nbC=attribute.value().toInt();
-                                categories.insert(cat, nbC);
+                                creditsNeeded.insert(cat, nbC);
 
-                                if (!categorieM.getAllCategories().contains(cat)) {
-                                    categorieM.addItem(cat, "");
+                                if (!UVManager::getInstance().getCategorieManager().getAllCategories().contains(cat)) {
+                                    UVManager::getInstance().getCategorieManager().addItem(cat, "");
                                 }
                             }
+                        }
+                        // We've found formationNeeded.
+                        if(xml.name() == "formationNeeded") {
+                            xml.readNext(); formationsNeeded.insert(xml.text().toString());
+                        }
+                        if(xml.name() == "uvNeeded") {
+                            xml.readNext(); uvNeeded.insert(xml.text().toString());
+                        }
+                        if(xml.name() == "creditsNeededInUVSet") {
+                            QString cat;
+                            int nbC;
+                            QMap<QString, int> credits;
+                            QSet<QString> uvs;
+
+                            QXmlStreamAttributes attributes = xml.attributes();
+                            foreach (QXmlStreamAttribute attribute, attributes) {
+                                cat=attribute.name().toString();
+                                nbC=attribute.value().toInt();
+                                credits.insert(cat, nbC);
+
+                                if (!UVManager::getInstance().getCategorieManager().getAllCategories().contains(cat)) {
+                                    UVManager::getInstance().getCategorieManager().addItem(cat, "");
+                                }
+                            }
+                            xml.readNext();
+
+                            while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "creditsNeededInUVSet")) {
+                                if(xml.tokenType() == QXmlStreamReader::StartElement) {
+                                    if(xml.name() == "uv") {
+                                        xml.readNext(); uvs.insert(xml.text().toString());
+                                    }
+                                }
+                                xml.readNext();
+                            }
+                            creditsNeededInUVSet.credits=credits;
+                            creditsNeededInUVSet.uvs=uvs;
                         }
                     }
                     // ...and next...
                     xml.readNext();
                 }
-                addUV(code,titre,categories,automne,printemps);
+                addFormation(code,titre,creditsNeeded,formationsNeeded,uvNeeded,creditsNeededInUVSet);
             }
         }
     }
     // Error handling.
     if(xml.hasError()) {
-        throw UTProfilerException("Erreur lecteur fichier UV, parser xml");
+        throw UTProfilerException("Erreur lecteur fichier formations, parser xml");
     }
     // Removes any device() or data from the reader * and resets its internal state to the initial state.
     xml.clear();
-    fin.close();    */
+    fin.close();
 }
 
 
@@ -146,8 +174,8 @@ void formationManager::addFormation(const QString& c, const QString& t, QMap<QSt
         formations.insert(c, newformation);
 }
 
-void formationManager::deleteformation(const QString& c){
-    if (!uvs.contains(c)) {
+void formationManager::deleteFormation(const QString& c){
+    if (!formations.contains(c)) {
         throw UTProfilerException(QString("erreur, UVManager, UV ")+c+QString("déjà existante"));
     }else{
         delete formations.value(c);

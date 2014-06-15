@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <formations>
   <formation>
     <code>TC-GI-ICSI</code>
-    <titre>G�nie Informatique</titre>
+    <titre>Génie Informatique</titre>
     <creditsNeeded CS="40" TM="20" TSH="15"/>
     <formationNeeded>TC</formationNeeded>
     <formationNeeded>GI</formationNeeded>
