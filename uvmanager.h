@@ -89,7 +89,7 @@ public:
     const QMap<QString, QString>& getAllCategories() const {return categories;}
 };
 
-//TO DO A basculer chez etudiant manager
+/*
 class NoteManager {
 private:
     QSet<QString> notes;
@@ -109,40 +109,22 @@ public:
     static NoteManager& getInstance();
     static void libererInstance();
 };
+*/
 
 /**
  * @brief Saison est une énumération des 2 saisons possible pour nommer un semestre : Automne et Printemps.
  */
 enum Saison { Automne, Printemps };
 
-//TO DO A basculer chez etudiant manager
-
-/**
- * @brief La classe Semestre construit un Semestre à partir d'une saison et d'une année.
- */
+/*
 class Semestre {
     Saison saison;
     unsigned int annee;
 public:
-    /**
-     * @brief Constructeur de la classe Semestre
-     * @param s : Saison (automne ou printemps)
-     * @param a : année entre 1972 et 2099.
-     */
     Semestre(Saison s, unsigned int a):saison(s),annee(a){ if (annee<1972||annee>2099) throw UTProfilerException("annee non valide"); }
-
-    /**
-     * @brief getSaison : accesseur sur Saison
-     * @return Saison du Semestre.
-     */
     Saison getSaison() const { return saison; }
-
-    /**
-     * @brief getAnnee : accesseur sur Année.
-     * @return Année du Semestre.
-     */
     unsigned int getAnnee() const { return annee; }
-};
+};*/
 
 /**
  * @brief La classe UV permet d'enregistrer les différentes informations sur une UV.
@@ -368,9 +350,9 @@ public:
     Semestre getSemestre() const { return semestre; }
     Note getResultat() const { return resultat; }
     void setResultat(Note newres) { resultat=newres; }
-};*/
+};
 
 class Dossier {
-};
+};*/
 
 #endif

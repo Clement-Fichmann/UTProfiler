@@ -31,7 +31,7 @@ class formation {
     QMap<QString, int> creditsNeeded; /**Crédits par catégorie requis pour la complétion de la formation, hors d'une liste d'UV*/
     QSet<QString> formationsNeeded; /**Formation(s) à suivre pour valider la formation courante*/
     QSet<QString> uvNeeded; /**UV à suivre pour valider la formation*/
-    CreditsInUV creditsNeededInUVSet; /**UV à suivre pour les crédits requis*/
+    CreditsInUV creditsNeededInUVSet; /**Crédits à obtenir via un panel restreint d'UV*/
 
     /**
      * @brief Constructeur par recopie
@@ -46,7 +46,7 @@ class formation {
      * @param credits : crédits à obtenir dans chaque catégorie
      * @param formations : formation requises
      * @param uvs : UV à valider pour compléter la formation
-     * @param cInUV :
+     * @param cInUV : crédits à obtenir via un panel d'UV
      */
     formation(const QString& c, const QString& t, QMap<QString, int> credits, QSet<QString> formations, QSet<QString> uvs, CreditsInUV cInUV): code(c),titre(t),creditsNeeded(credits), formationsNeeded(formations), uvNeeded(uvs), creditsNeededInUVSet(cInUV) {}
     friend class formationManager;
@@ -83,7 +83,7 @@ public:
 
     /**
     /** * @brief getCreditsNeededInUVSet
-    /** * @return
+    /** * @return Crédits de chaque catégorie à obtenir via le panel d'UV
     */
     CreditsInUV getCreditsNeededInUVSet() const {return creditsNeededInUVSet;}
 
@@ -132,7 +132,7 @@ public:
 
     /**
      * @brief setCreditsNeededInUVSet
-     * @param newC
+     * @param newC : Liste des crédits pour chaque catégorie et panel d'UV correspondant
      */
     void setCreditsNeededInUVSet(CreditsInUV newC) {creditsNeededInUVSet=newC;}
 };
