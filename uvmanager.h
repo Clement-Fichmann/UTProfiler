@@ -73,7 +73,6 @@ class UV {
     bool automne;
     bool printemps;
     UV(const UV& u);
-    UV& operator=(const UV& u);
     UV(const QString& c, const QString& t, QMap<QString, int> cat, bool a, bool p): code(c),titre(t),categories(cat),automne(a),printemps(p){}
     friend class UVManager;
 public:
@@ -96,7 +95,6 @@ class UVManager {
 private:
     QMap<QString, UV*> uvs;
     UVManager(const UVManager& um);
-    UVManager& operator=(const UVManager& um);
     UVManager();
     ~UVManager();
     CategorieManager& categorieM;
