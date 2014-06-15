@@ -224,8 +224,8 @@ void UVManager::save(const QString& f){
 }
 
 UVManager::~UVManager(){
-    if (file!="" && !uvs.isEmpty())
-        save(file);
+    /*if (file!="" && !uvs.isEmpty())
+        save(file);*/
     this->deleteAllUV();
     categorieM.libererInstance();
     noteM.libererInstance();

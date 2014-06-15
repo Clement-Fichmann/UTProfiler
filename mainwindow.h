@@ -32,6 +32,7 @@ public slots:
     void on_txtDescription_textChanged();
     void on_chkAutomne_stateChanged();
     void on_chkPrintemps_stateChanged();
+    void on_tableCredits_itemChanged();
     void UVEditee();
     void on_btnSauverUV_clicked();
     void on_btnAjouterUV_clicked();
