@@ -21,10 +21,10 @@ ajouterUVWindow::ajouterUVWindow(QWidget *parent) : QDialog(parent), ui(new Ui::
     QMap<QString, QString> categories = uvM.getCategorieManager().getAllCategories();
     foreach(QString cat, categories.keys()){ //pour toutes les catégories
         int ligne = ui->tableCredits->rowCount();
-        ui->tableCredits->insertRow(ligne);
+        ui->tableCredits->insertRow(ligne); //on insère une nouvelle ligne dans le tableau d'affichage
         QPointer<QLabel> ptCat = new QLabel(this);
         QPointer<QSpinBox> ptCredits = new QSpinBox(this);
-        ptCat.data()->setText(cat);
+        ptCat.data()->setText(cat); //on place le code de la catégorie dans un label
         ptCredits.data()->setValue(0);
         ptCat.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
         ptCredits.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
@@ -32,9 +32,9 @@ ajouterUVWindow::ajouterUVWindow(QWidget *parent) : QDialog(parent), ui(new Ui::
         ui->tableCredits->setCellWidget(ligne, 1, ptCredits);
     }
     int rowCountDebut = ui->tableCredits->rowCount();
-    for (int cpt = rowCountDebut; cpt < rowCountDebut +2 ; cpt++){
+    for (int cpt = rowCountDebut; cpt < rowCountDebut +2 ; cpt++){ //on va ajouter 2 nouvelles lignes
         ui->tableCredits->insertRow(cpt);
-        QPointer<QLineEdit> ptCat = new QLineEdit(this);
+        QPointer<QLineEdit> ptCat = new QLineEdit(this); //La QLineEdit permet d'ajouter une catégorie de crédits
         QPointer<QSpinBox> ptCredits = new QSpinBox(this);
         ptCat.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
         ptCredits.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
