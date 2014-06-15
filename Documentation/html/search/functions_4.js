@@ -3,6 +3,7 @@ var searchData=
   ['getallcategories',['getAllCategories',['../class_categorie_manager.html#a96b90ece8d298ec50f3191f97ff2b1f6',1,'CategorieManager']]],
   ['getallformations',['getAllFormations',['../classformation_manager.html#a5ed45dfb6302e50c527eab9cd899c5f5',1,'formationManager']]],
   ['getalluv',['getAllUV',['../class_u_v_manager.html#a0d65e0ea79cf14c5d92b1013805be42a',1,'UVManager']]],
+  ['getannee',['getAnnee',['../class_semestre.html#a5aa85395e97f58f491ebf251da8231ef',1,'Semestre']]],
   ['getcategoriemanager',['getCategorieManager',['../class_u_v_manager.html#a17d95c67bc2d1f4c9d850fb0b9c42262',1,'UVManager']]],
   ['getcategories',['getCategories',['../class_u_v.html#ac9e4b2f7e639ac8d96d01fc8a33a730f',1,'UV']]],
   ['getcode',['getCode',['../classformation.html#a49f0c32e0bc38601c725bcdd0a7252e1',1,'formation::getCode()'],['../class_u_v.html#a4d5fe39505b3e474b41013dda0d2047a',1,'UV::getCode()']]],
@@ -17,6 +18,7 @@ var searchData=
   ['getline',['getLine',['../class_u_t_profiler_exception.html#aa3c2efb28c6b482859b26b8f59b4b32e',1,'UTProfilerException']]],
   ['getnbcredits',['getNbCredits',['../class_u_v.html#aca0cf43b1b3b5a7060b21a65fb5701c2',1,'UV']]],
   ['getnbcreditstotal',['getNbCreditsTotal',['../class_u_v.html#a9f95880400dac05e2d18513826062b14',1,'UV']]],
+  ['getsaison',['getSaison',['../class_semestre.html#a26e25575e7fb65649c47970a9800c3aa',1,'Semestre']]],
   ['gettitre',['getTitre',['../classformation.html#aa151fd31c40af7b9d97d4d49f631a127',1,'formation::getTitre()'],['../class_u_v.html#afa7f5a8c7ea21bedcd00af1a1ff48221',1,'UV::getTitre()']]],
   ['getuv',['getUV',['../class_u_v_manager.html#ac1a6b93630bb709b33aff7cba798044d',1,'UVManager::getUV(const QString &amp;code) const '],['../class_u_v_manager.html#a00f95b40d834d93f0fe326e1a00649a4',1,'UVManager::getUV(const QString &amp;code)']]],
   ['getuvneeded',['getUVNeeded',['../classformation.html#a185acb124f07b54215b64412e6ea444d',1,'formation']]]

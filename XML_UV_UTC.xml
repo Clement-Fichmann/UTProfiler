@@ -10,4 +10,14 @@
         <titre>Design D'Experience</titre>
         <credits CS="1" TM="4"/>
     </uv>
+	<uv automne="true" printemps="true">
+        <code>AP</code>
+        <titre>Atelier Projet</titre>
+        <credits TM="4" TSH="2"/>
+    </uv>
+	<uv automne="false" printemps="true">
+        <code>API08</code>
+        <titre>Ihm Et Multimédia (Apprentissage)</titre>
+        <credits TM="6" TSH="2"/>
+    </uv>
 </uvs>

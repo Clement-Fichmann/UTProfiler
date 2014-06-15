@@ -82,9 +82,9 @@ public:
     QSet<QString> getUVNeeded() const { return uvNeeded;}
 
     /**
-    /** * @brief getCreditsNeededInUVSet
-    /** * @return Crédits de chaque catégorie à obtenir via le panel d'UV
-    */
+     * @brief getCreditsNeededInUVSet
+     * @return Crédits de chaque catégorie à obtenir via le panel d'UV
+     */
     CreditsInUV getCreditsNeededInUVSet() const {return creditsNeededInUVSet;}
 
     /**

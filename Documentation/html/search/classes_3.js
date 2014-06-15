@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['mainwindow',['MainWindow',['../class_main_window.html',1,'']]]
+  ['formation',['formation',['../classformation.html',1,'']]],
+  ['formationmanager',['formationManager',['../classformation_manager.html',1,'']]]
 ];

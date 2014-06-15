@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1012</width>
-    <height>802</height>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,6 +23,9 @@
     </rect>
    </property>
    <layout class="QVBoxLayout" name="mainLayout_2">
+    <property name="sizeConstraint">
+     <enum>QLayout::SetDefaultConstraint</enum>
+    </property>
     <item>
      <layout class="QFormLayout" name="formLayout_2">
       <property name="fieldGrowthPolicy">

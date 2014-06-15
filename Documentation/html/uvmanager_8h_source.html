@@ -124,160 +124,168 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="class_categorie_manager.html#a96b90ece8d298ec50f3191f97ff2b1f6">   89</a></span>&#160;    <span class="keyword">const</span> QMap&lt;QString, QString&gt;&amp; <a class="code" href="class_categorie_manager.html#a96b90ece8d298ec50f3191f97ff2b1f6">getAllCategories</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> categories;}</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">class NoteManager {</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">private:</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">    QSet&lt;QString&gt; notes;</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">    NoteManager();</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">    ~NoteManager();</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">    friend struct Handler;</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">    struct Handler{</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">        NoteManager* instance;</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">        Handler():instance(0){}</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">        ~Handler(){ if (instance) delete instance; instance=0; }</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">    };</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">    static Handler handler;</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">public:</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">    void addItem(const QString&amp; code);</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">    int removeItem(const QString&amp; code);</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">    bool isNote(const QString&amp; code);</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">    static NoteManager&amp; getInstance();</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">    static void libererInstance();</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">};</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="uvmanager_8h.html#a72fcaae0ef529616dd62b747e259d545">  117</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="uvmanager_8h.html#a72fcaae0ef529616dd62b747e259d545">Saison</a> { Automne, Printemps };</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="class_note_manager.html">   92</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_note_manager.html">NoteManager</a> {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    QSet&lt;QString&gt; notes;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="class_note_manager.html">NoteManager</a>();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    ~<a class="code" href="class_note_manager.html">NoteManager</a>();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">friend</span> <span class="keyword">struct </span>Handler;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keyword">struct </span>Handler{</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <a class="code" href="class_note_manager.html">NoteManager</a>* instance;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        Handler():instance(0){}</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        ~Handler(){ <span class="keywordflow">if</span> (instance) <span class="keyword">delete</span> instance; instance=0; }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    };</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keyword">static</span> Handler handler;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">void</span> addItem(<span class="keyword">const</span> QString&amp; code);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">int</span> removeItem(<span class="keyword">const</span> QString&amp; code);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">bool</span> isNote(<span class="keyword">const</span> QString&amp; code);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_note_manager.html">NoteManager</a>&amp; getInstance();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> libererInstance();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;};</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="uvmanager_8h.html#a72fcaae0ef529616dd62b747e259d545">  115</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="uvmanager_8h.html#a72fcaae0ef529616dd62b747e259d545">Saison</a> { Automne, Printemps };</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">//TO DO A basculer chez etudiant manager</span></div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">class Semestre {</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">    Saison saison;</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">    unsigned int annee;</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">public:</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">    Semestre(Saison s, unsigned int a):saison(s),annee(a){ if (annee&lt;1972||annee&gt;2099) throw UTProfilerException(&quot;annee non valide&quot;); }</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">    Saison getSaison() const { return saison; }</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">    unsigned int getAnnee() const { return annee; }</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">};*/</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="class_u_v.html">  132</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_u_v.html">UV</a> {</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    QString code; </div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    QString titre; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    QMap&lt;QString, int&gt; categories; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordtype">bool</span> automne; </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordtype">bool</span> printemps; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <a class="code" href="class_u_v.html">UV</a>(<span class="keyword">const</span> <a class="code" href="class_u_v.html">UV</a>&amp; u);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <a class="code" href="class_u_v.html">UV</a>(<span class="keyword">const</span> QString&amp; c, <span class="keyword">const</span> QString&amp; t, QMap&lt;QString, int&gt; cat, <span class="keywordtype">bool</span> a, <span class="keywordtype">bool</span> p): code(c),titre(t),categories(cat),automne(a),printemps(p){}</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_u_v_manager.html">UVManager</a>;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="class_u_v.html#a4d5fe39505b3e474b41013dda0d2047a">  160</a></span>&#160;    QString <a class="code" href="class_u_v.html#a4d5fe39505b3e474b41013dda0d2047a">getCode</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> code; }</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="class_semestre.html">  122</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_semestre.html">Semestre</a> {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <a class="code" href="uvmanager_8h.html#a72fcaae0ef529616dd62b747e259d545">Saison</a> saison;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> annee;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="class_semestre.html#a4a0f1d3ab2f65755e0e0f610526522c2">  131</a></span>&#160;    <a class="code" href="class_semestre.html#a4a0f1d3ab2f65755e0e0f610526522c2">Semestre</a>(<a class="code" href="uvmanager_8h.html#a72fcaae0ef529616dd62b747e259d545">Saison</a> s, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> a):saison(s),annee(a){ <span class="keywordflow">if</span> (annee&lt;1972||annee&gt;2099) <span class="keywordflow">throw</span> <a class="code" href="class_u_t_profiler_exception.html">UTProfilerException</a>(<span class="stringliteral">&quot;annee non valide&quot;</span>); }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="class_semestre.html#a26e25575e7fb65649c47970a9800c3aa">  137</a></span>&#160;    <a class="code" href="uvmanager_8h.html#a72fcaae0ef529616dd62b747e259d545">Saison</a> <a class="code" href="class_semestre.html#a26e25575e7fb65649c47970a9800c3aa">getSaison</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> saison; }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="class_semestre.html#a5aa85395e97f58f491ebf251da8231ef">  143</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_semestre.html#a5aa85395e97f58f491ebf251da8231ef">getAnnee</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> annee; }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;};</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="class_u_v.html">  149</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_u_v.html">UV</a> {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    QString code; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    QString titre; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    QMap&lt;QString, int&gt; categories; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordtype">bool</span> automne; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordtype">bool</span> printemps; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <a class="code" href="class_u_v.html">UV</a>(<span class="keyword">const</span> <a class="code" href="class_u_v.html">UV</a>&amp; u);</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="class_u_v.html#afa7f5a8c7ea21bedcd00af1a1ff48221">  166</a></span>&#160;    QString <a class="code" href="class_u_v.html#afa7f5a8c7ea21bedcd00af1a1ff48221">getTitre</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> titre; }</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
-<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="class_u_v.html#aca0cf43b1b3b5a7060b21a65fb5701c2">  173</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_u_v.html#aca0cf43b1b3b5a7060b21a65fb5701c2">getNbCredits</a>(QString cat)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> categories.value(cat, 0); }</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getNbCreditsTotal() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
-<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="class_u_v.html#ac9e4b2f7e639ac8d96d01fc8a33a730f">  185</a></span>&#160;    QMap&lt;QString, int&gt; <a class="code" href="class_u_v.html#ac9e4b2f7e639ac8d96d01fc8a33a730f">getCategories</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> categories; }</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
-<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="class_u_v.html#a29423fb485037fc882b8b29cae033c9a">  191</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_u_v.html#a29423fb485037fc882b8b29cae033c9a">ouvertureAutomne</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> automne; }</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
-<div class="line"><a name="l00197"></a><span class="lineno"><a class="line" href="class_u_v.html#adca45078b74fdc3c09621a521756e8af">  197</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_u_v.html#adca45078b74fdc3c09621a521756e8af">ouverturePrintemps</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> printemps; }</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
-<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="class_u_v.html#a9c3b73077819774423559abd838e410b">  203</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_u_v.html#a9c3b73077819774423559abd838e410b">setCode</a>(<span class="keyword">const</span> QString&amp; c) { code=c; }</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
-<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="class_u_v.html#a52c66013e137689883802465596bb688">  209</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_u_v.html#a52c66013e137689883802465596bb688">setTitre</a>(<span class="keyword">const</span> QString&amp; t) { titre=t; }</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
-<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="class_u_v.html#a6310e1d779721ce541aaea845f205dd1">  216</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_u_v.html#a6310e1d779721ce541aaea845f205dd1">setCategorie</a>(QString cat, <span class="keywordtype">int</span> nbC) { categories.insert(cat, nbC); }</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
-<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="class_u_v.html#a7e670e649febebe0fe70c3ce79f4be63">  222</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_u_v.html#a7e670e649febebe0fe70c3ce79f4be63">setOuvertureAutomne</a>(<span class="keywordtype">bool</span> b) { automne=b; }</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
-<div class="line"><a name="l00228"></a><span class="lineno"><a class="line" href="class_u_v.html#a0ae246826809cc48a1999ec0671c78b3">  228</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_u_v.html#a0ae246826809cc48a1999ec0671c78b3">setOuverturePrintemps</a>(<span class="keywordtype">bool</span> b) { printemps=b; }</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;};</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
-<div class="line"><a name="l00234"></a><span class="lineno"><a class="line" href="class_u_v_manager.html">  234</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_u_v_manager.html">UVManager</a> {</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    QMap&lt;QString, UV*&gt; uvs; </div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <a class="code" href="class_u_v_manager.html">UVManager</a>(<span class="keyword">const</span> <a class="code" href="class_u_v_manager.html">UVManager</a>&amp; um);</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <a class="code" href="class_u_v_manager.html">UVManager</a>();</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    ~<a class="code" href="class_u_v_manager.html">UVManager</a>();</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <a class="code" href="class_categorie_manager.html">CategorieManager</a>&amp; categorieM; </div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    NoteManager&amp; noteM;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keyword">friend</span> <span class="keyword">struct </span>Handler;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keyword">struct </span>Handler{</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        <a class="code" href="class_u_v_manager.html">UVManager</a>* instance;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        Handler():instance(0){}</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        ~Handler(){ <span class="keywordflow">if</span> (instance) <span class="keyword">delete</span> instance; instance=0; }</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    };</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keyword">static</span> Handler handler;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    QString file; </div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keywordtype">void</span> load(<span class="keyword">const</span> QString&amp; f);</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordtype">void</span> save(<span class="keyword">const</span> QString&amp; f);</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_u_v_manager.html">UVManager</a>&amp; getInstance();</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> libererInstance();</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <a class="code" href="class_u_v.html">UV</a>(<span class="keyword">const</span> QString&amp; c, <span class="keyword">const</span> QString&amp; t, QMap&lt;QString, int&gt; cat, <span class="keywordtype">bool</span> a, <span class="keywordtype">bool</span> p): code(c),titre(t),categories(cat),automne(a),printemps(p){}</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_u_v_manager.html">UVManager</a>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="class_u_v.html#a4d5fe39505b3e474b41013dda0d2047a">  177</a></span>&#160;    QString <a class="code" href="class_u_v.html#a4d5fe39505b3e474b41013dda0d2047a">getCode</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> code; }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="class_u_v.html#afa7f5a8c7ea21bedcd00af1a1ff48221">  183</a></span>&#160;    QString <a class="code" href="class_u_v.html#afa7f5a8c7ea21bedcd00af1a1ff48221">getTitre</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> titre; }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="class_u_v.html#aca0cf43b1b3b5a7060b21a65fb5701c2">  190</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_u_v.html#aca0cf43b1b3b5a7060b21a65fb5701c2">getNbCredits</a>(QString cat)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> categories.value(cat, 0); }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getNbCreditsTotal() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
+<div class="line"><a name="l00202"></a><span class="lineno"><a class="line" href="class_u_v.html#ac9e4b2f7e639ac8d96d01fc8a33a730f">  202</a></span>&#160;    QMap&lt;QString, int&gt; <a class="code" href="class_u_v.html#ac9e4b2f7e639ac8d96d01fc8a33a730f">getCategories</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> categories; }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="class_u_v.html#a29423fb485037fc882b8b29cae033c9a">  208</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_u_v.html#a29423fb485037fc882b8b29cae033c9a">ouvertureAutomne</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> automne; }</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
+<div class="line"><a name="l00214"></a><span class="lineno"><a class="line" href="class_u_v.html#adca45078b74fdc3c09621a521756e8af">  214</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_u_v.html#adca45078b74fdc3c09621a521756e8af">ouverturePrintemps</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> printemps; }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
+<div class="line"><a name="l00220"></a><span class="lineno"><a class="line" href="class_u_v.html#a9c3b73077819774423559abd838e410b">  220</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_u_v.html#a9c3b73077819774423559abd838e410b">setCode</a>(<span class="keyword">const</span> QString&amp; c) { code=c; }</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
+<div class="line"><a name="l00226"></a><span class="lineno"><a class="line" href="class_u_v.html#a52c66013e137689883802465596bb688">  226</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_u_v.html#a52c66013e137689883802465596bb688">setTitre</a>(<span class="keyword">const</span> QString&amp; t) { titre=t; }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
+<div class="line"><a name="l00233"></a><span class="lineno"><a class="line" href="class_u_v.html#a6310e1d779721ce541aaea845f205dd1">  233</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_u_v.html#a6310e1d779721ce541aaea845f205dd1">setCategorie</a>(QString cat, <span class="keywordtype">int</span> nbC) { categories.insert(cat, nbC); }</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
+<div class="line"><a name="l00239"></a><span class="lineno"><a class="line" href="class_u_v.html#a7e670e649febebe0fe70c3ce79f4be63">  239</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_u_v.html#a7e670e649febebe0fe70c3ce79f4be63">setOuvertureAutomne</a>(<span class="keywordtype">bool</span> b) { automne=b; }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
+<div class="line"><a name="l00245"></a><span class="lineno"><a class="line" href="class_u_v.html#a0ae246826809cc48a1999ec0671c78b3">  245</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_u_v.html#a0ae246826809cc48a1999ec0671c78b3">setOuverturePrintemps</a>(<span class="keywordtype">bool</span> b) { printemps=b; }</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;};</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
+<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="class_u_v_manager.html">  251</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_u_v_manager.html">UVManager</a> {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    QMap&lt;QString, UV*&gt; uvs; </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <a class="code" href="class_u_v_manager.html">UVManager</a>(<span class="keyword">const</span> <a class="code" href="class_u_v_manager.html">UVManager</a>&amp; um);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <a class="code" href="class_u_v_manager.html">UVManager</a>();</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    ~<a class="code" href="class_u_v_manager.html">UVManager</a>();</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <a class="code" href="class_categorie_manager.html">CategorieManager</a>&amp; categorieM; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <a class="code" href="class_note_manager.html">NoteManager</a>&amp; noteM;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keyword">friend</span> <span class="keyword">struct </span>Handler;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keyword">struct </span>Handler{</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <a class="code" href="class_u_v_manager.html">UVManager</a>* instance;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        Handler():instance(0){}</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        ~Handler(){ <span class="keywordflow">if</span> (instance) <span class="keyword">delete</span> instance; instance=0; }</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    };</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <span class="keyword">static</span> Handler handler;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    QString file; </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordtype">void</span> load(<span class="keyword">const</span> QString&amp; f);</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordtype">void</span> addUV(<span class="keyword">const</span> QString&amp; c, <span class="keyword">const</span> QString&amp; t, QMap&lt;QString, int&gt; cat, <span class="keywordtype">bool</span> a, <span class="keywordtype">bool</span> p);</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="keywordtype">void</span> deleteUV(<span class="keyword">const</span> QString&amp; c);</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keyword">const</span> <a class="code" href="class_u_v.html">UV</a>&amp; getUV(<span class="keyword">const</span> QString&amp; code) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <a class="code" href="class_u_v.html">UV</a>&amp; getUV(<span class="keyword">const</span> QString&amp; code);</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;</div>
-<div class="line"><a name="l00327"></a><span class="lineno"><a class="line" href="class_u_v_manager.html#a0d65e0ea79cf14c5d92b1013805be42a">  327</a></span>&#160;    <span class="keyword">const</span> QMap&lt;QString, UV*&gt;&amp; <a class="code" href="class_u_v_manager.html#a0d65e0ea79cf14c5d92b1013805be42a">getAllUV</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> uvs;}</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="keywordtype">void</span> deleteAllUV();</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;</div>
-<div class="line"><a name="l00338"></a><span class="lineno"><a class="line" href="class_u_v_manager.html#a17d95c67bc2d1f4c9d850fb0b9c42262">  338</a></span>&#160;    <a class="code" href="class_categorie_manager.html">CategorieManager</a>&amp; <a class="code" href="class_u_v_manager.html#a17d95c67bc2d1f4c9d850fb0b9c42262">getCategorieManager</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> categorieM;}</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="keyword">const</span> NoteManager&amp; getNoteManager()<span class="keyword"> const </span>{<span class="keywordflow">return</span> noteM;}</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;};</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="comment">/*class Inscription {</span></div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="comment">    const UV* uv;</span></div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="comment">    Semestre semestre;</span></div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="comment">    Note resultat;</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="comment">public:</span></div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="comment">    Inscription(const UV&amp; u, const Semestre&amp; s, Note res=EC):uv(&amp;u),semestre(s),resultat(res){}</span></div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="comment">    const UV&amp; getUV() const { return *uv; }</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="comment">    Semestre getSemestre() const { return semestre; }</span></div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="comment">    Note getResultat() const { return resultat; }</span></div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="comment">    void setResultat(Note newres) { resultat=newres; }</span></div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="comment">};</span></div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="comment">class Dossier {</span></div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="comment">};*/</span></div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="class_u_v_html_a52c66013e137689883802465596bb688"><div class="ttname"><a href="class_u_v.html#a52c66013e137689883802465596bb688">UV::setTitre</a></div><div class="ttdeci">void setTitre(const QString &amp;t)</div><div class="ttdoc">Setter sur le titre de l&#39;UV. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:209</div></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="keywordtype">void</span> save(<span class="keyword">const</span> QString&amp; f);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_u_v_manager.html">UVManager</a>&amp; getInstance();</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> libererInstance();</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="keywordtype">void</span> addUV(<span class="keyword">const</span> QString&amp; c, <span class="keyword">const</span> QString&amp; t, QMap&lt;QString, int&gt; cat, <span class="keywordtype">bool</span> a, <span class="keywordtype">bool</span> p);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="keywordtype">void</span> deleteUV(<span class="keyword">const</span> QString&amp; c);</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keyword">const</span> <a class="code" href="class_u_v.html">UV</a>&amp; getUV(<span class="keyword">const</span> QString&amp; code) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <a class="code" href="class_u_v.html">UV</a>&amp; getUV(<span class="keyword">const</span> QString&amp; code);</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;</div>
+<div class="line"><a name="l00344"></a><span class="lineno"><a class="line" href="class_u_v_manager.html#a0d65e0ea79cf14c5d92b1013805be42a">  344</a></span>&#160;    <span class="keyword">const</span> QMap&lt;QString, UV*&gt;&amp; <a class="code" href="class_u_v_manager.html#a0d65e0ea79cf14c5d92b1013805be42a">getAllUV</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> uvs;}</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keywordtype">void</span> deleteAllUV();</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;</div>
+<div class="line"><a name="l00355"></a><span class="lineno"><a class="line" href="class_u_v_manager.html#a17d95c67bc2d1f4c9d850fb0b9c42262">  355</a></span>&#160;    <a class="code" href="class_categorie_manager.html">CategorieManager</a>&amp; <a class="code" href="class_u_v_manager.html#a17d95c67bc2d1f4c9d850fb0b9c42262">getCategorieManager</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> categorieM;}</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="keyword">const</span> <a class="code" href="class_note_manager.html">NoteManager</a>&amp; getNoteManager()<span class="keyword"> const </span>{<span class="keywordflow">return</span> noteM;}</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;};</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="comment">/*class Inscription {</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="comment">    const UV* uv;</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="comment">    Semestre semestre;</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="comment">    Note resultat;</span></div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="comment">public:</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="comment">    Inscription(const UV&amp; u, const Semestre&amp; s, Note res=EC):uv(&amp;u),semestre(s),resultat(res){}</span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="comment">    const UV&amp; getUV() const { return *uv; }</span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="comment">    Semestre getSemestre() const { return semestre; }</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="comment">    Note getResultat() const { return resultat; }</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="comment">    void setResultat(Note newres) { resultat=newres; }</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="comment">};*/</span></div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;</div>
+<div class="line"><a name="l00372"></a><span class="lineno"><a class="line" href="class_dossier.html">  372</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_dossier.html">Dossier</a> {</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;};</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="class_u_v_html_a52c66013e137689883802465596bb688"><div class="ttname"><a href="class_u_v.html#a52c66013e137689883802465596bb688">UV::setTitre</a></div><div class="ttdeci">void setTitre(const QString &amp;t)</div><div class="ttdoc">Setter sur le titre de l&#39;UV. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:226</div></div>
+<div class="ttc" id="class_semestre_html_a4a0f1d3ab2f65755e0e0f610526522c2"><div class="ttname"><a href="class_semestre.html#a4a0f1d3ab2f65755e0e0f610526522c2">Semestre::Semestre</a></div><div class="ttdeci">Semestre(Saison s, unsigned int a)</div><div class="ttdoc">Constructeur de la classe Semestre. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:131</div></div>
 <div class="ttc" id="class_categorie_manager_html"><div class="ttname"><a href="class_categorie_manager.html">CategorieManager</a></div><div class="ttdoc">CategorieManager contient une QMap de 2 QString : La première indique le nom abrégé de la catégorie...</div><div class="ttdef"><b>Definition:</b> uvmanager.h:22</div></div>
-<div class="ttc" id="class_u_v_manager_html"><div class="ttname"><a href="class_u_v_manager.html">UVManager</a></div><div class="ttdoc">La classe UVManager permet de gérer l&#39;ensemble des UVs. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:234</div></div>
-<div class="ttc" id="class_u_v_html_a4d5fe39505b3e474b41013dda0d2047a"><div class="ttname"><a href="class_u_v.html#a4d5fe39505b3e474b41013dda0d2047a">UV::getCode</a></div><div class="ttdeci">QString getCode() const </div><div class="ttdoc">Accesseur sur le code de l&#39;UV. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:160</div></div>
-<div class="ttc" id="uvmanager_8h_html_a72fcaae0ef529616dd62b747e259d545"><div class="ttname"><a href="uvmanager_8h.html#a72fcaae0ef529616dd62b747e259d545">Saison</a></div><div class="ttdeci">Saison</div><div class="ttdoc">Saison est une énumération des 2 saisons possible pour nommer un semestre : Automne et Printemps...</div><div class="ttdef"><b>Definition:</b> uvmanager.h:117</div></div>
-<div class="ttc" id="class_u_v_html"><div class="ttname"><a href="class_u_v.html">UV</a></div><div class="ttdoc">La classe UV permet d&#39;enregistrer les différentes informations sur une UV. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:132</div></div>
+<div class="ttc" id="class_u_v_manager_html"><div class="ttname"><a href="class_u_v_manager.html">UVManager</a></div><div class="ttdoc">La classe UVManager permet de gérer l&#39;ensemble des UVs. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:251</div></div>
+<div class="ttc" id="class_u_v_html_a4d5fe39505b3e474b41013dda0d2047a"><div class="ttname"><a href="class_u_v.html#a4d5fe39505b3e474b41013dda0d2047a">UV::getCode</a></div><div class="ttdeci">QString getCode() const </div><div class="ttdoc">Accesseur sur le code de l&#39;UV. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:177</div></div>
+<div class="ttc" id="uvmanager_8h_html_a72fcaae0ef529616dd62b747e259d545"><div class="ttname"><a href="uvmanager_8h.html#a72fcaae0ef529616dd62b747e259d545">Saison</a></div><div class="ttdeci">Saison</div><div class="ttdoc">Saison est une énumération des 2 saisons possible pour nommer un semestre : Automne et Printemps...</div><div class="ttdef"><b>Definition:</b> uvmanager.h:115</div></div>
+<div class="ttc" id="class_u_t_profiler_exception_html"><div class="ttname"><a href="class_u_t_profiler_exception.html">UTProfilerException</a></div><div class="ttdoc">Exceptions pour l&#39;appli UTProfiler. </div><div class="ttdef"><b>Definition:</b> utprofilerexception.h:9</div></div>
+<div class="ttc" id="class_u_v_html"><div class="ttname"><a href="class_u_v.html">UV</a></div><div class="ttdoc">La classe UV permet d&#39;enregistrer les différentes informations sur une UV. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:149</div></div>
 <div class="ttc" id="class_categorie_manager_html_a96b90ece8d298ec50f3191f97ff2b1f6"><div class="ttname"><a href="class_categorie_manager.html#a96b90ece8d298ec50f3191f97ff2b1f6">CategorieManager::getAllCategories</a></div><div class="ttdeci">const QMap&lt; QString, QString &gt; &amp; getAllCategories() const </div><div class="ttdoc">getAllCategories : accesseur pour la QMap categories </div><div class="ttdef"><b>Definition:</b> uvmanager.h:89</div></div>
-<div class="ttc" id="class_u_v_manager_html_a17d95c67bc2d1f4c9d850fb0b9c42262"><div class="ttname"><a href="class_u_v_manager.html#a17d95c67bc2d1f4c9d850fb0b9c42262">UVManager::getCategorieManager</a></div><div class="ttdeci">CategorieManager &amp; getCategorieManager() const </div><div class="ttdoc">getCategorieManager renvoie une référence vers l&#39;unique instance de CategorieManager. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:338</div></div>
-<div class="ttc" id="class_u_v_html_ac9e4b2f7e639ac8d96d01fc8a33a730f"><div class="ttname"><a href="class_u_v.html#ac9e4b2f7e639ac8d96d01fc8a33a730f">UV::getCategories</a></div><div class="ttdeci">QMap&lt; QString, int &gt; getCategories() const </div><div class="ttdoc">Accesseur sur les catégories de l&#39;UV. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:185</div></div>
-<div class="ttc" id="class_u_v_html_a9c3b73077819774423559abd838e410b"><div class="ttname"><a href="class_u_v.html#a9c3b73077819774423559abd838e410b">UV::setCode</a></div><div class="ttdeci">void setCode(const QString &amp;c)</div><div class="ttdoc">Setter sur le code de l&#39;UV. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:203</div></div>
-<div class="ttc" id="class_u_v_html_a29423fb485037fc882b8b29cae033c9a"><div class="ttname"><a href="class_u_v.html#a29423fb485037fc882b8b29cae033c9a">UV::ouvertureAutomne</a></div><div class="ttdeci">bool ouvertureAutomne() const </div><div class="ttdoc">L&#39;UV ouvre-t-elle à l&#39;automne ? </div><div class="ttdef"><b>Definition:</b> uvmanager.h:191</div></div>
-<div class="ttc" id="class_u_v_html_a7e670e649febebe0fe70c3ce79f4be63"><div class="ttname"><a href="class_u_v.html#a7e670e649febebe0fe70c3ce79f4be63">UV::setOuvertureAutomne</a></div><div class="ttdeci">void setOuvertureAutomne(bool b)</div><div class="ttdoc">setOuvertureAutomne ouvre ou non l&#39;UV à l&#39;automne. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:222</div></div>
-<div class="ttc" id="class_u_v_html_a0ae246826809cc48a1999ec0671c78b3"><div class="ttname"><a href="class_u_v.html#a0ae246826809cc48a1999ec0671c78b3">UV::setOuverturePrintemps</a></div><div class="ttdeci">void setOuverturePrintemps(bool b)</div><div class="ttdoc">setOuverturePrintemps ouvre ou non l&#39;UV au printemps. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:228</div></div>
-<div class="ttc" id="class_u_v_html_afa7f5a8c7ea21bedcd00af1a1ff48221"><div class="ttname"><a href="class_u_v.html#afa7f5a8c7ea21bedcd00af1a1ff48221">UV::getTitre</a></div><div class="ttdeci">QString getTitre() const </div><div class="ttdoc">Accesseur sur le titre de l&#39;UV. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:166</div></div>
-<div class="ttc" id="class_u_v_html_adca45078b74fdc3c09621a521756e8af"><div class="ttname"><a href="class_u_v.html#adca45078b74fdc3c09621a521756e8af">UV::ouverturePrintemps</a></div><div class="ttdeci">bool ouverturePrintemps() const </div><div class="ttdoc">L&#39;UV ouvre-t-elle au printemps ? </div><div class="ttdef"><b>Definition:</b> uvmanager.h:197</div></div>
-<div class="ttc" id="class_u_v_manager_html_a0d65e0ea79cf14c5d92b1013805be42a"><div class="ttname"><a href="class_u_v_manager.html#a0d65e0ea79cf14c5d92b1013805be42a">UVManager::getAllUV</a></div><div class="ttdeci">const QMap&lt; QString, UV * &gt; &amp; getAllUV() const </div><div class="ttdoc">getAllUV renvoie une référence vers la QMap contenant toutes les UV. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:327</div></div>
-<div class="ttc" id="class_u_v_html_aca0cf43b1b3b5a7060b21a65fb5701c2"><div class="ttname"><a href="class_u_v.html#aca0cf43b1b3b5a7060b21a65fb5701c2">UV::getNbCredits</a></div><div class="ttdeci">unsigned int getNbCredits(QString cat) const </div><div class="ttdoc">getNbCredits renvoie le nombre de crédits de l&#39;UV pour une catégorie donnée. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:173</div></div>
-<div class="ttc" id="class_u_v_html_a6310e1d779721ce541aaea845f205dd1"><div class="ttname"><a href="class_u_v.html#a6310e1d779721ce541aaea845f205dd1">UV::setCategorie</a></div><div class="ttdeci">void setCategorie(QString cat, int nbC)</div><div class="ttdoc">Setter pour l&#39;insertion de crédits d&#39;une catégorie. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:216</div></div>
+<div class="ttc" id="class_u_v_manager_html_a17d95c67bc2d1f4c9d850fb0b9c42262"><div class="ttname"><a href="class_u_v_manager.html#a17d95c67bc2d1f4c9d850fb0b9c42262">UVManager::getCategorieManager</a></div><div class="ttdeci">CategorieManager &amp; getCategorieManager() const </div><div class="ttdoc">getCategorieManager renvoie une référence vers l&#39;unique instance de CategorieManager. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:355</div></div>
+<div class="ttc" id="class_u_v_html_ac9e4b2f7e639ac8d96d01fc8a33a730f"><div class="ttname"><a href="class_u_v.html#ac9e4b2f7e639ac8d96d01fc8a33a730f">UV::getCategories</a></div><div class="ttdeci">QMap&lt; QString, int &gt; getCategories() const </div><div class="ttdoc">Accesseur sur les catégories de l&#39;UV. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:202</div></div>
+<div class="ttc" id="class_semestre_html"><div class="ttname"><a href="class_semestre.html">Semestre</a></div><div class="ttdoc">La classe Semestre construit un Semestre à partir d&#39;une saison et d&#39;une année. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:122</div></div>
+<div class="ttc" id="class_note_manager_html"><div class="ttname"><a href="class_note_manager.html">NoteManager</a></div><div class="ttdef"><b>Definition:</b> uvmanager.h:92</div></div>
+<div class="ttc" id="class_u_v_html_a9c3b73077819774423559abd838e410b"><div class="ttname"><a href="class_u_v.html#a9c3b73077819774423559abd838e410b">UV::setCode</a></div><div class="ttdeci">void setCode(const QString &amp;c)</div><div class="ttdoc">Setter sur le code de l&#39;UV. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:220</div></div>
+<div class="ttc" id="class_semestre_html_a5aa85395e97f58f491ebf251da8231ef"><div class="ttname"><a href="class_semestre.html#a5aa85395e97f58f491ebf251da8231ef">Semestre::getAnnee</a></div><div class="ttdeci">unsigned int getAnnee() const </div><div class="ttdoc">getAnnee : accesseur sur Année. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:143</div></div>
+<div class="ttc" id="class_u_v_html_a29423fb485037fc882b8b29cae033c9a"><div class="ttname"><a href="class_u_v.html#a29423fb485037fc882b8b29cae033c9a">UV::ouvertureAutomne</a></div><div class="ttdeci">bool ouvertureAutomne() const </div><div class="ttdoc">L&#39;UV ouvre-t-elle à l&#39;automne ? </div><div class="ttdef"><b>Definition:</b> uvmanager.h:208</div></div>
+<div class="ttc" id="class_u_v_html_a7e670e649febebe0fe70c3ce79f4be63"><div class="ttname"><a href="class_u_v.html#a7e670e649febebe0fe70c3ce79f4be63">UV::setOuvertureAutomne</a></div><div class="ttdeci">void setOuvertureAutomne(bool b)</div><div class="ttdoc">setOuvertureAutomne ouvre ou non l&#39;UV à l&#39;automne. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:239</div></div>
+<div class="ttc" id="class_u_v_html_a0ae246826809cc48a1999ec0671c78b3"><div class="ttname"><a href="class_u_v.html#a0ae246826809cc48a1999ec0671c78b3">UV::setOuverturePrintemps</a></div><div class="ttdeci">void setOuverturePrintemps(bool b)</div><div class="ttdoc">setOuverturePrintemps ouvre ou non l&#39;UV au printemps. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:245</div></div>
+<div class="ttc" id="class_u_v_html_afa7f5a8c7ea21bedcd00af1a1ff48221"><div class="ttname"><a href="class_u_v.html#afa7f5a8c7ea21bedcd00af1a1ff48221">UV::getTitre</a></div><div class="ttdeci">QString getTitre() const </div><div class="ttdoc">Accesseur sur le titre de l&#39;UV. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:183</div></div>
+<div class="ttc" id="class_u_v_html_adca45078b74fdc3c09621a521756e8af"><div class="ttname"><a href="class_u_v.html#adca45078b74fdc3c09621a521756e8af">UV::ouverturePrintemps</a></div><div class="ttdeci">bool ouverturePrintemps() const </div><div class="ttdoc">L&#39;UV ouvre-t-elle au printemps ? </div><div class="ttdef"><b>Definition:</b> uvmanager.h:214</div></div>
+<div class="ttc" id="class_u_v_manager_html_a0d65e0ea79cf14c5d92b1013805be42a"><div class="ttname"><a href="class_u_v_manager.html#a0d65e0ea79cf14c5d92b1013805be42a">UVManager::getAllUV</a></div><div class="ttdeci">const QMap&lt; QString, UV * &gt; &amp; getAllUV() const </div><div class="ttdoc">getAllUV renvoie une référence vers la QMap contenant toutes les UV. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:344</div></div>
+<div class="ttc" id="class_semestre_html_a26e25575e7fb65649c47970a9800c3aa"><div class="ttname"><a href="class_semestre.html#a26e25575e7fb65649c47970a9800c3aa">Semestre::getSaison</a></div><div class="ttdeci">Saison getSaison() const </div><div class="ttdoc">getSaison : accesseur sur Saison </div><div class="ttdef"><b>Definition:</b> uvmanager.h:137</div></div>
+<div class="ttc" id="class_u_v_html_aca0cf43b1b3b5a7060b21a65fb5701c2"><div class="ttname"><a href="class_u_v.html#aca0cf43b1b3b5a7060b21a65fb5701c2">UV::getNbCredits</a></div><div class="ttdeci">unsigned int getNbCredits(QString cat) const </div><div class="ttdoc">getNbCredits renvoie le nombre de crédits de l&#39;UV pour une catégorie donnée. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:190</div></div>
+<div class="ttc" id="class_dossier_html"><div class="ttname"><a href="class_dossier.html">Dossier</a></div><div class="ttdef"><b>Definition:</b> uvmanager.h:372</div></div>
+<div class="ttc" id="class_u_v_html_a6310e1d779721ce541aaea845f205dd1"><div class="ttname"><a href="class_u_v.html#a6310e1d779721ce541aaea845f205dd1">UV::setCategorie</a></div><div class="ttdeci">void setCategorie(QString cat, int nbC)</div><div class="ttdoc">Setter pour l&#39;insertion de crédits d&#39;une catégorie. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:233</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jun 15 2014 23:09:23 for UTProfiler by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 16 2014 00:08:55 for UTProfiler by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

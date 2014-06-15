@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['formation',['formation',['../classformation.html',1,'']]],
-  ['formationmanager',['formationManager',['../classformation_manager.html',1,'']]]
+  ['dossier',['Dossier',['../class_dossier.html',1,'']]]
 ];

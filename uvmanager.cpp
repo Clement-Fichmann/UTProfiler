@@ -32,10 +32,10 @@ CategorieManager::~CategorieManager() {
 }
 
 /**
-/** * @brief addItem ajoute une catégorie à la map des catégories
-/** * @param code : nom abrégé de la catégorie
-/** * @param desc : nom complet de la catégorie
-*/
+ * @brief addItem ajoute une catégorie à la map des catégories
+ * @param code : nom abrégé de la catégorie
+ * @param desc : nom complet de la catégorie
+ */
 void CategorieManager::addItem(const QString& code, const QString& desc) {
     categories.insert(code, desc);
 }
@@ -70,8 +70,8 @@ bool CategorieManager::isCat(const QString& code) {
 }
 
 /**
-/** * @brief Handler permet l'implémentation du design pattern Singleton.
-*/
+ * @brief Handler permet l'implémentation du design pattern Singleton.
+ */
 CategorieManager::Handler CategorieManager::handler=Handler();
 
 /**
