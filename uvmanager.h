@@ -34,8 +34,8 @@ private:
     ~CategorieManager();
     friend struct Handler;
     /**
-    /** * @brief Handler permet l'implémentation du design pattern Singleton.
-    */
+     * @brief Handler permet l'implémentation du design pattern Singleton.
+     */
     struct Handler{
         CategorieManager* instance;
         Handler():instance(0){}
@@ -44,10 +44,10 @@ private:
     static Handler handler;
 public:
     /**
-    /** * @brief addItem ajoute une catégorie à la map des catégories
-    /** * @param code : nom abrégé de la catégorie
-    /** * @param desc : nom complet de la catégorie
-    */
+     * @brief addItem ajoute une catégorie à la map des catégories
+     * @param code : nom abrégé de la catégorie
+     * @param desc : nom complet de la catégorie
+     */
     void addItem(const QString& code, const QString& desc);
 
     /**
@@ -83,9 +83,9 @@ public:
     static void libererInstance();
 
     /**
-    /** * @brief getAllCategories : accesseur pour la QMap categories
-    /** * @return QMap<QString, QString> categories
-    */
+     * @brief getAllCategories : accesseur pour la QMap categories
+     * @return QMap<QString, QString> categories
+     */
     const QMap<QString, QString>& getAllCategories() const {return categories;}
 };
 

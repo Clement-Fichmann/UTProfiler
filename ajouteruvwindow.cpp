@@ -19,7 +19,7 @@ ajouterUVWindow::ajouterUVWindow(QWidget *parent) : QDialog(parent), ui(new Ui::
     ui->tableCredits->verticalHeader()->hide();
 
     QMap<QString, QString> categories = uvM.getCategorieManager().getAllCategories();
-    foreach(QString cat, categories.keys()){
+    foreach(QString cat, categories.keys()){ //pour toutes les catégories
         int ligne = ui->tableCredits->rowCount();
         ui->tableCredits->insertRow(ligne);
         QPointer<QLabel> ptCat = new QLabel(this);
