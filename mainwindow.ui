@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1017</width>
+    <height>730</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>801</width>
-      <height>581</height>
+      <width>1001</width>
+      <height>691</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -35,8 +35,8 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>771</width>
-        <height>511</height>
+        <width>981</width>
+        <height>651</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="mainLayout">
@@ -140,10 +140,10 @@
             <bool>true</bool>
            </property>
            <attribute name="horizontalHeaderDefaultSectionSize">
-            <number>341</number>
+            <number>450</number>
            </attribute>
            <attribute name="horizontalHeaderMinimumSectionSize">
-            <number>341</number>
+            <number>450</number>
            </attribute>
            <attribute name="horizontalHeaderStretchLastSection">
             <bool>true</bool>
@@ -249,19 +249,296 @@
      <attribute name="title">
       <string>Gestion des formations</string>
      </attribute>
-     <widget class="QLabel" name="lblBientot">
+     <widget class="QWidget" name="verticalLayoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>30</y>
-        <width>46</width>
-        <height>13</height>
+        <x>10</x>
+        <y>10</y>
+        <width>981</width>
+        <height>651</height>
        </rect>
       </property>
-      <property name="text">
-       <string>A venir...</string>
-      </property>
+      <layout class="QVBoxLayout" name="mainLayout_2">
+       <item>
+        <widget class="QPushButton" name="btnAjouterFormation">
+         <property name="text">
+          <string>Ajouter une nouvelle formation</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <spacer name="horizontalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="lblChoixFormation">
+           <property name="text">
+            <string>Choisir une formation</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="listFormation">
+           <property name="currentIndex">
+            <number>-1</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_7">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QFormLayout" name="formLayout_2">
+         <property name="fieldGrowthPolicy">
+          <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+         </property>
+         <item row="0" column="0">
+          <widget class="QLabel" name="lblCodeFormation">
+           <property name="text">
+            <string>Code de la formation</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="txtCodeFormation">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="lblDescription_Formation">
+           <property name="text">
+            <string>Titre</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="lblCreditsFormation">
+           <property name="text">
+            <string>Crédits requis</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QTableWidget" name="tableFormationCreditsNeeded">
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+           <attribute name="horizontalHeaderDefaultSectionSize">
+            <number>410</number>
+           </attribute>
+           <attribute name="horizontalHeaderMinimumSectionSize">
+            <number>410</number>
+           </attribute>
+           <attribute name="horizontalHeaderStretchLastSection">
+            <bool>true</bool>
+           </attribute>
+           <column>
+            <property name="text">
+             <string>Catégorie</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Nombre de crédits</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="lblCreditsFormation_2">
+           <property name="text">
+            <string>Formations requises</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QTableWidget" name="tableFormationFormationsNeeded">
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+           <attribute name="horizontalHeaderDefaultSectionSize">
+            <number>410</number>
+           </attribute>
+           <attribute name="horizontalHeaderMinimumSectionSize">
+            <number>410</number>
+           </attribute>
+           <attribute name="horizontalHeaderStretchLastSection">
+            <bool>true</bool>
+           </attribute>
+           <column>
+            <property name="text">
+             <string>Formation</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Prérequis ?</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="lblCreditsFormation_3">
+           <property name="text">
+            <string>UV requises</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QTableWidget" name="tableFormationUVNeeded">
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+           <attribute name="horizontalHeaderDefaultSectionSize">
+            <number>410</number>
+           </attribute>
+           <attribute name="horizontalHeaderMinimumSectionSize">
+            <number>410</number>
+           </attribute>
+           <attribute name="horizontalHeaderStretchLastSection">
+            <bool>true</bool>
+           </attribute>
+           <column>
+            <property name="text">
+             <string>UV</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Prérequis ?</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="lblCreditsFormation_4">
+           <property name="text">
+            <string>Crédits requis dans liste d'UV</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QTableWidget" name="tableFormationCreditsNeededInUVSet_Credits">
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+           <attribute name="horizontalHeaderDefaultSectionSize">
+            <number>410</number>
+           </attribute>
+           <attribute name="horizontalHeaderMinimumSectionSize">
+            <number>410</number>
+           </attribute>
+           <attribute name="horizontalHeaderStretchLastSection">
+            <bool>true</bool>
+           </attribute>
+           <column>
+            <property name="text">
+             <string>Catégorie</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Nombre de crédits</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QTableWidget" name="tableFormationCreditsNeededInUVSet_UV">
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+           <attribute name="horizontalHeaderDefaultSectionSize">
+            <number>410</number>
+           </attribute>
+           <attribute name="horizontalHeaderMinimumSectionSize">
+            <number>410</number>
+           </attribute>
+           <attribute name="horizontalHeaderStretchLastSection">
+            <bool>true</bool>
+           </attribute>
+           <column>
+            <property name="text">
+             <string>UV</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Dans la liste ?</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QTextEdit" name="txtDescriptionFormation">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnSauverFormation">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Sauvegarder les modifications</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnDeleteFormation">
+         <property name="text">
+          <string>Supprimer la formation</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
+     <zorder>verticalLayoutWidget_2</zorder>
+     <zorder></zorder>
     </widget>
    </widget>
   </widget>
@@ -270,7 +547,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1017</width>
      <height>21</height>
     </rect>
    </property>
@@ -293,6 +570,7 @@
      <addaction name="actionSaveUV"/>
      <addaction name="actionSaveFormations"/>
      <addaction name="actionSaveDossier_Etudiant"/>
+     <addaction name="separator"/>
      <addaction name="actionSaveTous_les_fichiers"/>
     </widget>
     <addaction name="menuOuvrir"/>

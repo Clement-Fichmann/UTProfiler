@@ -16,6 +16,7 @@
 #include <QPointer>
 #include <QCloseEvent>
 #include "uvmanager.h"
+#include "formationmanager.h"
 #include "ajouteruvwindow.h"
 
 namespace Ui {
@@ -121,6 +122,7 @@ public slots:
 
 private:
     UVManager& uvM;
+    formationManager& fM;
     Ui::MainWindow *ui;
 
 protected:

@@ -12,6 +12,7 @@
 #include <QMessageBox>
 #include "mainwindow.h"
 #include "uvmanager.h"
+#include "formationmanager.h"
 
 namespace Ui {
 class OpeningWindow;
@@ -33,6 +34,16 @@ public slots:
      * @brief Ouvre une boîte de dialogue pour spécifier le chemin du XML contenant les UVs.
      */
     void on_btnParcourirUV_clicked();
+
+    /**
+     * @brief Ouvre une boîte de dialogue pour spécifier le chemin du XML contenant les formations.
+     */
+    void on_btnParcourirFormation_clicked();
+
+    /**
+     * @brief Ouvre une boîte de dialogue pour spécifier le chemin du XML contenant un dossier étudiant.
+     */
+    //void on_btnParcourirEtudiant_clicked();
 
     /**
      * @brief Vérifie que tous les fichiers nécessaires ont été spécifiés, et charge les infos des fichiers dans les modules appropriés.

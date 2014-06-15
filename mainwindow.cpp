@@ -8,7 +8,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow), uvM(UVManager::getInstance()) {
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow), uvM(UVManager::getInstance()), fM(formationManager::getInstance()) {
     ui->setupUi(this);
     ui->tableCredits->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     ui->tableCredits->verticalHeader()->hide();

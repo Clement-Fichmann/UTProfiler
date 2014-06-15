@@ -13,9 +13,6 @@ int main(int argc, char *argv[]) {
     try {
         UVManager& uvM = UVManager::getInstance();
         formationManager& fM = formationManager::getInstance();
-        /*QString chemin = QFileDialog::getOpenFileName();
-        fM.load(chemin);
-        QString bla;*/
     }catch(UTProfilerException e){
         QMessageBox msgBox;
         msgBox.setText(e.getInfo());
