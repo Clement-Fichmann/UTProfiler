@@ -1,0 +1,7 @@
+<map id="formationManager::load" name="formationManager::load">
+<area shape="rect" id="node2" href="$classformation_manager.html#a67ac05471339dee7a55b46d06f2f2712" title="deleteAllFormations supprime toutes les Formations de l&#39;instance de FormationManager ..." alt="" coords="237,5,405,47"/>
+<area shape="rect" id="node3" href="$class_u_v_manager.html#a68d219c83584116722ceb5fea3813e12" title="getInstance renvoie l&#39;unique instance d&#39;UVManager. " alt="" coords="239,71,404,98"/>
+<area shape="rect" id="node4" href="$class_u_v_manager.html#a17d95c67bc2d1f4c9d850fb0b9c42262" title="getCategorieManager renvoie une référence vers l&#39;unique instance de CategorieManager. " alt="" coords="211,122,432,149"/>
+<area shape="rect" id="node5" href="$class_categorie_manager.html#a0888fdaa33d645eaf2c4e5977f6bf2fc" title="addItem ajoute une catégorie à la map des catégories " alt="" coords="231,173,412,199"/>
+<area shape="rect" id="node6" href="$classformation_manager.html#ace0f8681fb256c706b04da5e4cbcdfd4" title="addFormation ajoute une Formation à l&#39;instance de FormationManager " alt="" coords="215,223,427,250"/>
+</map>

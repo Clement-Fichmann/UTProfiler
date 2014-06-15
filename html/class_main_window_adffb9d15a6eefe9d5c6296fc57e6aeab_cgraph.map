@@ -1,0 +1,10 @@
+<map id="MainWindow::on_listUV_currentIndexChanged" name="MainWindow::on_listUV_currentIndexChanged">
+<area shape="rect" id="node2" href="$class_u_v_manager.html#ac1a6b93630bb709b33aff7cba798044d" title="const getUV const renvoie une référence const vers l&#39;UV dont le code est passé en paramètre..." alt="" coords="257,5,391,32"/>
+<area shape="rect" id="node3" href="$class_u_v.html#a4d5fe39505b3e474b41013dda0d2047a" title="Accesseur sur le code de l&#39;UV. " alt="" coords="276,56,372,83"/>
+<area shape="rect" id="node4" href="$class_u_v.html#afa7f5a8c7ea21bedcd00af1a1ff48221" title="Accesseur sur le titre de l&#39;UV. " alt="" coords="279,107,369,133"/>
+<area shape="rect" id="node5" href="$class_u_v.html#a29423fb485037fc882b8b29cae033c9a" title="L&#39;UV ouvre&#45;t&#45;elle à l&#39;automne ? " alt="" coords="248,157,400,184"/>
+<area shape="rect" id="node6" href="$class_u_v.html#adca45078b74fdc3c09621a521756e8af" title="L&#39;UV ouvre&#45;t&#45;elle au printemps ? " alt="" coords="245,208,403,235"/>
+<area shape="rect" id="node7" href="$class_u_v_manager.html#a17d95c67bc2d1f4c9d850fb0b9c42262" title="getCategorieManager renvoie une référence vers l&#39;unique instance de CategorieManager. " alt="" coords="213,259,435,285"/>
+<area shape="rect" id="node8" href="$class_categorie_manager.html#a96b90ece8d298ec50f3191f97ff2b1f6" title="getAllCategories : accesseur pour la QMap categories " alt="" coords="240,310,408,351"/>
+<area shape="rect" id="node9" href="$class_u_v.html#aca0cf43b1b3b5a7060b21a65fb5701c2" title="getNbCredits renvoie le nombre de crédits de l&#39;UV pour une catégorie donnée. " alt="" coords="263,376,385,403"/>
+</map>

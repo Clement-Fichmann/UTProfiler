@@ -1,6 +1,0 @@
-digraph "UVManager"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{UVManager\n|+ file\l|+ load()\l+ save()\l+ addUV()\l+ deleteUV()\l+ getUV()\l+ getUV()\l+ getAllUV()\l+ deleteAllUV()\l+ getCategorieManager()\l+ getNoteManager()\l+ getInstance()\l+ libererInstance()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
-}

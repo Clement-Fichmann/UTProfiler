@@ -1,6 +1,0 @@
-digraph "formation"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{formation\n||+ getCode()\l+ getTitre()\l+ getCreditsNeeded()\l+ getFormationsNeeded()\l+ getUVNeeded()\l+ getCreditsNeededInUVSet()\l+ setCode()\l+ setTitre()\l+ setCreditsNeeded()\l+ setFormationNeeded()\l+ remooveFormationNeeded()\l+ setUVNeeded()\l+ removeUVNeeded()\l+ setCreditsNeededInUVSet()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
-}

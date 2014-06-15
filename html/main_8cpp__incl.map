@@ -1,0 +1,8 @@
+<map id="main.cpp" name="main.cpp">
+<area shape="rect" id="node2" href="$uvmanager_8h.html" title="Header des classes CategorieManager, Semestre, UV et UVManager. " alt="" coords="225,304,319,331"/>
+<area shape="rect" id="node3" href="$utprofilerexception_8h.html" title="utprofilerexception.h" alt="" coords="203,379,341,405"/>
+<area shape="rect" id="node8" href="$formationmanager_8h.html" title="Header des classes Formation et FormationManager. " alt="" coords="560,304,696,331"/>
+<area shape="rect" id="node9" href="$openingwindow_8h.html" title="Code source de la classe OpeningWindow : fenêtre s&#39;affichant à l&#39;ouverture du programme, permettant de sélectionner les XML de données. " alt="" coords="928,80,1048,107"/>
+<area shape="rect" id="node13" href="$mainwindow_8h.html" title="Header de la classe MainWindow : fenêtre principale d&#39;UTProfiler. " alt="" coords="661,155,763,181"/>
+<area shape="rect" id="node18" href="$ajouteruvwindow_8h.html" title="Header de la classe ajouterUVWindow : fenêtre d&#39;ajout d&#39;UV. " alt="" coords="310,229,437,256"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="MainWindow::refreshUVList" name="MainWindow::refreshUVList">
+<area shape="rect" id="node2" href="$class_main_window.html#adffb9d15a6eefe9d5c6296fc57e6aeab" title="Lorsque l&#39;utilisateur choisit une UV dans la liste déroulante des UV, ce slot remplit le formulaire d..." alt="" coords="236,175,396,217"/>
+<area shape="rect" id="node11" href="$class_u_v_manager.html#a0d65e0ea79cf14c5d92b1013805be42a" title="getAllUV renvoie une référence vers la QMap contenant toutes les UV. " alt="" coords="241,241,391,268"/>
+<area shape="rect" id="node3" href="$class_u_v_manager.html#ac1a6b93630bb709b33aff7cba798044d" title="const getUV const renvoie une référence const vers l&#39;UV dont le code est passé en paramètre..." alt="" coords="487,5,622,32"/>
+<area shape="rect" id="node4" href="$class_u_v.html#a4d5fe39505b3e474b41013dda0d2047a" title="Accesseur sur le code de l&#39;UV. " alt="" coords="507,56,603,83"/>
+<area shape="rect" id="node5" href="$class_u_v.html#afa7f5a8c7ea21bedcd00af1a1ff48221" title="Accesseur sur le titre de l&#39;UV. " alt="" coords="509,107,600,133"/>
+<area shape="rect" id="node6" href="$class_u_v.html#a29423fb485037fc882b8b29cae033c9a" title="L&#39;UV ouvre&#45;t&#45;elle à l&#39;automne ? " alt="" coords="479,157,631,184"/>
+<area shape="rect" id="node7" href="$class_u_v.html#adca45078b74fdc3c09621a521756e8af" title="L&#39;UV ouvre&#45;t&#45;elle au printemps ? " alt="" coords="475,208,634,235"/>
+<area shape="rect" id="node8" href="$class_u_v_manager.html#a17d95c67bc2d1f4c9d850fb0b9c42262" title="getCategorieManager renvoie une référence vers l&#39;unique instance de CategorieManager. " alt="" coords="444,259,665,285"/>
+<area shape="rect" id="node9" href="$class_categorie_manager.html#a96b90ece8d298ec50f3191f97ff2b1f6" title="getAllCategories : accesseur pour la QMap categories " alt="" coords="471,310,639,351"/>
+<area shape="rect" id="node10" href="$class_u_v.html#aca0cf43b1b3b5a7060b21a65fb5701c2" title="getNbCredits renvoie le nombre de crédits de l&#39;UV pour une catégorie donnée. " alt="" coords="493,376,616,403"/>
+</map>
