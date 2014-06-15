@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<formations>
+  <formation>
+    <code>TC-GI-ICSI</code>
+    <titre>Génie Informatique</titre>
+    <creditsNeeded CS="40" TM="20" TSH="15"/>
+    <formationNeeded>TC</formationNeeded>
+    <formationNeeded>GI</formationNeeded>
+    <uvNeeded>NF28</uvNeeded>
+    <uvNeeded>LO17</uvNeeded>
+    <creditsNeededInUVSet CS="10" TM="5" TSH="2">
+      <uv>NF26</uv>
+      <uv>IA04</uv>
+    </creditsNeededInUVSet>
+  </formation>
+</formations>

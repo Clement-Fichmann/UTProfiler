@@ -17,7 +17,8 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     uvmanager.cpp \
     openingwindow.cpp \
-    ajouteruvwindow.cpp
+    ajouteruvwindow.cpp \
+    formationmanager.cpp
 
 HEADERS  += mainwindow.h \
     uvmanager.h \
