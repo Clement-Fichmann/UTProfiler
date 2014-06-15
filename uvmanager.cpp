@@ -211,7 +211,8 @@ void UVManager::save(const QString& f){
         foreach (QString cat, uv->getCategories().keys()) {
             QString nbC;
             nbC.setNum(uv->getCategories().value(cat));
-            stream.writeAttribute(cat, nbC);
+            if (nbC == "0")
+                stream.writeAttribute(cat, nbC);
         }
         stream.writeEndElement();
         stream.writeEndElement();

@@ -13,25 +13,22 @@ class formation {
     QString code;
     QString titre;
     QMap<QString, int> creditsNeeded;
-    UV(const UV& u);
-    UV(const QString& c, const QString& t, QMap<QString, int> cat, bool a, bool p): code(c),titre(t),categories(cat),automne(a),printemps(p){}
-    friend class UVManager;
+    QSet<QString> formationsNeeded;
+    formation(const formation& f);
+    formation(const QString& c, const QString& t, QMap<QString, int> credits, QSet<QString> formations): code(c),titre(t),creditsNeeded(credits), formationsNeeded(formations){}
+    friend class formationManager;
 public:
     QString getCode() const { return code; }
     QString getTitre() const { return titre; }
-    unsigned int getNbCredits(QString cat) const { return categories.value(cat, -1); }
-    unsigned int getNbCreditsTotal() const;
-    QMap<QString, int> getCategories() const { return categories; }
-    bool ouvertureAutomne() const { return automne; }
-    bool ouverturePrintemps() const { return printemps; }
+    QMap<QString, int> getCredits() const { return creditsNeeded; }
+    QSet<QString> getFormations() const { return formationsNeeded; }
     void setCode(const QString& c) { code=c; }
     void setTitre(const QString& t) { titre=t; }
-    void setCategorie(QString cat, int nbC) { categories.insert(cat, nbC); }
-    void setOuvertureAutomne(bool b) { automne=b; }
-    void setOuverturePrintemps(bool b) { printemps=b; }
+    void setCredit(QString cat, int nbC) { creditsNeeded.insert(cat, nbC); }
+    void setFormation(QString formation) { formationsNeeded.insert(formation); }
 };
 
-
+/*
 class UVManager {
 private:
     QMap<QString, UV*> uvs;
@@ -63,5 +60,6 @@ public:
     const CategorieManager& getCategorieManager() const {return categorieM;}
     const NoteManager& getNoteManager() const {return noteM;}
 };
+*/
 
 #endif // FORMATIONMANAGER_H
