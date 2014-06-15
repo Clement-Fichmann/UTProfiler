@@ -61,7 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li class="current"><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -69,6 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="functions.html"><span>All</span></a></li>
       <li class="current"><a href="functions_func.html"><span>Functions</span></a></li>
+      <li><a href="functions_vars.html"><span>Variables</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -91,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -104,6 +105,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 &#160;
 
 <h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
+<li>addFormation()
+: <a class="el" href="classformation_manager.html#ace0f8681fb256c706b04da5e4cbcdfd4">formationManager</a>
+</li>
 <li>addItem()
 : <a class="el" href="class_categorie_manager.html#a0888fdaa33d645eaf2c4e5977f6bf2fc">CategorieManager</a>
 </li>
@@ -121,8 +125,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <h3><a class="anchor" id="index_d"></a>- d -</h3><ul>
+<li>deleteAllFormations()
+: <a class="el" href="classformation_manager.html#a67ac05471339dee7a55b46d06f2f2712">formationManager</a>
+</li>
 <li>deleteAllUV()
 : <a class="el" href="class_u_v_manager.html#a95333fbf72dee3874c2e6492969dbfac">UVManager</a>
+</li>
+<li>deleteFormation()
+: <a class="el" href="classformation_manager.html#adb0d5630c330c55dee53e034e1258d56">formationManager</a>
 </li>
 <li>deleteUV()
 : <a class="el" href="class_u_v_manager.html#ab1f7e555b456dd2d34907061f65b1405">UVManager</a>
@@ -133,6 +143,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
 <li>getAllCategories()
 : <a class="el" href="class_categorie_manager.html#a96b90ece8d298ec50f3191f97ff2b1f6">CategorieManager</a>
+</li>
+<li>getAllFormations()
+: <a class="el" href="classformation_manager.html#a5ed45dfb6302e50c527eab9cd899c5f5">formationManager</a>
 </li>
 <li>getAllUV()
 : <a class="el" href="class_u_v_manager.html#a0d65e0ea79cf14c5d92b1013805be42a">UVManager</a>
@@ -147,13 +160,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_u_v.html#ac9e4b2f7e639ac8d96d01fc8a33a730f">UV</a>
 </li>
 <li>getCode()
-: <a class="el" href="class_u_v.html#a4d5fe39505b3e474b41013dda0d2047a">UV</a>
+: <a class="el" href="classformation.html#a49f0c32e0bc38601c725bcdd0a7252e1">formation</a>
+, <a class="el" href="class_u_v.html#a4d5fe39505b3e474b41013dda0d2047a">UV</a>
+</li>
+<li>getCreditsNeeded()
+: <a class="el" href="classformation.html#a713281a6666c36c8a19968e3adb5ca3d">formation</a>
+</li>
+<li>getCreditsNeededInUVSet()
+: <a class="el" href="classformation.html#aea62a48cb44c57161f6ea90c3f52a2e3">formation</a>
 </li>
 <li>getDesc()
 : <a class="el" href="class_categorie_manager.html#a97d678b0d5af868af4474d4fc05c9d46">CategorieManager</a>
 </li>
+<li>getFormation()
+: <a class="el" href="classformation_manager.html#a8d20ee0cb74110ee3c12060784f4682a">formationManager</a>
+</li>
+<li>getFormationsNeeded()
+: <a class="el" href="classformation.html#a353763ab4f5c9f368ad810f6aafa8552">formation</a>
+</li>
 <li>getInstance()
 : <a class="el" href="class_categorie_manager.html#ac27223b725ffade86c87d84a4ffddba9">CategorieManager</a>
+, <a class="el" href="classformation_manager.html#a092209045496b33eebf357979159d58b">formationManager</a>
 , <a class="el" href="class_u_v_manager.html#a68d219c83584116722ceb5fea3813e12">UVManager</a>
 </li>
 <li>getNbCredits()
@@ -166,10 +193,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_semestre.html#a26e25575e7fb65649c47970a9800c3aa">Semestre</a>
 </li>
 <li>getTitre()
-: <a class="el" href="class_u_v.html#afa7f5a8c7ea21bedcd00af1a1ff48221">UV</a>
+: <a class="el" href="classformation.html#aa151fd31c40af7b9d97d4d49f631a127">formation</a>
+, <a class="el" href="class_u_v.html#afa7f5a8c7ea21bedcd00af1a1ff48221">UV</a>
 </li>
 <li>getUV()
 : <a class="el" href="class_u_v_manager.html#ac1a6b93630bb709b33aff7cba798044d">UVManager</a>
+</li>
+<li>getUVNeeded()
+: <a class="el" href="classformation.html#a185acb124f07b54215b64412e6ea444d">formation</a>
 </li>
 </ul>
 
@@ -184,10 +215,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
 <li>libererInstance()
 : <a class="el" href="class_categorie_manager.html#a90c87f91898c7459a544cda26daad266">CategorieManager</a>
+, <a class="el" href="classformation_manager.html#ae2f5730f2c80a753115b76ec5b808c27">formationManager</a>
 , <a class="el" href="class_u_v_manager.html#abc80aed5b064c9ba0894f41305490052">UVManager</a>
 </li>
 <li>load()
-: <a class="el" href="class_u_v_manager.html#a60556f66f72f41786ffb70f066f1a846">UVManager</a>
+: <a class="el" href="classformation_manager.html#a0ac0455acbb0287b9b37e36a751843f4">formationManager</a>
+, <a class="el" href="class_u_v_manager.html#a60556f66f72f41786ffb70f066f1a846">UVManager</a>
 </li>
 </ul>
 
@@ -222,6 +255,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>on_btnDeleteUV_clicked()
 : <a class="el" href="class_main_window.html#ad62fa3cd85fdb2b06723f609809df5a1">MainWindow</a>
+</li>
+<li>on_btnParcourirFormation_clicked()
+: <a class="el" href="class_opening_window.html#a26de4439a1fb4bf5fd538cf9bd3c3b44">OpeningWindow</a>
 </li>
 <li>on_btnParcourirUV_clicked()
 : <a class="el" href="class_opening_window.html#ad907bae806ede3093d7728ae241d339b">OpeningWindow</a>
@@ -269,15 +305,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>refreshUVList()
 : <a class="el" href="class_main_window.html#a19a34bba77b784a84a5e1ddc02b070c5">MainWindow</a>
 </li>
+<li>remooveFormationNeeded()
+: <a class="el" href="classformation.html#a683b072c444c7fb6beefbded9b67a8a9">formation</a>
+</li>
 <li>removeItem()
 : <a class="el" href="class_categorie_manager.html#a4f3453ebb942d8992570d9ee450d49d7">CategorieManager</a>
+</li>
+<li>removeUVNeeded()
+: <a class="el" href="classformation.html#aa05921a07a13d44d0af6e97716ac0c8f">formation</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
 <li>save()
-: <a class="el" href="class_u_v_manager.html#a1e52ce1b69c6239d19016ec3cb74bd1c">UVManager</a>
+: <a class="el" href="classformation_manager.html#a235b56316c29eb3993822202a9814161">formationManager</a>
+, <a class="el" href="class_u_v_manager.html#a1e52ce1b69c6239d19016ec3cb74bd1c">UVManager</a>
 </li>
 <li>Semestre()
 : <a class="el" href="class_semestre.html#a4a0f1d3ab2f65755e0e0f610526522c2">Semestre</a>
@@ -286,7 +329,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_u_v.html#a6310e1d779721ce541aaea845f205dd1">UV</a>
 </li>
 <li>setCode()
-: <a class="el" href="class_u_v.html#a9c3b73077819774423559abd838e410b">UV</a>
+: <a class="el" href="classformation.html#ae1ebb6483415cbdd45d0b08b64fbc965">formation</a>
+, <a class="el" href="class_u_v.html#a9c3b73077819774423559abd838e410b">UV</a>
+</li>
+<li>setCreditsNeeded()
+: <a class="el" href="classformation.html#ad21cc0598601d41677e8dd148b7f2950">formation</a>
+</li>
+<li>setCreditsNeededInUVSet()
+: <a class="el" href="classformation.html#af21a0da7e710889757e4aa98d26d9077">formation</a>
+</li>
+<li>setFormationNeeded()
+: <a class="el" href="classformation.html#a44d26b915344c8f68fd48f634a1d35a0">formation</a>
 </li>
 <li>setOuvertureAutomne()
 : <a class="el" href="class_u_v.html#a7e670e649febebe0fe70c3ce79f4be63">UV</a>
@@ -295,7 +348,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_u_v.html#a0ae246826809cc48a1999ec0671c78b3">UV</a>
 </li>
 <li>setTitre()
-: <a class="el" href="class_u_v.html#a52c66013e137689883802465596bb688">UV</a>
+: <a class="el" href="classformation.html#afe8a4194dcf2fb84034103a352261b88">formation</a>
+, <a class="el" href="class_u_v.html#a52c66013e137689883802465596bb688">UV</a>
+</li>
+<li>setUVNeeded()
+: <a class="el" href="classformation.html#a84cf4ee8d1d348bd2ce84aa8b362ec11">formation</a>
 </li>
 </ul>
 
@@ -312,7 +369,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jun 15 2014 14:39:35 for UTProfiler by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 15 2014 16:48:30 for UTProfiler by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

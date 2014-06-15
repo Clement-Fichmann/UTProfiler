@@ -10,6 +10,7 @@ var searchData=
   ['on_5fbtnajouteruv_5fclicked',['on_btnAjouterUV_clicked',['../class_main_window.html#a08296ae696d74f8608b443e7f518bc2b',1,'MainWindow']]],
   ['on_5fbtnannuler_5fclicked',['on_btnAnnuler_clicked',['../classajouter_u_v_window.html#ab91685c4fa6df3f269e00ba5ebf11466',1,'ajouterUVWindow']]],
   ['on_5fbtndeleteuv_5fclicked',['on_btnDeleteUV_clicked',['../class_main_window.html#ad62fa3cd85fdb2b06723f609809df5a1',1,'MainWindow']]],
+  ['on_5fbtnparcourirformation_5fclicked',['on_btnParcourirFormation_clicked',['../class_opening_window.html#a26de4439a1fb4bf5fd538cf9bd3c3b44',1,'OpeningWindow']]],
   ['on_5fbtnparcouriruv_5fclicked',['on_btnParcourirUV_clicked',['../class_opening_window.html#ad907bae806ede3093d7728ae241d339b',1,'OpeningWindow']]],
   ['on_5fbtnsauveruv_5fclicked',['on_btnSauverUV_clicked',['../class_main_window.html#a99ae5b77512a4af864c7a3978a2e9c68',1,'MainWindow']]],
   ['on_5fbtnvalider_5fclicked',['on_btnValider_clicked',['../class_opening_window.html#a9567830af2746733276c62ce6f7b5e8e',1,'OpeningWindow']]],
