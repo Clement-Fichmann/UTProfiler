@@ -61,7 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -97,11 +97,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="dynheader">
 Inheritance diagram for OpeningWindow:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="class_opening_window.png" usemap="#OpeningWindow_map" alt=""/>
-  <map id="OpeningWindow_map" name="OpeningWindow_map">
+<div class="center"><img src="class_opening_window__inherit__graph.png" border="0" usemap="#_opening_window_inherit__map" alt="Inheritance graph"/></div>
+<map name="_opening_window_inherit__map" id="_opening_window_inherit__map">
 </map>
- </div></div>
+</div>
+<div class="dynheader">
+Collaboration diagram for OpeningWindow:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_opening_window__coll__graph.png" border="0" usemap="#_opening_window_coll__map" alt="Collaboration graph"/></div>
+<map name="_opening_window_coll__map" id="_opening_window_coll__map">
+</map>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
@@ -109,9 +115,12 @@ Public Slots</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_opening_window.html#ad907bae806ede3093d7728ae241d339b">on_btnParcourirUV_clicked</a> ()</td></tr>
 <tr class="memdesc:ad907bae806ede3093d7728ae241d339b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouvre une boîte de dialogue pour spécifier le chemin du XML contenant les UVs. <br /></td></tr>
 <tr class="separator:ad907bae806ede3093d7728ae241d339b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9567830af2746733276c62ce6f7b5e8e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9567830af2746733276c62ce6f7b5e8e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_opening_window.html#a9567830af2746733276c62ce6f7b5e8e">on_btnValider_clicked</a> ()</td></tr>
-<tr class="memdesc:a9567830af2746733276c62ce6f7b5e8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie que tous les fichiers nécessaires ont été spécifiés, et charge les infos des fichiers dans les modules appropriés. Les <a class="el" href="class_u_v.html" title="La classe UV permet d&#39;enregistrer les différentes informations sur une UV. ">UV</a> sont ainsi chargées dans une instance d'<a class="el" href="class_u_v_manager.html" title="La classe UVManager permet de gérer l&#39;ensemble des UVs. ">UVManager</a>. <br /></td></tr>
+<tr class="memitem:a26de4439a1fb4bf5fd538cf9bd3c3b44"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a26de4439a1fb4bf5fd538cf9bd3c3b44"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_opening_window.html#a26de4439a1fb4bf5fd538cf9bd3c3b44">on_btnParcourirFormation_clicked</a> ()</td></tr>
+<tr class="memdesc:a26de4439a1fb4bf5fd538cf9bd3c3b44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouvre une boîte de dialogue pour spécifier le chemin du XML contenant les formations. <br /></td></tr>
+<tr class="separator:a26de4439a1fb4bf5fd538cf9bd3c3b44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9567830af2746733276c62ce6f7b5e8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_opening_window.html#a9567830af2746733276c62ce6f7b5e8e">on_btnValider_clicked</a> ()</td></tr>
+<tr class="memdesc:a9567830af2746733276c62ce6f7b5e8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouvre une boîte de dialogue pour spécifier le chemin du XML contenant un dossier étudiant.  <a href="#a9567830af2746733276c62ce6f7b5e8e">More...</a><br /></td></tr>
 <tr class="separator:a9567830af2746733276c62ce6f7b5e8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -122,14 +131,41 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_opening_window.html" title="OpeningWindow est un fenêtre de type QDialog permettant de renseigner les XML sources nécessaires au ...">OpeningWindow</a> est un fenêtre de type QDialog permettant de renseigner les XML sources nécessaires au programme. </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a9567830af2746733276c62ce6f7b5e8e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OpeningWindow::on_btnValider_clicked </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ouvre une boîte de dialogue pour spécifier le chemin du XML contenant un dossier étudiant. </p>
+<p>Vérifie que tous les fichiers nécessaires ont été spécifiés, et charge les infos des fichiers dans les modules appropriés. Les <a class="el" href="class_u_v.html" title="La classe UV permet d&#39;enregistrer les différentes informations sur une UV. ">UV</a> sont ainsi chargées dans une instance d'<a class="el" href="class_u_v_manager.html" title="La classe UVManager permet de gérer l&#39;ensemble des UVs. ">UVManager</a>. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="openingwindow_8h_source.html">openingwindow.h</a></li>
 <li>openingwindow.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jun 15 2014 14:39:35 for UTProfiler by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 15 2014 16:48:30 for UTProfiler by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

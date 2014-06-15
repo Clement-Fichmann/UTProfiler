@@ -28,12 +28,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     foreach(QString code, fM.getAllFormations().keys()){
         ui->listFormation->addItem(code);
     }
-    /*
-    ui->txtCodeUV->setEnabled(false);
-    ui->txtDescription->setEnabled(false);
-    ui->chkAutomne->setEnabled(false);
-    ui->chkPrintemps->setEnabled(false);
-    */
+
     ui->txtCodeUV->setEnabled(true);
     ui->txtDescription->setEnabled(true);
     ui->chkAutomne->setEnabled(true);
@@ -102,29 +97,30 @@ void MainWindow::on_listUV_currentIndexChanged(){
     ui->txtDescription->setText(uvSelectionnee.getTitre());
     ui->chkAutomne->setChecked(uvSelectionnee.ouvertureAutomne());
     ui->chkPrintemps->setChecked(uvSelectionnee.ouverturePrintemps());
+
+    //On vide le tableau de crédits de ses anciens éléments
     ui->tableCredits->clearContents();
     while (ui->tableCredits->rowCount() > 0){
         ui->tableCredits->removeRow(0);
     }
     //récupération des crédits de l'UV
-
-    //TODO chargement crédits
     QMap<QString, QString> categories = uvM.getCategorieManager().getAllCategories();
-    foreach(QString cat, categories.keys()){
-        int creditsCat = uvSelectionnee.getNbCredits(cat);
+    foreach(QString cat, categories.keys()){ //pour toutes les catégories
+        int creditsCat = uvSelectionnee.getNbCredits(cat); //on récupère les crédits de l'UV pour cette catégorie
         int ligne = ui->tableCredits->rowCount();
         ui->tableCredits->insertRow(ligne);
-        QPointer<QLabel> ptCat = new QLabel(this);
-        QPointer<QSpinBox> ptCredits = new QSpinBox(this);
+        QPointer<QLabel> ptCat = new QLabel(this); //on affiche la catégorie dans un QLabel
+        QPointer<QSpinBox> ptCredits = new QSpinBox(this); //et les crédits dans une QSpinBox
         ptCat.data()->setText(cat);
         ptCredits.data()->setValue(creditsCat);
         ptCat.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
         ptCredits.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
-        ui->tableCredits->setCellWidget(ligne, 0, ptCat);
+        ui->tableCredits->setCellWidget(ligne, 0, ptCat); //puis on affiche ces widgets dans le tableau
         ui->tableCredits->setCellWidget(ligne, 1, ptCredits);
     }
     int rowCountDebut = ui->tableCredits->rowCount();
     for (int cpt = rowCountDebut; cpt < rowCountDebut +2 ; cpt++){
+        //on ajoute 2 lignes pour l'ajout éventuel de catégories
         ui->tableCredits->insertRow(cpt);
         QPointer<QLineEdit> ptCat = new QLineEdit(this);
         QPointer<QSpinBox> ptCredits = new QSpinBox(this);
@@ -133,13 +129,8 @@ void MainWindow::on_listUV_currentIndexChanged(){
         ui->tableCredits->setCellWidget(cpt, 0, ptCat);
         ui->tableCredits->setCellWidget(cpt, 1, ptCredits);
     }
-
+    //on verrouille le bouton "Sauvegarder" jusqu'à la prochaine modification
     ui->btnSauverUV->setEnabled(false);
-    //on débloque les champs pour la modification
-    /*ui->txtCodeUV->setEnabled(true);
-    ui->txtDescription->setEnabled(true);
-    ui->chkAutomne->setEnabled(true);
-    ui->chkPrintemps->setEnabled(true);*/
 }
 
 void MainWindow::on_txtCodeUV_textChanged(){
@@ -163,9 +154,10 @@ void MainWindow::on_tableCredits_clicked(){
 }
 
 void MainWindow::UVEditee(){
+    //pour autoriser la sauvegarde, il faut qu'un code et un titre soient précisés
     if (ui->txtCodeUV->text().isEmpty() || ui->txtDescription->toPlainText().isEmpty()){
         ui->btnSauverUV->setEnabled(false);
-    } else ui->btnSauverUV->setEnabled(true);
+    } else ui->btnSauverUV->setEnabled(true); //si c'est le cas, on débloque le bouton "Sauvegarder"
 }
 
 void MainWindow::on_btnSauverUV_clicked(){
@@ -178,13 +170,14 @@ void MainWindow::on_btnSauverUV_clicked(){
     uvEditee.setOuvertureAutomne(ui->chkAutomne->isChecked());
     uvEditee.setOuverturePrintemps(ui->chkPrintemps->isChecked());
 
-    //TODO gestion sauvegarde crédits
     for (int i = 0; i < uvM.getCategorieManager().getAllCategories().count(); i++){
         QString cat = (dynamic_cast<QLabel*>(ui->tableCredits->cellWidget(i,0)))->text();
         int creditsCat = (dynamic_cast<QSpinBox*>(ui->tableCredits->cellWidget(i,1)))->value();
         uvEditee.setCategorie(cat, creditsCat);
+        //on met à jour les crédits de l'UV à l'aide des éléments du tableau
     }
     for (int i = uvM.getCategorieManager().getAllCategories().count(); i < ui->tableCredits->rowCount(); i++){
+        //on ajoute également les éventuels crédits de nouvelles catégories
         QString cat = (dynamic_cast<QLineEdit*>(ui->tableCredits->cellWidget(i,0)))->text();
         if (!cat.isEmpty()){
             int creditsCat = (dynamic_cast<QSpinBox*>(ui->tableCredits->cellWidget(i,1)))->value();
@@ -200,6 +193,7 @@ void MainWindow::on_btnSauverUV_clicked(){
 
 void MainWindow::on_btnAjouterUV_clicked(){
     ajouterUVWindow *a = new ajouterUVWindow();
+    //une fois la fenêtre d'ajout refermée, si on reçoit un signal UVAdded, on actualise la liste des UV
     connect(a, SIGNAL(UVAdded()), this, SLOT(refreshUVList()));
     a->exec();
 }
@@ -212,11 +206,11 @@ void MainWindow::on_btnDeleteUV_clicked(){
     }
 }
 
-void MainWindow::on_actionSaveUV_triggered(){
-    uvM.save(uvM.file);
+void MainWindow::on_actionSaveUV_triggered(){ //menu Fichier -> Sauver le fichier d'UV
+    uvM.save(uvM.file); //appel de la fonction save
 }
 
-void MainWindow::on_actionSaveTous_les_fichiers_triggered(){
+void MainWindow::on_actionSaveTous_les_fichiers_triggered(){ //menu Fichier -> Sauver tous les fichiers
     uvM.save(uvM.file);
     // TODO save formation et dossir étudiant
 }
@@ -228,9 +222,9 @@ MainWindow::~MainWindow() {
 void MainWindow::refreshUVList() {
     disconnect(ui->listUV, 0, 0, 0); //déconnexion des signaux nécessaire pour le clear()
     ui->listUV->clear();
-    connect(ui->listUV, SIGNAL(currentIndexChanged(int)), this, SLOT(on_listUV_currentIndexChanged()));
+    connect(ui->listUV, SIGNAL(currentIndexChanged(int)), this, SLOT(on_listUV_currentIndexChanged())); //reconnexion du seul signal sur listUV
     foreach(QString code, uvM.getAllUV().keys()){
-        ui->listUV->addItem(code);
+        ui->listUV->addItem(code); //ajout des UV à listUV
     }
 }
 

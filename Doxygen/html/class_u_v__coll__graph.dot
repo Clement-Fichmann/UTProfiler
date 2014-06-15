@@ -1,0 +1,6 @@
+digraph "UV"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{UV\n||+ getCode()\l+ getTitre()\l+ getNbCredits()\l+ getNbCreditsTotal()\l+ getCategories()\l+ ouvertureAutomne()\l+ ouverturePrintemps()\l+ setCode()\l+ setTitre()\l+ setCategorie()\l+ setOuvertureAutomne()\l+ setOuverturePrintemps()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+}

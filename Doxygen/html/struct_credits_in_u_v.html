@@ -61,7 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -88,23 +88,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">CreditsInUV Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Structure définissant des crédits à obtenir, fournis par des <a class="el" href="class_u_v.html" title="La classe UV permet d&#39;enregistrer les différentes informations sur une UV. ">UV</a> appartenant à une certaine liste.  
+ <a href="struct_credits_in_u_v.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="formationmanager_8h_source.html">formationmanager.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for CreditsInUV:</div>
+<div class="dyncontent">
+<div class="center"><img src="struct_credits_in_u_v__coll__graph.png" border="0" usemap="#_credits_in_u_v_coll__map" alt="Collaboration graph"/></div>
+<map name="_credits_in_u_v_coll__map" id="_credits_in_u_v_coll__map">
+</map>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a16fde7f7f9ee0853194fa2dbad1a4662"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a16fde7f7f9ee0853194fa2dbad1a4662"></a>
 QMap&lt; QString, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>credits</b></td></tr>
 <tr class="separator:a16fde7f7f9ee0853194fa2dbad1a4662"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7450574a728ceecea233b0fcf8b83eba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7450574a728ceecea233b0fcf8b83eba"></a>
-QSet&lt; QString &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>uvs</b></td></tr>
+<tr class="memitem:a7450574a728ceecea233b0fcf8b83eba"><td class="memItemLeft" align="right" valign="top">QSet&lt; QString &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_credits_in_u_v.html#a7450574a728ceecea233b0fcf8b83eba">uvs</a></td></tr>
 <tr class="separator:a7450574a728ceecea233b0fcf8b83eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Structure définissant des crédits à obtenir, fournis par des <a class="el" href="class_u_v.html" title="La classe UV permet d&#39;enregistrer les différentes informations sur une UV. ">UV</a> appartenant à une certaine liste. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a7450574a728ceecea233b0fcf8b83eba"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QSet&lt;QString&gt; CreditsInUV::uvs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Map répertoriant les crédits requis par catégories </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="formationmanager_8h_source.html">formationmanager.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jun 15 2014 14:39:35 for UTProfiler by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 15 2014 16:48:30 for UTProfiler by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

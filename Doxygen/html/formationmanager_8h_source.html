@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -83,87 +83,82 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">formationmanager.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef FORMATIONMANAGER_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define FORMATIONMANAGER_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;utprofilerexception.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;QString&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;QTextStream&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;QMap&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;QSet&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="struct_credits_in_u_v.html">   12</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_credits_in_u_v.html">CreditsInUV</a></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    QMap&lt;QString, int&gt; credits;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    QSet&lt;QString&gt; uvs;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classformation.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classformation.html">formation</a> {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    QString code;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    QString titre;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    QMap&lt;QString, int&gt; creditsNeeded;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    QSet&lt;QString&gt; formationsNeeded;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    QSet&lt;QString&gt; uvNeeded;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="struct_credits_in_u_v.html">CreditsInUV</a> creditsNeededInUVSet;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classformation.html">formation</a>(<span class="keyword">const</span> <a class="code" href="classformation.html">formation</a>&amp; f);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classformation.html">formation</a>(<span class="keyword">const</span> QString&amp; c, <span class="keyword">const</span> QString&amp; t, QMap&lt;QString, int&gt; credits, QSet&lt;QString&gt; formations, QSet&lt;QString&gt; uvs, <a class="code" href="struct_credits_in_u_v.html">CreditsInUV</a> cInUV): code(c),titre(t),creditsNeeded(credits), formationsNeeded(formations), uvNeeded(uvs), creditsNeededInUVSet(cInUV) {}</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classformation_manager.html">formationManager</a>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    QString getCode()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> code; }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    QString getTitre()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> titre; }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    QMap&lt;QString, int&gt; getCreditsNeeded()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> creditsNeeded; }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    QSet&lt;QString&gt; getFormationsNeeded()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> formationsNeeded; }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    QSet&lt;QString&gt; getUVNeeded()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> uvNeeded;}</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="struct_credits_in_u_v.html">CreditsInUV</a> getCreditsNeededInUVSet()<span class="keyword"> const </span>{<span class="keywordflow">return</span> creditsNeededInUVSet;}</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> setCode(<span class="keyword">const</span> QString&amp; c) { code=c; }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> setTitre(<span class="keyword">const</span> QString&amp; t) { titre=t; }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> setCreditsNeeded(QString cat, <span class="keywordtype">int</span> nbC) { creditsNeeded.insert(cat, nbC); }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> setFormationNeeded(QString <a class="code" href="classformation.html">formation</a>) { formationsNeeded.insert(formation); }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> remooveFormationNeeded(QString formation) {formationsNeeded.remove(formation);}</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> setUVNeeded(QString <a class="code" href="class_u_v.html">UV</a>) {uvNeeded.remove(UV);}</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> setCreditsNeededInUVSet(QMap&lt;QString, int&gt; credits, QSet&lt;QString&gt; uvs) {creditsNeededInUVSet.credits=credits; creditsNeededInUVSet.uvs=uvs;}</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classformation_manager.html">   45</a></span>&#160;<span class="keyword">class </span><a class="code" href="classformation_manager.html">formationManager</a> {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    QMap&lt;QString, formation*&gt; formations;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classformation_manager.html">formationManager</a>(<span class="keyword">const</span> <a class="code" href="classformation_manager.html">formationManager</a>&amp; um);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classformation_manager.html">formationManager</a>();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    ~<a class="code" href="classformation_manager.html">formationManager</a>();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">friend</span> <span class="keyword">struct </span>Handler;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">struct </span>Handler{</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="classformation_manager.html">formationManager</a>* instance;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        Handler():instance(0){}</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        ~Handler(){ <span class="keywordflow">if</span> (instance) <span class="keyword">delete</span> instance; instance=0; }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    };</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">static</span> Handler handler;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    QString file;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> load(<span class="keyword">const</span> QString&amp; f);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> save(<span class="keyword">const</span> QString&amp; f);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">static</span> <a class="code" href="classformation_manager.html">formationManager</a>&amp; getInstance();</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> libererInstance();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> addFormation(<span class="keyword">const</span> QString&amp; c, <span class="keyword">const</span> QString&amp; t, QMap&lt;QString, int&gt; credits, QSet&lt;QString&gt; formations, QSet&lt;QString&gt; uvs, <a class="code" href="struct_credits_in_u_v.html">CreditsInUV</a> cInUV);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> deleteFormation(<span class="keyword">const</span> QString&amp; c);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">const</span> <a class="code" href="classformation.html">formation</a>&amp; getFormation(<span class="keyword">const</span> QString&amp; code) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="classformation.html">formation</a>&amp; getFormation(<span class="keyword">const</span> QString&amp; code);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">const</span> QMap&lt;QString, formation*&gt;&amp; getAllFormations()<span class="keyword"> const </span>{<span class="keywordflow">return</span> formations;}</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> deleteAllFormations();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;};</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif // FORMATIONMANAGER_H</span></div>
-<div class="ttc" id="classformation_manager_html"><div class="ttname"><a href="classformation_manager.html">formationManager</a></div><div class="ttdef"><b>Definition:</b> formationmanager.h:45</div></div>
-<div class="ttc" id="struct_credits_in_u_v_html"><div class="ttname"><a href="struct_credits_in_u_v.html">CreditsInUV</a></div><div class="ttdef"><b>Definition:</b> formationmanager.h:12</div></div>
-<div class="ttc" id="class_u_v_html"><div class="ttname"><a href="class_u_v.html">UV</a></div><div class="ttdoc">La classe UV permet d&#39;enregistrer les différentes informations sur une UV. </div><div class="ttdef"><b>Definition:</b> uvmanager.h:150</div></div>
-<div class="ttc" id="classformation_html"><div class="ttname"><a href="classformation.html">formation</a></div><div class="ttdef"><b>Definition:</b> formationmanager.h:18</div></div>
+<a href="formationmanager_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef FORMATIONMANAGER_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define FORMATIONMANAGER_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;utprofilerexception.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;QString&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;QTextStream&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;QMap&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;QSet&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="struct_credits_in_u_v.html">   22</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_credits_in_u_v.html">CreditsInUV</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    QMap&lt;QString, int&gt; credits; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="struct_credits_in_u_v.html#a7450574a728ceecea233b0fcf8b83eba">   25</a></span>&#160;    QSet&lt;QString&gt; <a class="code" href="struct_credits_in_u_v.html#a7450574a728ceecea233b0fcf8b83eba">uvs</a>; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classformation.html">   28</a></span>&#160;<span class="keyword">class </span><a class="code" href="classformation.html">formation</a> {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    QString code; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    QString titre; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    QMap&lt;QString, int&gt; creditsNeeded; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    QSet&lt;QString&gt; formationsNeeded; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    QSet&lt;QString&gt; uvNeeded; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="struct_credits_in_u_v.html">CreditsInUV</a> creditsNeededInUVSet; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classformation.html">formation</a>(<span class="keyword">const</span> <a class="code" href="classformation.html">formation</a>&amp; f);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="classformation.html">formation</a>(<span class="keyword">const</span> QString&amp; c, <span class="keyword">const</span> QString&amp; t, QMap&lt;QString, int&gt; credits, QSet&lt;QString&gt; formations, QSet&lt;QString&gt; uvs, <a class="code" href="struct_credits_in_u_v.html">CreditsInUV</a> cInUV): code(c),titre(t),creditsNeeded(credits), formationsNeeded(formations), uvNeeded(uvs), creditsNeededInUVSet(cInUV) {}</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classformation_manager.html">formationManager</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classformation.html#a49f0c32e0bc38601c725bcdd0a7252e1">   58</a></span>&#160;    QString <a class="code" href="classformation.html#a49f0c32e0bc38601c725bcdd0a7252e1">getCode</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> code; }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classformation.html#aa151fd31c40af7b9d97d4d49f631a127">   64</a></span>&#160;    QString <a class="code" href="classformation.html#aa151fd31c40af7b9d97d4d49f631a127">getTitre</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> titre; }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classformation.html#a713281a6666c36c8a19968e3adb5ca3d">   70</a></span>&#160;    QMap&lt;QString, int&gt; <a class="code" href="classformation.html#a713281a6666c36c8a19968e3adb5ca3d">getCreditsNeeded</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> creditsNeeded; }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classformation.html#a353763ab4f5c9f368ad810f6aafa8552">   76</a></span>&#160;    QSet&lt;QString&gt; <a class="code" href="classformation.html#a353763ab4f5c9f368ad810f6aafa8552">getFormationsNeeded</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> formationsNeeded; }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classformation.html#a185acb124f07b54215b64412e6ea444d">   82</a></span>&#160;    QSet&lt;QString&gt; <a class="code" href="classformation.html#a185acb124f07b54215b64412e6ea444d">getUVNeeded</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> uvNeeded;}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classformation.html#aea62a48cb44c57161f6ea90c3f52a2e3">   88</a></span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classformation.html#ae1ebb6483415cbdd45d0b08b64fbc965">   94</a></span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="classformation.html#afe8a4194dcf2fb84034103a352261b88">  100</a></span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="classformation.html#ad21cc0598601d41677e8dd148b7f2950">  107</a></span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="classformation.html#a44d26b915344c8f68fd48f634a1d35a0">  113</a></span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="classformation.html#a683b072c444c7fb6beefbded9b67a8a9">  119</a></span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="classformation.html#a84cf4ee8d1d348bd2ce84aa8b362ec11">  125</a></span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="classformation.html#aa05921a07a13d44d0af6e97716ac0c8f">  131</a></span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="classformation.html#af21a0da7e710889757e4aa98d26d9077">  138</a></span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="classformation_manager.html">  144</a></span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
+<div class="line"><a name="l00237"></a><span class="lineno"><a class="line" href="classformation_manager.html#a5ed45dfb6302e50c527eab9cd899c5f5">  237</a></span>&#160;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<div class="ttc" id="classformation_manager_html"><div class="ttname"><a href="classformation_manager.html">formationManager</a></div><div class="ttdoc">La classe FormationManager permet de gérer l&#39;ensemble des Formations. </div><div class="ttdef"><b>Definition:</b> formationmanager.h:144</div></div>
+<div class="ttc" id="struct_credits_in_u_v_html"><div class="ttname"><a href="struct_credits_in_u_v.html">CreditsInUV</a></div><div class="ttdoc">Structure définissant des crédits à obtenir, fournis par des UV appartenant à une certaine liste...</div><div class="ttdef"><b>Definition:</b> formationmanager.h:22</div></div>
+<div class="ttc" id="classformation_html_a353763ab4f5c9f368ad810f6aafa8552"><div class="ttname"><a href="classformation.html#a353763ab4f5c9f368ad810f6aafa8552">formation::getFormationsNeeded</a></div><div class="ttdeci">QSet&lt; QString &gt; getFormationsNeeded() const </div><div class="ttdoc">Accesseurs sur les formations requises au préalable. </div><div class="ttdef"><b>Definition:</b> formationmanager.h:76</div></div>
+<div class="ttc" id="classformation_html_aa151fd31c40af7b9d97d4d49f631a127"><div class="ttname"><a href="classformation.html#aa151fd31c40af7b9d97d4d49f631a127">formation::getTitre</a></div><div class="ttdeci">QString getTitre() const </div><div class="ttdoc">Accesseur sur le titre de la formation. </div><div class="ttdef"><b>Definition:</b> formationmanager.h:64</div></div>
+<div class="ttc" id="classformation_html_a713281a6666c36c8a19968e3adb5ca3d"><div class="ttname"><a href="classformation.html#a713281a6666c36c8a19968e3adb5ca3d">formation::getCreditsNeeded</a></div><div class="ttdeci">QMap&lt; QString, int &gt; getCreditsNeeded() const </div><div class="ttdoc">Accesseur sur les crédits nécessaires à la complétion de la formation. </div><div class="ttdef"><b>Definition:</b> formationmanager.h:70</div></div>
+<div class="ttc" id="classformation_html_a49f0c32e0bc38601c725bcdd0a7252e1"><div class="ttname"><a href="classformation.html#a49f0c32e0bc38601c725bcdd0a7252e1">formation::getCode</a></div><div class="ttdeci">QString getCode() const </div><div class="ttdoc">Accesseur sur le code de la formation. </div><div class="ttdef"><b>Definition:</b> formationmanager.h:58</div></div>
+<div class="ttc" id="classformation_html"><div class="ttname"><a href="classformation.html">formation</a></div><div class="ttdef"><b>Definition:</b> formationmanager.h:28</div></div>
+<div class="ttc" id="struct_credits_in_u_v_html_a7450574a728ceecea233b0fcf8b83eba"><div class="ttname"><a href="struct_credits_in_u_v.html#a7450574a728ceecea233b0fcf8b83eba">CreditsInUV::uvs</a></div><div class="ttdeci">QSet&lt; QString &gt; uvs</div><div class="ttdef"><b>Definition:</b> formationmanager.h:25</div></div>
+<div class="ttc" id="classformation_html_a185acb124f07b54215b64412e6ea444d"><div class="ttname"><a href="classformation.html#a185acb124f07b54215b64412e6ea444d">formation::getUVNeeded</a></div><div class="ttdeci">QSet&lt; QString &gt; getUVNeeded() const </div><div class="ttdoc">Accesseurs sur les UV nécessaires à la complétion de la formation. </div><div class="ttdef"><b>Definition:</b> formationmanager.h:82</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jun 15 2014 14:39:35 for UTProfiler by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 15 2014 16:48:30 for UTProfiler by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

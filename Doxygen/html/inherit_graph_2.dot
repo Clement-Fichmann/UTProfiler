@@ -1,0 +1,7 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="CreditsInUV",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_credits_in_u_v.html",tooltip="Structure définissant des crédits à obtenir, fournis par des UV appartenant à une certaine liste..."];
+}

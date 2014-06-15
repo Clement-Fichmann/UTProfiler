@@ -37,7 +37,7 @@ void OpeningWindow::on_btnValider_clicked(){
     else { //si les fichiers nécessaires sont présents, on charge le programme principal
         UVManager::getInstance().load(cheminUV);
         formationManager::getInstance().load(cheminFormation);
-        MainWindow* m=new MainWindow();
+        MainWindow* m=new MainWindow(); //ouverture de la fenêtre principal
         m->show();
         this->hide();
     }
