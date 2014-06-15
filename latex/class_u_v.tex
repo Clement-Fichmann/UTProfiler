@@ -1,0 +1,243 @@
+\hypertarget{class_u_v}{\section{U\+V Class Reference}
+\label{class_u_v}\index{U\+V@{U\+V}}
+}
+
+
+La classe \hyperlink{class_u_v}{U\+V} permet d'enregistrer les différentes informations sur une \hyperlink{class_u_v}{U\+V}.  
+
+
+
+
+{\ttfamily \#include $<$uvmanager.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Q\+String \hyperlink{class_u_v_a4d5fe39505b3e474b41013dda0d2047a}{get\+Code} () const 
+\begin{DoxyCompactList}\small\item\em Accesseur sur le code de l'\hyperlink{class_u_v}{U\+V}. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{class_u_v_afa7f5a8c7ea21bedcd00af1a1ff48221}{get\+Titre} () const 
+\begin{DoxyCompactList}\small\item\em Accesseur sur le titre de l'\hyperlink{class_u_v}{U\+V}. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_u_v_aca0cf43b1b3b5a7060b21a65fb5701c2}{get\+Nb\+Credits} (Q\+String cat) const 
+\begin{DoxyCompactList}\small\item\em get\+Nb\+Credits renvoie le nombre de crédits de l'\hyperlink{class_u_v}{U\+V} pour une catégorie donnée. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_u_v_a9f95880400dac05e2d18513826062b14}{get\+Nb\+Credits\+Total} () const 
+\begin{DoxyCompactList}\small\item\em get\+Nb\+Credits\+Total calcule le nombre total des crédits attribués avec l'obtention de l'\hyperlink{class_u_v}{U\+V}. \end{DoxyCompactList}\item 
+Q\+Map$<$ Q\+String, int $>$ \hyperlink{class_u_v_ac9e4b2f7e639ac8d96d01fc8a33a730f}{get\+Categories} () const 
+\begin{DoxyCompactList}\small\item\em Accesseur sur les catégories de l'\hyperlink{class_u_v}{U\+V}. \end{DoxyCompactList}\item 
+bool \hyperlink{class_u_v_a29423fb485037fc882b8b29cae033c9a}{ouverture\+Automne} () const 
+\begin{DoxyCompactList}\small\item\em L'\hyperlink{class_u_v}{U\+V} ouvre-\/t-\/elle à l'automne ? \end{DoxyCompactList}\item 
+bool \hyperlink{class_u_v_adca45078b74fdc3c09621a521756e8af}{ouverture\+Printemps} () const 
+\begin{DoxyCompactList}\small\item\em L'\hyperlink{class_u_v}{U\+V} ouvre-\/t-\/elle au printemps ? \end{DoxyCompactList}\item 
+void \hyperlink{class_u_v_a9c3b73077819774423559abd838e410b}{set\+Code} (const Q\+String \&c)
+\begin{DoxyCompactList}\small\item\em Setter sur le code de l'\hyperlink{class_u_v}{U\+V}. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_v_a52c66013e137689883802465596bb688}{set\+Titre} (const Q\+String \&t)
+\begin{DoxyCompactList}\small\item\em Setter sur le titre de l'\hyperlink{class_u_v}{U\+V}. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_v_a6310e1d779721ce541aaea845f205dd1}{set\+Categorie} (Q\+String cat, int nb\+C)
+\begin{DoxyCompactList}\small\item\em Setter pour l'insertion de crédits d'une catégorie. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_v_a7e670e649febebe0fe70c3ce79f4be63}{set\+Ouverture\+Automne} (bool b)
+\begin{DoxyCompactList}\small\item\em set\+Ouverture\+Automne ouvre ou non l'\hyperlink{class_u_v}{U\+V} à l'automne. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_v_a0ae246826809cc48a1999ec0671c78b3}{set\+Ouverture\+Printemps} (bool b)
+\begin{DoxyCompactList}\small\item\em set\+Ouverture\+Printemps ouvre ou non l'\hyperlink{class_u_v}{U\+V} au printemps. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_u_v_a335ec2026467669b89518b0c67372f3b}{class {\bfseries U\+V\+Manager}}\label{class_u_v_a335ec2026467669b89518b0c67372f3b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+La classe \hyperlink{class_u_v}{U\+V} permet d'enregistrer les différentes informations sur une \hyperlink{class_u_v}{U\+V}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_u_v_ac9e4b2f7e639ac8d96d01fc8a33a730f}{\index{U\+V@{U\+V}!get\+Categories@{get\+Categories}}
+\index{get\+Categories@{get\+Categories}!U\+V@{U\+V}}
+\subsubsection[{get\+Categories}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Map$<$Q\+String, int$>$ U\+V\+::get\+Categories (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_u_v_ac9e4b2f7e639ac8d96d01fc8a33a730f}
+
+
+Accesseur sur les catégories de l'\hyperlink{class_u_v}{U\+V}. 
+
+\begin{DoxyReturn}{Returns}
+Q\+Map des catégories de l'\hyperlink{class_u_v}{U\+V}. 
+\end{DoxyReturn}
+\hypertarget{class_u_v_a4d5fe39505b3e474b41013dda0d2047a}{\index{U\+V@{U\+V}!get\+Code@{get\+Code}}
+\index{get\+Code@{get\+Code}!U\+V@{U\+V}}
+\subsubsection[{get\+Code}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String U\+V\+::get\+Code (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_u_v_a4d5fe39505b3e474b41013dda0d2047a}
+
+
+Accesseur sur le code de l'\hyperlink{class_u_v}{U\+V}. 
+
+\begin{DoxyReturn}{Returns}
+Code de l'\hyperlink{class_u_v}{U\+V}. 
+\end{DoxyReturn}
+\hypertarget{class_u_v_aca0cf43b1b3b5a7060b21a65fb5701c2}{\index{U\+V@{U\+V}!get\+Nb\+Credits@{get\+Nb\+Credits}}
+\index{get\+Nb\+Credits@{get\+Nb\+Credits}!U\+V@{U\+V}}
+\subsubsection[{get\+Nb\+Credits}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int U\+V\+::get\+Nb\+Credits (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{cat}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_u_v_aca0cf43b1b3b5a7060b21a65fb5701c2}
+
+
+get\+Nb\+Credits renvoie le nombre de crédits de l'\hyperlink{class_u_v}{U\+V} pour une catégorie donnée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cat} & \+: code de la catégorie. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nombre de crédits attribués dans la catégorie. 
+\end{DoxyReturn}
+\hypertarget{class_u_v_a9f95880400dac05e2d18513826062b14}{\index{U\+V@{U\+V}!get\+Nb\+Credits\+Total@{get\+Nb\+Credits\+Total}}
+\index{get\+Nb\+Credits\+Total@{get\+Nb\+Credits\+Total}!U\+V@{U\+V}}
+\subsubsection[{get\+Nb\+Credits\+Total}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int U\+V\+::get\+Nb\+Credits\+Total (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_u_v_a9f95880400dac05e2d18513826062b14}
+
+
+get\+Nb\+Credits\+Total calcule le nombre total des crédits attribués avec l'obtention de l'\hyperlink{class_u_v}{U\+V}. 
+
+\begin{DoxyReturn}{Returns}
+Somme des crédits des catégories concernées par l'\hyperlink{class_u_v}{U\+V}. 
+\end{DoxyReturn}
+\hypertarget{class_u_v_afa7f5a8c7ea21bedcd00af1a1ff48221}{\index{U\+V@{U\+V}!get\+Titre@{get\+Titre}}
+\index{get\+Titre@{get\+Titre}!U\+V@{U\+V}}
+\subsubsection[{get\+Titre}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String U\+V\+::get\+Titre (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_u_v_afa7f5a8c7ea21bedcd00af1a1ff48221}
+
+
+Accesseur sur le titre de l'\hyperlink{class_u_v}{U\+V}. 
+
+\begin{DoxyReturn}{Returns}
+Titre de l'\hyperlink{class_u_v}{U\+V}. 
+\end{DoxyReturn}
+\hypertarget{class_u_v_a29423fb485037fc882b8b29cae033c9a}{\index{U\+V@{U\+V}!ouverture\+Automne@{ouverture\+Automne}}
+\index{ouverture\+Automne@{ouverture\+Automne}!U\+V@{U\+V}}
+\subsubsection[{ouverture\+Automne}]{\setlength{\rightskip}{0pt plus 5cm}bool U\+V\+::ouverture\+Automne (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_u_v_a29423fb485037fc882b8b29cae033c9a}
+
+
+L'\hyperlink{class_u_v}{U\+V} ouvre-\/t-\/elle à l'automne ? 
+
+\begin{DoxyReturn}{Returns}
+Vrai si c'est le cas, faux sinon. 
+\end{DoxyReturn}
+\hypertarget{class_u_v_adca45078b74fdc3c09621a521756e8af}{\index{U\+V@{U\+V}!ouverture\+Printemps@{ouverture\+Printemps}}
+\index{ouverture\+Printemps@{ouverture\+Printemps}!U\+V@{U\+V}}
+\subsubsection[{ouverture\+Printemps}]{\setlength{\rightskip}{0pt plus 5cm}bool U\+V\+::ouverture\+Printemps (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_u_v_adca45078b74fdc3c09621a521756e8af}
+
+
+L'\hyperlink{class_u_v}{U\+V} ouvre-\/t-\/elle au printemps ? 
+
+\begin{DoxyReturn}{Returns}
+Vrai si c'est le cas, faux sinon. 
+\end{DoxyReturn}
+\hypertarget{class_u_v_a6310e1d779721ce541aaea845f205dd1}{\index{U\+V@{U\+V}!set\+Categorie@{set\+Categorie}}
+\index{set\+Categorie@{set\+Categorie}!U\+V@{U\+V}}
+\subsubsection[{set\+Categorie}]{\setlength{\rightskip}{0pt plus 5cm}void U\+V\+::set\+Categorie (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{cat, }
+\item[{int}]{nb\+C}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_u_v_a6310e1d779721ce541aaea845f205dd1}
+
+
+Setter pour l'insertion de crédits d'une catégorie. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cat} & \+: Catégorie concernée. \\
+\hline
+{\em nb\+C} & \+: Nombre de crédits alloués par l'\hyperlink{class_u_v}{U\+V} dans la catégorie. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_v_a9c3b73077819774423559abd838e410b}{\index{U\+V@{U\+V}!set\+Code@{set\+Code}}
+\index{set\+Code@{set\+Code}!U\+V@{U\+V}}
+\subsubsection[{set\+Code}]{\setlength{\rightskip}{0pt plus 5cm}void U\+V\+::set\+Code (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_u_v_a9c3b73077819774423559abd838e410b}
+
+
+Setter sur le code de l'\hyperlink{class_u_v}{U\+V}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \+: nouveau code de l'\hyperlink{class_u_v}{U\+V} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_v_a7e670e649febebe0fe70c3ce79f4be63}{\index{U\+V@{U\+V}!set\+Ouverture\+Automne@{set\+Ouverture\+Automne}}
+\index{set\+Ouverture\+Automne@{set\+Ouverture\+Automne}!U\+V@{U\+V}}
+\subsubsection[{set\+Ouverture\+Automne}]{\setlength{\rightskip}{0pt plus 5cm}void U\+V\+::set\+Ouverture\+Automne (
+\begin{DoxyParamCaption}
+\item[{bool}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_u_v_a7e670e649febebe0fe70c3ce79f4be63}
+
+
+set\+Ouverture\+Automne ouvre ou non l'\hyperlink{class_u_v}{U\+V} à l'automne. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & \+: vrai pour l'ouverture, faux sinon. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_v_a0ae246826809cc48a1999ec0671c78b3}{\index{U\+V@{U\+V}!set\+Ouverture\+Printemps@{set\+Ouverture\+Printemps}}
+\index{set\+Ouverture\+Printemps@{set\+Ouverture\+Printemps}!U\+V@{U\+V}}
+\subsubsection[{set\+Ouverture\+Printemps}]{\setlength{\rightskip}{0pt plus 5cm}void U\+V\+::set\+Ouverture\+Printemps (
+\begin{DoxyParamCaption}
+\item[{bool}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_u_v_a0ae246826809cc48a1999ec0671c78b3}
+
+
+set\+Ouverture\+Printemps ouvre ou non l'\hyperlink{class_u_v}{U\+V} au printemps. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & \+: vrai pour l'ouverture, faux sinon. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_v_a52c66013e137689883802465596bb688}{\index{U\+V@{U\+V}!set\+Titre@{set\+Titre}}
+\index{set\+Titre@{set\+Titre}!U\+V@{U\+V}}
+\subsubsection[{set\+Titre}]{\setlength{\rightskip}{0pt plus 5cm}void U\+V\+::set\+Titre (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_u_v_a52c66013e137689883802465596bb688}
+
+
+Setter sur le titre de l'\hyperlink{class_u_v}{U\+V}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \+: nouveau titre de l'\hyperlink{class_u_v}{U\+V}. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{uvmanager_8h}{uvmanager.\+h}\item 
+uvmanager.\+cpp\end{DoxyCompactItemize}

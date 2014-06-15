@@ -1,3 +1,10 @@
+/**
+  * \file mainwindow.cpp
+  * \brief Code source de la classe MainWindow : fenêtre principale d'UTProfiler
+  * \author Clément FICHMANN et Alexandre KEIL
+  * \date Juin 2014
+  */
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -140,7 +147,9 @@ void MainWindow::on_tableCredits_clicked(){
 }
 
 void MainWindow::UVEditee(){
-    ui->btnSauverUV->setEnabled(true);
+    if (ui->txtCodeUV->text().isEmpty() || ui->txtDescription->toPlainText().isEmpty()){
+        ui->btnSauverUV->setEnabled(false);
+    } else ui->btnSauverUV->setEnabled(true);
 }
 
 void MainWindow::on_btnSauverUV_clicked(){
@@ -204,7 +213,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::refreshUVList() {
-    disconnect(ui->listUV, 0, 0, 0);
+    disconnect(ui->listUV, 0, 0, 0); //déconnexion des signaux nécessaire pour le clear()
     ui->listUV->clear();
     connect(ui->listUV, SIGNAL(currentIndexChanged(int)), this, SLOT(on_listUV_currentIndexChanged()));
     foreach(QString code, uvM.getAllUV().keys()){

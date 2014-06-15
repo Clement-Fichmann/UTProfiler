@@ -1,3 +1,10 @@
+/**
+  * \file ajouteruvwindow.cpp
+  * \brief Code source de la classe ajouterUVWindow : fenêtre d'ajout d'UV
+  * \author Clément FICHMANN et Alexandre KEIL
+  * \date Juin 2014
+  */
+
 #include "ajouteruvwindow.h"
 #include "mainwindow.h"
 #include "ui_ajouteruvwindow.h"
@@ -34,6 +41,21 @@ ajouterUVWindow::ajouterUVWindow(QWidget *parent) : QDialog(parent), ui(new Ui::
         ui->tableCredits->setCellWidget(cpt, 0, ptCat);
         ui->tableCredits->setCellWidget(cpt, 1, ptCredits);
     }
+    ui->btnAccepter->setEnabled(false);
+}
+
+void ajouterUVWindow::on_txtCodeNewUV_textChanged(){
+    this->UVEditee(); //appel d'un slot commun permettant d'activer le bouton de sauvegarde
+}
+
+void ajouterUVWindow::on_txtDescNewUV_textChanged(){
+    this->UVEditee();
+}
+
+void ajouterUVWindow::UVEditee(){
+    if (ui->txtCodeNewUV->text().isEmpty() || ui->txtDescNewUV->toPlainText().isEmpty()){
+        ui->btnAccepter->setEnabled(false);
+    } else ui->btnAccepter->setEnabled(true);
 }
 
 void ajouterUVWindow::on_btnAnnuler_clicked(){
@@ -57,9 +79,17 @@ void ajouterUVWindow::on_btnAccepter_clicked(){
             }
         }
     }
-    uvM.addUV(ui->txtCodeNewUV->text(), ui->txtDescNewUV->toPlainText(), credits, ui->chkAutomne->isChecked(), ui->chkPrintemps->isChecked());
-    this->close();
-    emit UVAdded();
+    if (uvM.getAllUV().contains(ui->txtCodeNewUV->text())){//si une UV correspondant à ce code existe déjà
+        int confirm = QMessageBox::question(this, "Ajout d'une UV", "Cette UV existe déjà. L'écraser ?", QMessageBox::Yes | QMessageBox::No);
+        if (confirm == QMessageBox::Yes){
+            uvM.addUV(ui->txtCodeNewUV->text(), ui->txtDescNewUV->toPlainText(), credits, ui->chkAutomne->isChecked(), ui->chkPrintemps->isChecked());
+            this->close();
+            emit UVAdded();
+        }
+    } else {  uvM.addUV(ui->txtCodeNewUV->text(), ui->txtDescNewUV->toPlainText(), credits, ui->chkAutomne->isChecked(), ui->chkPrintemps->isChecked());
+        this->close();
+        emit UVAdded();
+    }
 }
 
 ajouterUVWindow::~ajouterUVWindow()

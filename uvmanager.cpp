@@ -1,3 +1,10 @@
+/**
+  * \file uvmanager.cpp
+  * \brief Code source des classes CategorieManager, Semestre, UV et UVManager
+  * \author Clément FICHMANN et Alexandre KEIL
+  * \date Juin 2014
+  */
+
 #include "uvmanager.h"
 #include "utprofilerexception.h"
 
@@ -8,6 +15,9 @@
 #include <QMessageBox>
 
 
+/**
+ * @brief Constructeur de CategorieManager avec les catégories classiques par défaut.
+ */
 CategorieManager::CategorieManager() {
     categories.insert("CS", "Connaissances Scientifiques");
     categories.insert("TM", "Techniques et Méthodes");
@@ -15,33 +25,67 @@ CategorieManager::CategorieManager() {
     categories.insert("SP", "Stage et Projet");
 }
 
+/**
+ * @brief Destructeur de CategorieManager
+ */
 CategorieManager::~CategorieManager() {
 }
 
+/**
+/** * @brief addItem ajoute une catégorie à la map des catégories
+/** * @param code : nom abrégé de la catégorie
+/** * @param desc : nom complet de la catégorie
+*/
 void CategorieManager::addItem(const QString& code, const QString& desc) {
     categories.insert(code, desc);
 }
 
+
+/**
+ * @brief removeItem supprime de la map des catégories la catégorie au nom abrégé passé en paramètre.
+ * @param code : nom abrégé de la catégorie à supprimer.
+ * @return Nombre de catégories supprimées (normalement 1).
+ */
 int CategorieManager::removeItem(const QString& code) {
     return categories.remove(code);
 }
 
+/**
+ * @brief getDesc retourne le nom complet d'une catégorie au nom abrégé passé en paramètre.
+ * @param code : Nom abrégé de la catégorie
+ * @return Nom complet de la catégorie.
+ */
 QString& CategorieManager::getDesc(const QString& code) const {
     QString result = categories.value(code);
     return result;
 }
 
+/**
+ * @brief isCat indique si la catégorie passée en paramètre existe.
+ * @param code : nom abrégé de la catégorie recherchée.
+ * @return Vrai si la catégorie existe dans la map, faux sinon.
+ */
 bool CategorieManager::isCat(const QString& code) {
     return categories.contains(code);
 }
 
+/**
+/** * @brief Handler permet l'implémentation du design pattern Singleton.
+*/
 CategorieManager::Handler CategorieManager::handler=Handler();
 
+/**
+ * @brief getInstance permet de récupérer l'unique instance de CategorieManager
+ * @return Instance unique de CategorieManager
+ */
 CategorieManager& CategorieManager::getInstance(){
     if (!handler.instance) handler.instance = new CategorieManager; /* instance créée une seule fois lors de la première utilisation*/
     return *handler.instance;
 }
 
+/**
+ * @brief libererInstance supprimer l'unique instance de CategorieManager
+ */
 void CategorieManager::libererInstance(){
     if (handler.instance) { delete handler.instance; handler.instance=0; }
 }
@@ -85,7 +129,10 @@ void NoteManager::libererInstance(){
     if (handler.instance) { delete handler.instance; handler.instance=0; }
 }
 
-
+/**
+ * @brief getNbCreditsTotal calcule le nombre total des crédits attribués avec l'obtention de l'UV.
+ * @return Somme des crédits des catégories concernées par l'UV.
+ */
 unsigned int UV::getNbCreditsTotal() const {
     QList<int> credits = categories.values();
     unsigned int total = 0;
@@ -96,10 +143,16 @@ unsigned int UV::getNbCreditsTotal() const {
     return total;
 }
 
-
+/**
+ * @brief Constructeur de la classe UVManager.
+ */
 UVManager::UVManager():categorieM(CategorieManager::getInstance()), noteM(NoteManager::getInstance()), file("") {
 }
 
+/**
+ * @brief load charge les UV du XML vers la QMap de l'UVManager
+ * @param f : adresse du fichier XML.
+ */
 void UVManager::load(const QString& f){
     if (!uvs.isEmpty()) {
         deleteAllUV();
@@ -192,7 +245,10 @@ void UVManager::load(const QString& f){
 }
 
 
-
+/**
+ * @brief save sauvegarde les UV de la QMap de l'UVManager vers le XML.
+ * @param f : adresse du fichier XML.
+ */
 void UVManager::save(const QString& f){
     file=f;
     QFile newfile(file);
@@ -224,23 +280,34 @@ void UVManager::save(const QString& f){
 
 }
 
+/**
+ * @brief Destructeur de la classe UVManager.
+ */
 UVManager::~UVManager(){
-    /*if (file!="" && !uvs.isEmpty())
-        save(file);*/
     this->deleteAllUV();
     categorieM.libererInstance();
     noteM.libererInstance();
 }
 
+/**
+ * @brief addUV ajoute une nouvelle UV à la QMap.
+ * @param c : code de la nouvelle UV.
+ * @param t : titre de la nouvelle UV
+ * @param cat : QMap contenant les différents codes de catégories et les crédits associés
+ * @param a : Indique l'ouverture ou non de l'UV à l'automne
+ * @param p : Indique l'ouverture ou non de l'UV au printemps
+ */
 void UVManager::addUV(const QString& c, const QString& t, QMap<QString, int> cat, bool a, bool p){
-    if (uvs.contains(c)) {
-        throw UTProfilerException(QString("erreur, UVManager, UV ")+c+QString("déjà existante"));
-    }else{
-        UV* newuv=new UV(c,t,cat,a,p);
-        uvs.insert(c, newuv);
-    }
+    //une demande d'écrasement est faite par les fonctions appelant cette méthode
+    UV* newuv=new UV(c,t,cat,a,p);
+    uvs.insert(c, newuv);
+
 }
 
+/**
+ * @brief deleteUV supprime l'UV dont le code est passé en paramètre.
+ * @param c : code de l'UV à supprimer
+ */
 void UVManager::deleteUV(const QString& c){
     if (!uvs.contains(c)) {
         throw UTProfilerException(QString("erreur, UVManager, UV ")+c+QString("déjà existante"));
@@ -250,29 +317,52 @@ void UVManager::deleteUV(const QString& c){
     }
 }
 
+/**
+ * @brief getUV renvoie une référence vers l'UV dont le code est passé en paramètre.
+ * @param code : code de l'UV
+ * @return Référence vers l'UV
+ */
 UV& UVManager::getUV(const QString& code){
     UV* uv=uvs.value(code);
     if (!uv) throw UTProfilerException("erreur, UVManager, UV inexistante",__FILE__,__LINE__);
     return *uv;
 }
 
+/**
+ * @brief const getUV const renvoie une référence const vers l'UV dont le code est passé en paramètre.
+ * @param code : code de l'UV
+ * @return Référence const vers l'UV.
+ */
 const UV& UVManager::getUV(const QString& code)const{
     return const_cast<UVManager*>(this)->getUV(code);
 }
 
+/**
+ * @brief deleteAllUV supprime toutes les UVs contenues dans la QMap des UVs.
+ */
 void UVManager::deleteAllUV() {
     foreach (UV* uv, uvs)
         delete uv;
     uvs.clear();
 }
 
+/**
+ * @brief Le Handler permet l'implémentation du design pattern Singleton pour la classe UVManager.
+ */
 UVManager::Handler UVManager::handler=Handler();
 
+/**
+ * @brief getInstance renvoie l'unique instance d'UVManager.
+ * @return Instance d'UVManager.
+ */
 UVManager& UVManager::getInstance(){
     if (!handler.instance) handler.instance = new UVManager; /* instance créée une seule fois lors de la première utilisation*/
     return *handler.instance;
 }
 
+/**
+ * @brief libererInstance détruit l'unique instance d'UVManager.
+ */
 void UVManager::libererInstance(){
     if (handler.instance) { delete handler.instance; handler.instance=0; }
 }

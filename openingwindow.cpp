@@ -1,3 +1,10 @@
+/**
+  * \file openingwindow.h
+  * \brief Code source de la classe OpeningWindow : fenêtre s'affichant à l'ouverture du programme, permettant de sélectionner les XML de données.
+  * \author Clément FICHMANN et Alexandre KEIL
+  * \date Juin 2014
+  */
+
 #include "openingwindow.h"
 #include "ui_openingwindow.h"
 
