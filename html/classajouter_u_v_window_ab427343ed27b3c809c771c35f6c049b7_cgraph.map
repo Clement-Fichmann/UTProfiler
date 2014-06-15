@@ -1,7 +1,0 @@
-<map id="ajouterUVWindow::on_btnAccepter_clicked" name="ajouterUVWindow::on_btnAccepter_clicked">
-<area shape="rect" id="node2" href="$class_u_v_manager.html#a17d95c67bc2d1f4c9d850fb0b9c42262" title="getCategorieManager renvoie une référence vers l&#39;unique instance de CategorieManager. " alt="" coords="200,5,421,32"/>
-<area shape="rect" id="node3" href="$class_categorie_manager.html#a96b90ece8d298ec50f3191f97ff2b1f6" title="getAllCategories : accesseur pour la QMap categories " alt="" coords="227,57,395,98"/>
-<area shape="rect" id="node4" href="$class_categorie_manager.html#a0888fdaa33d645eaf2c4e5977f6bf2fc" title="addItem ajoute une catégorie à la map des catégories " alt="" coords="220,123,401,149"/>
-<area shape="rect" id="node5" href="$class_u_v_manager.html#a0d65e0ea79cf14c5d92b1013805be42a" title="getAllUV renvoie une référence vers la QMap contenant toutes les UV. " alt="" coords="236,173,385,200"/>
-<area shape="rect" id="node6" href="$class_u_v_manager.html#a40043a0cc0ae5153600c76220ce76f52" title="addUV ajoute une nouvelle UV à la QMap. " alt="" coords="242,224,379,251"/>
-</map>

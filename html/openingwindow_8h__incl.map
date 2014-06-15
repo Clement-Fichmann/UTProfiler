@@ -1,7 +1,0 @@
-<map id="openingwindow.h" name="openingwindow.h">
-<area shape="rect" id="node5" href="$mainwindow_8h.html" title="Header de la classe MainWindow : fenêtre principale d&#39;UTProfiler. " alt="" coords="468,80,571,107"/>
-<area shape="rect" id="node10" href="$uvmanager_8h.html" title="Header des classes CategorieManager, Semestre, UV et UVManager. " alt="" coords="718,229,812,256"/>
-<area shape="rect" id="node16" href="$formationmanager_8h.html" title="Header des classes Formation et FormationManager. " alt="" coords="438,229,574,256"/>
-<area shape="rect" id="node17" href="$ajouteruvwindow_8h.html" title="Header de la classe ajouterUVWindow : fenêtre d&#39;ajout d&#39;UV. " alt="" coords="558,155,684,181"/>
-<area shape="rect" id="node11" href="$utprofilerexception_8h.html" title="utprofilerexception.h" alt="" coords="412,304,550,331"/>
-</map>

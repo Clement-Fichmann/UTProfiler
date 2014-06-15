@@ -1,9 +1,0 @@
-<map id="formationmanager.h" name="formationmanager.h">
-<area shape="rect" id="node2" href="$mainwindow_8h.html" title="Header de la classe MainWindow : fenêtre principale d&#39;UTProfiler. " alt="" coords="216,80,319,107"/>
-<area shape="rect" id="node4" href="$openingwindow_8h.html" title="Code source de la classe OpeningWindow : fenêtre s&#39;affichant à l&#39;ouverture du programme, permettant de sélectionner les XML de données. " alt="" coords="311,155,431,181"/>
-<area shape="rect" id="node5" href="$main_8cpp.html" title="main.cpp" alt="" coords="431,229,506,256"/>
-<area shape="rect" id="node8" href="$formationmanager_8cpp.html" title="formationmanager.cpp" alt="" coords="507,80,657,107"/>
-<area shape="rect" id="node3" href="$ajouteruvwindow_8cpp.html" title="Code source de la classe ajouterUVWindow : fenêtre d&#39;ajout d&#39;UV. " alt="" coords="5,155,145,181"/>
-<area shape="rect" id="node7" href="$mainwindow_8cpp.html" title="Code source de la classe MainWindow : fenêtre principale d&#39;UTProfiler. " alt="" coords="170,155,287,181"/>
-<area shape="rect" id="node6" href="$openingwindow_8cpp.html" title="openingwindow.cpp" alt="" coords="272,229,407,256"/>
-</map>

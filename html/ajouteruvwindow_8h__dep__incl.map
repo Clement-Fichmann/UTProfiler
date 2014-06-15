@@ -1,8 +1,0 @@
-<map id="ajouteruvwindow.h" name="ajouteruvwindow.h">
-<area shape="rect" id="node2" href="$ajouteruvwindow_8cpp.html" title="Code source de la classe ajouterUVWindow : fenêtre d&#39;ajout d&#39;UV. " alt="" coords="5,155,145,181"/>
-<area shape="rect" id="node3" href="$mainwindow_8h.html" title="Header de la classe MainWindow : fenêtre principale d&#39;UTProfiler. " alt="" coords="161,80,264,107"/>
-<area shape="rect" id="node4" href="$openingwindow_8h.html" title="Code source de la classe OpeningWindow : fenêtre s&#39;affichant à l&#39;ouverture du programme, permettant de sélectionner les XML de données. " alt="" coords="170,155,290,181"/>
-<area shape="rect" id="node7" href="$mainwindow_8cpp.html" title="Code source de la classe MainWindow : fenêtre principale d&#39;UTProfiler. " alt="" coords="314,155,431,181"/>
-<area shape="rect" id="node5" href="$main_8cpp.html" title="main.cpp" alt="" coords="127,229,202,256"/>
-<area shape="rect" id="node6" href="$openingwindow_8cpp.html" title="openingwindow.cpp" alt="" coords="227,229,361,256"/>
-</map>

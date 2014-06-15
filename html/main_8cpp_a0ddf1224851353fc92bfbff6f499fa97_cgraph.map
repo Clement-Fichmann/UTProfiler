@@ -1,5 +1,0 @@
-<map id="main" name="main">
-<area shape="rect" id="node2" href="$class_u_v_manager.html#a68d219c83584116722ceb5fea3813e12" title="getInstance renvoie l&#39;unique instance d&#39;UVManager. " alt="" coords="121,5,287,32"/>
-<area shape="rect" id="node3" href="$classformation_manager.html#a092209045496b33eebf357979159d58b" title="getInstance récupère l&#39;instance unique de Formation Manager " alt="" coords="104,56,304,83"/>
-<area shape="rect" id="node4" href="$class_u_t_profiler_exception.html#a6f4582234c00b4fe67776ef10c5370bf" title="UTProfilerException\l::getInfo" alt="" coords="136,107,272,149"/>
-</map>
