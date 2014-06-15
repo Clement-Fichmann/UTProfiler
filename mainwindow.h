@@ -61,6 +61,11 @@ public slots:
     void on_listUV_currentIndexChanged();
 
     /**
+     * @brief Lorsque l'utilisateur choisit une formation dans la liste déroulante des formation, ce slot remplit le formulaire d'édition de formation avec les informations sur la formation.
+     */
+    void on_listFormation_currentIndexChanged();
+
+    /**
      * @brief Appelle le slot UVEditee lorsque le champ de texte du code de l'UV est modifié.
      */
     void on_txtCodeUV_textChanged();
@@ -85,15 +90,36 @@ public slots:
     void on_tableCredits_clicked();
 
     /**
+     * @brief Appelle le slot FormationEditee lorsque le champ de texte du code de la formation est modifié.
+     */
+    void on_txtCodeFormation_textChanged();
+
+    /**
+     * @brief Appelle le slot FormationEditee lorsque le champ de texte du titre de la formation est modifié.
+     */
+    void on_txtDescriptionFormation_textChanged();
+
+    /**
      * @brief UVEditee s'active lorsqu'un des éléments du formulaire d'édition est altérée.
      * Il teste alors si le champ du code et du titre de l'UV sont remplis; si oui, il débloque le bouton "Sauvegarder les modifications", désactivé par défaut.
      */
     void UVEditee();
 
     /**
+     * @brief FormationEditee s'active lorsqu'un des éléments du formulaire d'édition est altérée.
+     * Il teste alors si le champ du code et du titre de la formation sont remplis; si oui, il débloque le bouton "Sauvegarder les modifications", désactivé par défaut.
+     */
+    void FormationEditee();
+
+    /**
      * @brief refreshUVList actualise la liste des UV quand il est appelé
      */
     void refreshUVList();
+
+    /**
+     * @brief refreshFormationList actualise la liste des formations quand il est appelé
+     */
+    void refreshFormationList();
 
     /**
      * @brief Enregistre les modifications apportées à l'UV
@@ -109,6 +135,11 @@ public slots:
      * @brief Demande confirmation puis supprime l'UV sélectionnée dans la liste déroulante.
      */
     void on_btnDeleteUV_clicked();
+
+    /**
+     * @brief Demande confirmation puis supprime la formation sélectionnée dans la liste déroulante.
+     */
+    void on_btnDeleteFormation_clicked();
 
     /**
      * @brief Sauvegarde le contenu de la QMap uvs de l'instance d'UVManager dans le fichier XML (appel à la fonction UVManager::save() ).

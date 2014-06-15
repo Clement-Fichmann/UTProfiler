@@ -12,8 +12,21 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
     ui->tableCredits->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     ui->tableCredits->verticalHeader()->hide();
+    ui->tableFormationCreditsNeeded->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+    ui->tableFormationCreditsNeeded->verticalHeader()->hide();
+    ui->tableFormationCreditsNeededInUVSet_Credits->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+    ui->tableFormationCreditsNeededInUVSet_Credits->verticalHeader()->hide();
+    ui->tableFormationCreditsNeededInUVSet_UV->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+    ui->tableFormationCreditsNeededInUVSet_UV->verticalHeader()->hide();
+    ui->tableFormationFormationsNeeded->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+    ui->tableFormationFormationsNeeded->verticalHeader()->hide();
+    ui->tableFormationUVNeeded->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+    ui->tableFormationUVNeeded->verticalHeader()->hide();
     foreach(QString code, uvM.getAllUV().keys()){
         ui->listUV->addItem(code);
+    }
+    foreach(QString code, fM.getAllFormations().keys()){
+        ui->listFormation->addItem(code);
     }
     /*
     ui->txtCodeUV->setEnabled(false);
@@ -26,6 +39,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->chkAutomne->setEnabled(true);
     ui->chkPrintemps->setEnabled(true);
     ui->btnSauverUV->setEnabled(false);
+    ui->txtCodeFormation->setEnabled(true);
+    ui->txtDescriptionFormation->setEnabled(true);
+    ui->btnSauverFormation->setEnabled(false);
 }
 
 void MainWindow::closeEvent(QCloseEvent* event){
@@ -189,12 +205,10 @@ void MainWindow::on_btnAjouterUV_clicked(){
 }
 
 void MainWindow::on_btnDeleteUV_clicked(){
-    int indexUV = ui->listUV->currentIndex();
     int reponse = QMessageBox::warning(this, "Suppression de l'UV", "Voulez-vous vraiment supprimer l'UV " + ui->listUV->currentText() + " ?", QMessageBox::Yes | QMessageBox::No);
     if (reponse == QMessageBox::Yes){
         uvM.deleteUV(ui->listUV->currentText());
-        ui->listUV->removeItem(indexUV);
-        ui->listUV->setCurrentIndex(indexUV-1<0?0:indexUV-1);
+        refreshUVList();
     }
 }
 
@@ -207,8 +221,7 @@ void MainWindow::on_actionSaveTous_les_fichiers_triggered(){
     // TODO save formation et dossir étudiant
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     delete ui;
 }
 
@@ -219,4 +232,182 @@ void MainWindow::refreshUVList() {
     foreach(QString code, uvM.getAllUV().keys()){
         ui->listUV->addItem(code);
     }
+}
+
+void MainWindow::on_listFormation_currentIndexChanged(){
+    //on récupère les infos sur la formation
+    QString codeFormation = ui->listFormation->currentText();
+    formation& formationSelectionnee = fM.getFormation(codeFormation);
+    ui->txtCodeFormation->setText(formationSelectionnee.getCode());
+    ui->txtDescriptionFormation->setText(formationSelectionnee.getTitre());
+    ui->tableFormationCreditsNeeded->clearContents();
+    while (ui->tableFormationCreditsNeeded->rowCount() > 0){
+        ui->tableFormationCreditsNeeded->removeRow(0);
+    }
+    ui->tableFormationCreditsNeededInUVSet_Credits->clearContents();
+    while (ui->tableFormationCreditsNeededInUVSet_Credits->rowCount() > 0){
+        ui->tableFormationCreditsNeededInUVSet_Credits->removeRow(0);
+    }
+    ui->tableFormationCreditsNeededInUVSet_UV->clearContents();
+    while (ui->tableFormationCreditsNeededInUVSet_UV->rowCount() > 0){
+        ui->tableFormationCreditsNeededInUVSet_UV->removeRow(0);
+    }
+    ui->tableFormationFormationsNeeded->clearContents();
+    while (ui->tableFormationFormationsNeeded->rowCount() > 0){
+        ui->tableFormationFormationsNeeded->removeRow(0);
+    }
+    ui->tableFormationUVNeeded->clearContents();
+    while (ui->tableFormationUVNeeded->rowCount() > 0){
+        ui->tableFormationUVNeeded->removeRow(0);
+    }
+
+    //récupération des crédits needed
+    QMap<QString, QString> categories = uvM.getCategorieManager().getAllCategories();
+    foreach(QString cat, categories.keys()){
+        int creditsCat = formationSelectionnee.getCreditsNeeded().value(cat);
+        int ligne = ui->tableFormationCreditsNeeded->rowCount();
+        ui->tableFormationCreditsNeeded->insertRow(ligne);
+        QPointer<QLabel> ptCat = new QLabel(this);
+        QPointer<QSpinBox> ptCredits = new QSpinBox(this);
+        ptCat.data()->setText(cat);
+        ptCredits.data()->setValue(creditsCat);
+        ptCat.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
+        ptCredits.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
+        ui->tableFormationCreditsNeeded->setCellWidget(ligne, 0, ptCat);
+        ui->tableFormationCreditsNeeded->setCellWidget(ligne, 1, ptCredits);
+    }
+    int rowCountDebut = ui->tableFormationCreditsNeeded->rowCount();
+    for (int cpt = rowCountDebut; cpt < rowCountDebut +2 ; cpt++){
+        ui->tableFormationCreditsNeeded->insertRow(cpt);
+        QPointer<QLineEdit> ptCat = new QLineEdit(this);
+        QPointer<QSpinBox> ptCredits = new QSpinBox(this);
+        ptCat.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
+        ptCredits.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
+        ui->tableFormationCreditsNeeded->setCellWidget(cpt, 0, ptCat);
+        ui->tableFormationCreditsNeeded->setCellWidget(cpt, 1, ptCredits);
+    }
+
+    //récupération des formationsNeeded
+    QMap<QString, formation*> formations = fM.getAllFormations();
+    foreach(QString formation, formations.keys()){
+        if (formation == codeFormation)
+            continue;
+        bool formationNeeded = formationSelectionnee.getFormationsNeeded().contains(formation);
+        int ligne = ui->tableFormationFormationsNeeded->rowCount();
+        ui->tableFormationFormationsNeeded->insertRow(ligne);
+        QPointer<QLabel> ptFor = new QLabel(this);
+        QWidget* pWidget = new QWidget();
+        QCheckBox* pCheckBox = new QCheckBox();
+        QHBoxLayout* pLayout = new QHBoxLayout(pWidget);
+        pLayout->addWidget(pCheckBox);
+        pLayout->setAlignment(Qt::AlignCenter);
+        pLayout->setContentsMargins(0,0,0,0);
+        pWidget->setLayout(pLayout);
+        ptFor.data()->setText(formation);
+        pCheckBox->setChecked(formationNeeded);
+        ptFor.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
+        ui->tableFormationFormationsNeeded->setCellWidget(ligne, 0, ptFor);
+        ui->tableFormationFormationsNeeded->setCellWidget(ligne, 1, pWidget);
+    }
+
+    //récupération des UVNeeded
+    QMap<QString, UV*> uvs = uvM.getAllUV();
+    foreach(QString uv, uvs.keys()){
+        bool uvNeeded = formationSelectionnee.getUVNeeded().contains(uv);
+        int ligne = ui->tableFormationUVNeeded->rowCount();
+        ui->tableFormationUVNeeded->insertRow(ligne);
+        QPointer<QLabel> ptUV = new QLabel(this);
+        QWidget* pWidget = new QWidget();
+        QCheckBox* pCheckBox = new QCheckBox();
+        QHBoxLayout* pLayout = new QHBoxLayout(pWidget);
+        pLayout->addWidget(pCheckBox);
+        pLayout->setAlignment(Qt::AlignCenter);
+        pLayout->setContentsMargins(0,0,0,0);
+        pWidget->setLayout(pLayout);
+        ptUV.data()->setText(uv);
+        pCheckBox->setChecked(uvNeeded);
+        ptUV.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
+        ui->tableFormationUVNeeded->setCellWidget(ligne, 0, ptUV);
+        ui->tableFormationUVNeeded->setCellWidget(ligne, 1, pWidget);
+    }
+
+    //récupération des créditsNeededInUVSet_credits
+    categories = uvM.getCategorieManager().getAllCategories();
+    foreach(QString cat, categories.keys()){
+        int creditsCat = formationSelectionnee.getCreditsNeededInUVSet().credits.value(cat);
+        int ligne = ui->tableFormationCreditsNeededInUVSet_Credits->rowCount();
+        ui->tableFormationCreditsNeededInUVSet_Credits->insertRow(ligne);
+        QPointer<QLabel> ptCat = new QLabel(this);
+        QPointer<QSpinBox> ptCredits = new QSpinBox(this);
+        ptCat.data()->setText(cat);
+        ptCredits.data()->setValue(creditsCat);
+        ptCat.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
+        ptCredits.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
+        ui->tableFormationCreditsNeededInUVSet_Credits->setCellWidget(ligne, 0, ptCat);
+        ui->tableFormationCreditsNeededInUVSet_Credits->setCellWidget(ligne, 1, ptCredits);
+    }
+    rowCountDebut = ui->tableFormationCreditsNeededInUVSet_Credits->rowCount();
+    for (int cpt = rowCountDebut; cpt < rowCountDebut +2 ; cpt++){
+        ui->tableFormationCreditsNeededInUVSet_Credits->insertRow(cpt);
+        QPointer<QLineEdit> ptCat = new QLineEdit(this);
+        QPointer<QSpinBox> ptCredits = new QSpinBox(this);
+        ptCat.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
+        ptCredits.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
+        ui->tableFormationCreditsNeededInUVSet_Credits->setCellWidget(cpt, 0, ptCat);
+        ui->tableFormationCreditsNeededInUVSet_Credits->setCellWidget(cpt, 1, ptCredits);
+    }
+
+    //récupération des créditsNeededInUVSet_uv
+    uvs = uvM.getAllUV();
+    foreach(QString uv, uvs.keys()){
+        bool uvNeeded = formationSelectionnee.getCreditsNeededInUVSet().uvs.contains(uv);
+        int ligne = ui->tableFormationCreditsNeededInUVSet_UV->rowCount();
+        ui->tableFormationCreditsNeededInUVSet_UV->insertRow(ligne);
+        QPointer<QLabel> ptUV = new QLabel(this);
+        QWidget* pWidget = new QWidget();
+        QCheckBox* pCheckBox = new QCheckBox();
+        QHBoxLayout* pLayout = new QHBoxLayout(pWidget);
+        pLayout->addWidget(pCheckBox);
+        pLayout->setAlignment(Qt::AlignCenter);
+        pLayout->setContentsMargins(0,0,0,0);
+        pWidget->setLayout(pLayout);
+        ptUV.data()->setText(uv);
+        pCheckBox->setChecked(uvNeeded);
+        ptUV.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
+        ui->tableFormationCreditsNeededInUVSet_UV->setCellWidget(ligne, 0, ptUV);
+        ui->tableFormationCreditsNeededInUVSet_UV->setCellWidget(ligne, 1, pWidget);
+    }
+
+    ui->btnSauverFormation->setEnabled(false);
+}
+
+void MainWindow::on_btnDeleteFormation_clicked(){
+    int reponse = QMessageBox::warning(this, "Suppression de la formation", "Voulez-vous vraiment supprimer la formation " + ui->listFormation->currentText() + " ?", QMessageBox::Yes | QMessageBox::No);
+    if (reponse == QMessageBox::Yes){
+        fM.deleteFormation(ui->listFormation->currentText());
+        refreshFormationList();
+    }
+}
+
+void MainWindow::refreshFormationList() {
+    disconnect(ui->listFormation, 0, 0, 0); //déconnexion des signaux nécessaire pour le clear()
+    ui->listFormation->clear();
+    connect(ui->listFormation, SIGNAL(currentIndexChanged(int)), this, SLOT(on_listFormation_currentIndexChanged()));
+    foreach(QString formation, fM.getAllFormations().keys()){
+        ui->listFormation->addItem(formation);
+    }
+}
+
+void MainWindow::FormationEditee(){
+    if (ui->txtCodeFormation->text().isEmpty() || ui->txtDescriptionFormation->toPlainText().isEmpty()){
+        ui->btnSauverFormation->setEnabled(false);
+    } else ui->btnSauverFormation->setEnabled(true);
+}
+
+void MainWindow::on_txtCodeFormation_textChanged() {
+    FormationEditee();
+}
+
+void MainWindow::on_txtDescriptionFormation_textChanged() {
+    FormationEditee();
 }
