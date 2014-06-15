@@ -44,7 +44,7 @@
       <item row="3" column="0">
        <widget class="QLabel" name="lblDescription">
         <property name="text">
-         <string>Description de la nouvelle UV</string>
+         <string>Titre de la nouvelle UV</string>
         </property>
        </widget>
       </item>

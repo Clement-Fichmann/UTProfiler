@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include <QSpinBox>
 #include <QPointer>
+#include <QCloseEvent>
 #include "uvmanager.h"
 #include "ajouteruvwindow.h"
 
@@ -32,7 +33,7 @@ public slots:
     void on_txtDescription_textChanged();
     void on_chkAutomne_stateChanged();
     void on_chkPrintemps_stateChanged();
-    void on_tableCredits_itemChanged();
+    void on_tableCredits_clicked();
     void UVEditee();
     void on_btnSauverUV_clicked();
     void on_btnAjouterUV_clicked();
@@ -43,6 +44,9 @@ public slots:
 private:
     UVManager& uvM;
     Ui::MainWindow *ui;
+
+protected:
+    void closeEvent(QCloseEvent* event);
 };
 
 #endif // MAINWINDOW_H
