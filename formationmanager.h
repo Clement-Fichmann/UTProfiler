@@ -116,7 +116,7 @@ public:
      * @brief Setter sur les Formations requises : suppression d'une Formation
      * @param formation : Formation à supprimer
      */
-    void remooveFormationNeeded(QString formation) {formationsNeeded.remove(formation);}
+    void removeFormationNeeded(QString formation) {formationsNeeded.remove(formation);}
 
     /**
      * @brief Setter sur les UV nécessaires : ajout d'une UV
@@ -132,10 +132,9 @@ public:
 
     /**
      * @brief setCreditsNeededInUVSet
-     * @param credits
-     * @param uvs
+     * @param newC
      */
-    void setCreditsNeededInUVSet(QMap<QString, int> credits, QSet<QString> uvs) {creditsNeededInUVSet.credits=credits; creditsNeededInUVSet.uvs=uvs;}
+    void setCreditsNeededInUVSet(CreditsInUV newC) {creditsNeededInUVSet=newC;}
 };
 
 /**

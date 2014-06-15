@@ -134,34 +134,45 @@ void formationManager::load(const QString& f){
 
 
 void formationManager::save(const QString& f){
-    /* TO DO
     file=f;
     QFile newfile(file);
     if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
     QXmlStreamWriter stream(&newfile);
     stream.setAutoFormatting(true);
     stream.writeStartDocument();
-    stream.writeStartElement("uvs");
-    foreach(UV* uv, uvs){
-        stream.writeStartElement("uv");
-        stream.writeAttribute("automne", (uv->ouvertureAutomne())?"true":"false");
-        stream.writeAttribute("printemps", (uv->ouverturePrintemps())?"true":"false");
-        stream.writeTextElement("code",uv->getCode());
-        stream.writeTextElement("titre",uv->getTitre());
-        stream.writeStartElement("credits");
-        foreach (QString cat, uv->getCategories().keys()) {
+    stream.writeStartElement("formations");
+    foreach(formation* formation, formations){
+        stream.writeStartElement("formation");
+        stream.writeTextElement("code",formation->getCode());
+        stream.writeTextElement("titre",formation->getTitre());
+        stream.writeStartElement("creditsNeeded");
+        foreach (QString cat, formation->getCreditsNeeded().keys()) {
             QString nbC;
-            nbC.setNum(uv->getCategories().value(cat));
+            nbC.setNum(formation->getCreditsNeeded().value(cat));
             if (!(nbC == "0"))
                 stream.writeAttribute(cat, nbC);
         }
+        stream.writeEndElement();
+        foreach (QString form, formation->getFormationsNeeded().values())
+            stream.writeTextElement("formationNeeded", form);
+        foreach (QString uv, formation->getUVNeeded().values())
+            stream.writeTextElement("uvNeeded", uv);
+        stream.writeStartElement("creditsNeededInUVSet");
+        foreach (QString cat, formation->getCreditsNeededInUVSet().credits.keys()) {
+            QString nbC;
+            nbC.setNum(formation->getCreditsNeededInUVSet().credits.value(cat));
+            if (!(nbC == "0"))
+                stream.writeAttribute(cat, nbC);
+        }
+        foreach (QString uv, formation->getCreditsNeededInUVSet().uvs.values())
+            stream.writeTextElement("uv", uv);
         stream.writeEndElement();
         stream.writeEndElement();
     }
     stream.writeEndElement();
     stream.writeEndDocument();
 
-    newfile.close();    */
+    newfile.close();
 
 }
 

@@ -85,7 +85,7 @@ public slots:
     void on_chkPrintemps_stateChanged();
 
     /**
-     * @brief Appelle le slot UVEditee lorsque le champ de texte du code de l'UV est modifié.
+     * @brief Appelle le slot UVEditee lorsque les crédits de l'UV sont sélectionnés.
      */
     void on_tableCredits_clicked();
 
@@ -98,6 +98,31 @@ public slots:
      * @brief Appelle le slot FormationEditee lorsque le champ de texte du titre de la formation est modifié.
      */
     void on_txtDescriptionFormation_textChanged();
+
+    /**
+     * @brief Appelle le slot FormationEditee lorsque les crédits nécessaires pour valider la formation sont sélectionnés.
+     */
+    void on_tableFormationCreditsNeeded_clicked();
+
+    /**
+     * @brief Appelle le slot FormationEditee lorsque les crédits nécessaires dans une liste d'UV pour valider la formation sont sélectionnés.
+     */
+    void on_tableFormationCreditsNeededInUVSet_Credits_clicked();
+
+    /**
+     * @brief Appelle le slot FormationEditee lorsque les UV de la liste des UV pour valider la formation sont sélectionnées.
+     */
+    void on_tableFormationCreditsNeededInUVSet_UV_clicked();
+
+    /**
+     * @brief Appelle le slot FormationEditee lorsque les formations nécessaires pour valider la formation sont sélectionnées.
+     */
+    void on_tableFormationFormationsNeeded_clicked();
+
+    /**
+     * @brief Appelle le slot FormationEditee lorsque les UV nécessaires pour valider la formation sont sélectionnées.
+     */
+    void on_tableFormationUVNeeded_clicked();
 
     /**
      * @brief UVEditee s'active lorsqu'un des éléments du formulaire d'édition est altérée.
@@ -127,6 +152,11 @@ public slots:
     void on_btnSauverUV_clicked();
 
     /**
+     * @brief Enregistre les modifications apportées à la formation
+     */
+    void on_btnSauverFormation_clicked();
+
+    /**
      * @brief Ouvre une ajouterUVWindow pour ajouter une nouvelle UV
      */
     void on_btnAjouterUV_clicked();
@@ -145,6 +175,11 @@ public slots:
      * @brief Sauvegarde le contenu de la QMap uvs de l'instance d'UVManager dans le fichier XML (appel à la fonction UVManager::save() ).
      */
     void on_actionSaveUV_triggered();
+
+    /**
+     * @brief Sauvegarde le contenu de la QMap formations de l'instance de formationManager dans le fichier XML (appel à la fonction formationManager::save() ).
+     */
+    void on_actionSaveFormations_triggered();
 
     /**
      * @brief Sauvegarde les UV, les formations et les infos sur un étudiant dans leurs fichiers respectifs.

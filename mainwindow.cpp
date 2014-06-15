@@ -78,7 +78,25 @@ void MainWindow::on_actionChoisir_le_fichier_des_UV_triggered(){
 }
 
 void MainWindow::on_actionCharger_un_nouveau_fichier_formations_triggered(){
-    QFileDialog::getOpenFileName();
+    int sauvegarder = QMessageBox::question(this, "Sauvegarder fichier formations", "Voulez-vous sauvegarder le fichier des formations avant d'en charger un nouveau ?", QMessageBox::Yes | QMessageBox::No);
+    if (sauvegarder == QMessageBox::Yes)
+        fM.save(fM.file);
+    QString newChemin = QFileDialog::getOpenFileName();
+    if (!newChemin.isEmpty()){
+        fM.load(newChemin);
+        refreshFormationList();
+        if (ui->listFormation->count() != 0){
+            ui->btnSauverFormation->setEnabled(false);
+            ui->listFormation->setCurrentIndex(1);
+            ui->listFormation->setCurrentIndex(0); //sert à simuler un changement d'index
+        } else {
+            ui->txtCodeFormation->setEnabled(false);
+            ui->txtDescriptionFormation->setEnabled(false);
+            ui->txtCodeFormation->setText("");
+            ui->txtDescriptionFormation->setText("");
+            ui->btnSauverUV->setEnabled(false);
+        }
+    }
 }
 
 void MainWindow::on_actionDossier_Etudiant_triggered(){
@@ -210,8 +228,13 @@ void MainWindow::on_actionSaveUV_triggered(){ //menu Fichier -> Sauver le fichie
     uvM.save(uvM.file); //appel de la fonction save
 }
 
+void MainWindow::on_actionSaveFormations_triggered() {
+    fM.save(fM.file);
+}
+
 void MainWindow::on_actionSaveTous_les_fichiers_triggered(){ //menu Fichier -> Sauver tous les fichiers
     uvM.save(uvM.file);
+    fM.save(fM.file);
     // TODO save formation et dossir étudiant
 }
 
@@ -290,18 +313,12 @@ void MainWindow::on_listFormation_currentIndexChanged(){
         int ligne = ui->tableFormationFormationsNeeded->rowCount();
         ui->tableFormationFormationsNeeded->insertRow(ligne);
         QPointer<QLabel> ptFor = new QLabel(this);
-        QWidget* pWidget = new QWidget();
-        QCheckBox* pCheckBox = new QCheckBox();
-        QHBoxLayout* pLayout = new QHBoxLayout(pWidget);
-        pLayout->addWidget(pCheckBox);
-        pLayout->setAlignment(Qt::AlignCenter);
-        pLayout->setContentsMargins(0,0,0,0);
-        pWidget->setLayout(pLayout);
+        QPointer<QCheckBox> ptCh = new QCheckBox(this);
         ptFor.data()->setText(formation);
-        pCheckBox->setChecked(formationNeeded);
+        ptCh->setChecked(formationNeeded);
         ptFor.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
         ui->tableFormationFormationsNeeded->setCellWidget(ligne, 0, ptFor);
-        ui->tableFormationFormationsNeeded->setCellWidget(ligne, 1, pWidget);
+        ui->tableFormationFormationsNeeded->setCellWidget(ligne, 1, ptCh);
     }
 
     //récupération des UVNeeded
@@ -311,18 +328,12 @@ void MainWindow::on_listFormation_currentIndexChanged(){
         int ligne = ui->tableFormationUVNeeded->rowCount();
         ui->tableFormationUVNeeded->insertRow(ligne);
         QPointer<QLabel> ptUV = new QLabel(this);
-        QWidget* pWidget = new QWidget();
-        QCheckBox* pCheckBox = new QCheckBox();
-        QHBoxLayout* pLayout = new QHBoxLayout(pWidget);
-        pLayout->addWidget(pCheckBox);
-        pLayout->setAlignment(Qt::AlignCenter);
-        pLayout->setContentsMargins(0,0,0,0);
-        pWidget->setLayout(pLayout);
+        QPointer<QCheckBox> ptCh = new QCheckBox(this);
         ptUV.data()->setText(uv);
-        pCheckBox->setChecked(uvNeeded);
+        ptCh->setChecked(uvNeeded);
         ptUV.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
         ui->tableFormationUVNeeded->setCellWidget(ligne, 0, ptUV);
-        ui->tableFormationUVNeeded->setCellWidget(ligne, 1, pWidget);
+        ui->tableFormationUVNeeded->setCellWidget(ligne, 1, ptCh);
     }
 
     //récupération des créditsNeededInUVSet_credits
@@ -354,22 +365,16 @@ void MainWindow::on_listFormation_currentIndexChanged(){
     //récupération des créditsNeededInUVSet_uv
     uvs = uvM.getAllUV();
     foreach(QString uv, uvs.keys()){
-        bool uvNeeded = formationSelectionnee.getCreditsNeededInUVSet().uvs.contains(uv);
+        bool uvNeeded = formationSelectionnee.getUVNeeded().contains(uv);
         int ligne = ui->tableFormationCreditsNeededInUVSet_UV->rowCount();
         ui->tableFormationCreditsNeededInUVSet_UV->insertRow(ligne);
         QPointer<QLabel> ptUV = new QLabel(this);
-        QWidget* pWidget = new QWidget();
-        QCheckBox* pCheckBox = new QCheckBox();
-        QHBoxLayout* pLayout = new QHBoxLayout(pWidget);
-        pLayout->addWidget(pCheckBox);
-        pLayout->setAlignment(Qt::AlignCenter);
-        pLayout->setContentsMargins(0,0,0,0);
-        pWidget->setLayout(pLayout);
+        QPointer<QCheckBox> ptCh = new QCheckBox(this);
         ptUV.data()->setText(uv);
-        pCheckBox->setChecked(uvNeeded);
+        ptCh->setChecked(uvNeeded);
         ptUV.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
         ui->tableFormationCreditsNeededInUVSet_UV->setCellWidget(ligne, 0, ptUV);
-        ui->tableFormationCreditsNeededInUVSet_UV->setCellWidget(ligne, 1, pWidget);
+        ui->tableFormationCreditsNeededInUVSet_UV->setCellWidget(ligne, 1, ptCh);
     }
 
     ui->btnSauverFormation->setEnabled(false);
@@ -404,4 +409,100 @@ void MainWindow::on_txtCodeFormation_textChanged() {
 
 void MainWindow::on_txtDescriptionFormation_textChanged() {
     FormationEditee();
+}
+
+void MainWindow::on_tableFormationCreditsNeeded_clicked() {
+    FormationEditee();
+}
+
+void MainWindow::on_tableFormationCreditsNeededInUVSet_Credits_clicked() {
+    FormationEditee();
+}
+
+void MainWindow::on_tableFormationCreditsNeededInUVSet_UV_clicked() {
+    FormationEditee();
+}
+
+void MainWindow::on_tableFormationFormationsNeeded_clicked() {
+    FormationEditee();
+}
+
+void MainWindow::on_tableFormationUVNeeded_clicked() {
+    FormationEditee();
+}
+
+void MainWindow::on_btnSauverFormation_clicked(){
+    //on récupère la clé (code formation) de la formation en cours d'édition
+    QString codeFormationEditee = ui->listFormation->currentText();
+    //puis la formation correspondant dans la map
+    formation& formationEditee = fM.getFormation(codeFormationEditee);
+    formationEditee.setCode(ui->txtCodeFormation->text());
+    formationEditee.setTitre(ui->txtDescriptionFormation->toPlainText());
+
+    for (int i = 0; i < uvM.getCategorieManager().getAllCategories().count(); i++){
+        QString cat = (dynamic_cast<QLabel*>(ui->tableFormationCreditsNeeded->cellWidget(i,0)))->text();
+        int creditsCat = (dynamic_cast<QSpinBox*>(ui->tableFormationCreditsNeeded->cellWidget(i,1)))->value();
+        formationEditee.setCreditsNeeded(cat, creditsCat);
+        //on met à jour les crédits de la formation à l'aide des éléments du tableau
+    }
+    for (int i = uvM.getCategorieManager().getAllCategories().count(); i < ui->tableFormationCreditsNeeded->rowCount(); i++){
+        //on ajoute également les éventuels crédits de nouvelles catégories
+        QString cat = (dynamic_cast<QLineEdit*>(ui->tableFormationCreditsNeeded->cellWidget(i,0)))->text();
+        if (!cat.isEmpty()){
+            int creditsCat = (dynamic_cast<QSpinBox*>(ui->tableFormationCreditsNeeded->cellWidget(i,1)))->value();
+            formationEditee.setCreditsNeeded(cat, creditsCat);
+            if (!uvM.getCategorieManager().getAllCategories().contains(cat)) {
+                uvM.getCategorieManager().addItem(cat, "");
+            }
+        }
+    }
+
+    for (int i = 0; i < fM.getAllFormations().count() - 1; i++){
+        QString formation = (dynamic_cast<QLabel*>(ui->tableFormationFormationsNeeded->cellWidget(i,0)))->text();
+        bool needed = (dynamic_cast<QCheckBox*>(ui->tableFormationFormationsNeeded->cellWidget(i,1)))->isChecked();
+        if (needed)
+            formationEditee.setFormationNeeded(formation);
+        else
+            formationEditee.removeFormationNeeded(formation);
+    }
+
+    for (int i = 0; i < uvM.getAllUV().count(); i++){
+        QString uv = (dynamic_cast<QLabel*>(ui->tableFormationUVNeeded->cellWidget(i,0)))->text();
+        bool needed = (dynamic_cast<QCheckBox*>(ui->tableFormationUVNeeded->cellWidget(i,1)))->isChecked();
+        if (needed)
+            formationEditee.setUVNeeded(uv);
+        else
+            formationEditee.removeUVNeeded(uv);
+    }
+
+    CreditsInUV cInUV;
+    for (int i = 0; i < uvM.getCategorieManager().getAllCategories().count(); i++){
+        QString cat = (dynamic_cast<QLabel*>(ui->tableFormationCreditsNeededInUVSet_Credits->cellWidget(i,0)))->text();
+        int creditsCat = (dynamic_cast<QSpinBox*>(ui->tableFormationCreditsNeededInUVSet_Credits->cellWidget(i,1)))->value();
+        cInUV.credits.insert(cat, creditsCat);
+    }
+    for (int i = uvM.getCategorieManager().getAllCategories().count(); i < ui->tableFormationCreditsNeededInUVSet_Credits->rowCount(); i++){
+        //on ajoute également les éventuels crédits de nouvelles catégories
+        QString cat = (dynamic_cast<QLineEdit*>(ui->tableFormationCreditsNeededInUVSet_Credits->cellWidget(i,0)))->text();
+        if (!cat.isEmpty()){
+            int creditsCat = (dynamic_cast<QSpinBox*>(ui->tableFormationCreditsNeededInUVSet_Credits->cellWidget(i,1)))->value();
+            cInUV.credits.insert(cat, creditsCat);
+            if (!uvM.getCategorieManager().getAllCategories().contains(cat)) {
+                uvM.getCategorieManager().addItem(cat, "");
+            }
+        }
+    }
+    for (int i = 0; i < uvM.getAllUV().count(); i++){
+        QString uv = (dynamic_cast<QLabel*>(ui->tableFormationCreditsNeededInUVSet_UV->cellWidget(i,0)))->text();
+        bool needed = (dynamic_cast<QCheckBox*>(ui->tableFormationCreditsNeededInUVSet_UV->cellWidget(i,1)))->isChecked();
+        if (needed)
+            cInUV.uvs.insert(uv);
+    }
+    formationEditee.setCreditsNeededInUVSet(cInUV);
+
+
+
+    //les changements ont été enregistrés, on verrouille le bouton "Sauver" jusqu'à la prochaine édition
+    ui->btnSauverUV->setEnabled(false);
+
 }
