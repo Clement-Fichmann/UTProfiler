@@ -130,6 +130,10 @@ void MainWindow::on_chkPrintemps_stateChanged(){
     this->UVEditee();
 }
 
+void MainWindow::on_tableCredits_itemChanged(){
+    this->UVEditee();
+}
+
 void MainWindow::UVEditee(){
     ui->btnSauverUV->setEnabled(true);
 }
@@ -145,7 +149,21 @@ void MainWindow::on_btnSauverUV_clicked(){
     uvEditee.setOuverturePrintemps(ui->chkPrintemps->isChecked());
 
     //TODO gestion sauvegarde crédits
-
+    for (int i = 0; i < uvM.getCategorieManager().getAllCategories().count(); i++){
+        QString cat = (dynamic_cast<QLabel*>(ui->tableCredits->cellWidget(i,0)))->text();
+        int creditsCat = (dynamic_cast<QSpinBox*>(ui->tableCredits->cellWidget(i,1)))->value();
+        uvEditee.setCategorie(cat, creditsCat);
+    }
+    for (int i = uvM.getCategorieManager().getAllCategories().count(); i < ui->tableCredits->rowCount(); i++){
+        QString cat = (dynamic_cast<QLineEdit*>(ui->tableCredits->cellWidget(i,0)))->text();
+        if (!cat.isEmpty()){
+            int creditsCat = (dynamic_cast<QSpinBox*>(ui->tableCredits->cellWidget(i,1)))->value();
+            uvEditee.setCategorie(cat, creditsCat);
+            if (!uvM.getCategorieManager().getAllCategories().contains(cat)) {
+                uvM.getCategorieManager().addItem(cat, "");
+            }
+        }
+    }
     //les changements ont été enregistrés, on verrouille le bouton "Sauver" jusqu'à la prochaine édition
     ui->btnSauverUV->setEnabled(false);
 }
@@ -157,7 +175,7 @@ void MainWindow::on_btnAjouterUV_clicked(){
 
 void MainWindow::on_btnDeleteUV_clicked(){
     int indexUV = ui->listUV->currentIndex();
-    int reponse = QMessageBox::warning(this, "Suppression de l'UV", "Voulez-vous vraiment supprimer l'UV" + ui->listUV->currentText() + " ?", QMessageBox::Yes | QMessageBox::No);
+    int reponse = QMessageBox::warning(this, "Suppression de l'UV", "Voulez-vous vraiment supprimer l'UV " + ui->listUV->currentText() + " ?", QMessageBox::Yes | QMessageBox::No);
     if (reponse == QMessageBox::Yes){
         uvM.deleteUV(ui->listUV->currentText());
         ui->listUV->removeItem(indexUV);

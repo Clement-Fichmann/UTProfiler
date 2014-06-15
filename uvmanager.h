@@ -119,7 +119,7 @@ public:
     UV& getUV(const QString& code);
     const QMap<QString, UV*>& getAllUV() const {return uvs;}
     void deleteAllUV();
-    const CategorieManager& getCategorieManager() const {return categorieM;}
+    CategorieManager& getCategorieManager() const {return categorieM;}
     const NoteManager& getNoteManager() const {return noteM;}
 };
 
