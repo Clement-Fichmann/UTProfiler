@@ -35,6 +35,7 @@ public slots:
     void on_chkPrintemps_stateChanged();
     void on_tableCredits_clicked();
     void UVEditee();
+    void refreshUVList();
     void on_btnSauverUV_clicked();
     void on_btnAjouterUV_clicked();
     void on_btnDeleteUV_clicked();

@@ -39,13 +39,8 @@ void MainWindow::on_actionChoisir_le_fichier_des_UV_triggered(){
         uvM.save(uvM.file);
     QString newChemin = QFileDialog::getOpenFileName();
     if (!newChemin.isEmpty()){
-        disconnect(ui->listUV, 0, 0, 0);
-        ui->listUV->clear();
-        connect(ui->listUV, SIGNAL(currentIndexChanged(int)), this, SLOT(on_listUV_currentIndexChanged()));
         uvM.load(newChemin);
-        foreach(QString code, uvM.getAllUV().keys()){
-            ui->listUV->addItem(code);
-        }
+        refreshUVList();
         if (ui->listUV->count() != 0){
             ui->btnSauverUV->setEnabled(false);
             ui->listUV->setCurrentIndex(1);
@@ -180,6 +175,7 @@ void MainWindow::on_btnSauverUV_clicked(){
 
 void MainWindow::on_btnAjouterUV_clicked(){
     ajouterUVWindow *a = new ajouterUVWindow();
+    connect(a, SIGNAL(UVAdded()), this, SLOT(refreshUVList()));
     a->exec();
 }
 
@@ -205,4 +201,13 @@ void MainWindow::on_actionSaveTous_les_fichiers_triggered(){
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::refreshUVList() {
+    disconnect(ui->listUV, 0, 0, 0);
+    ui->listUV->clear();
+    connect(ui->listUV, SIGNAL(currentIndexChanged(int)), this, SLOT(on_listUV_currentIndexChanged()));
+    foreach(QString code, uvM.getAllUV().keys()){
+        ui->listUV->addItem(code);
+    }
 }

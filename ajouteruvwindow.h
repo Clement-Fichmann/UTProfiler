@@ -12,6 +12,9 @@ class ajouterUVWindow : public QDialog
 {
     Q_OBJECT
 
+signals:
+    void UVAdded();
+
 public:
     explicit ajouterUVWindow(QWidget *parent = 0);
     ~ajouterUVWindow();
@@ -21,6 +24,7 @@ public slots:
     void on_btnAccepter_clicked();
 
 private:
+    UVManager& uvM;
     Ui::ajouterUVWindow *ui;
 };
 
