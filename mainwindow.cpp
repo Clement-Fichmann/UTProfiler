@@ -73,8 +73,7 @@ void MainWindow::on_actionDossier_Etudiant_triggered(){
 }
 
 void MainWindow::on_actionQuitter_triggered(){
-    QCloseEvent *event = new QCloseEvent();
-    closeEvent(event);
+    this->close();
 }
 
 void MainWindow::on_listUV_currentIndexChanged(){
@@ -101,6 +100,8 @@ void MainWindow::on_listUV_currentIndexChanged(){
         QPointer<QSpinBox> ptCredits = new QSpinBox(this);
         ptCat.data()->setText(cat);
         ptCredits.data()->setValue(creditsCat);
+        ptCat.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
+        ptCredits.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
         ui->tableCredits->setCellWidget(ligne, 0, ptCat);
         ui->tableCredits->setCellWidget(ligne, 1, ptCredits);
     }
@@ -109,6 +110,8 @@ void MainWindow::on_listUV_currentIndexChanged(){
         ui->tableCredits->insertRow(cpt);
         QPointer<QLineEdit> ptCat = new QLineEdit(this);
         QPointer<QSpinBox> ptCredits = new QSpinBox(this);
+        ptCat.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
+        ptCredits.data()->setStyleSheet("qproperty-alignment: AlignCenter;");
         ui->tableCredits->setCellWidget(cpt, 0, ptCat);
         ui->tableCredits->setCellWidget(cpt, 1, ptCredits);
     }
