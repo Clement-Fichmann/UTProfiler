@@ -18,15 +18,18 @@ SOURCES += main.cpp\
     uvmanager.cpp \
     openingwindow.cpp \
     ajouteruvwindow.cpp \
-    formationmanager.cpp
+    formationmanager.cpp \
+    ajouterformationwindow.cpp
 
 HEADERS  += mainwindow.h \
     uvmanager.h \
     utprofilerexception.h \
     openingwindow.h \
     ajouteruvwindow.h \
-    formationmanager.h
+    formationmanager.h \
+    ajouterformationwindow.h
 
 FORMS    += mainwindow.ui \
     openingwindow.ui \
-    ajouteruvwindow.ui
+    ajouteruvwindow.ui \
+    ajouterformationwindow.ui

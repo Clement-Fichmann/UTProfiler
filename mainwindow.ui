@@ -192,10 +192,10 @@
             <bool>true</bool>
            </property>
            <attribute name="horizontalHeaderDefaultSectionSize">
-            <number>450</number>
+            <number>445</number>
            </attribute>
            <attribute name="horizontalHeaderMinimumSectionSize">
-            <number>450</number>
+            <number>445</number>
            </attribute>
            <attribute name="horizontalHeaderStretchLastSection">
             <bool>true</bool>
@@ -718,6 +718,9 @@
    </property>
   </action>
   <action name="actionDossier_Etudiant">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Dossier étudiant</string>
    </property>
@@ -733,6 +736,9 @@
    </property>
   </action>
   <action name="actionSaveDossier_Etudiant">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Dossier étudiant</string>
    </property>

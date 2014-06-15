@@ -18,6 +18,7 @@
 #include "uvmanager.h"
 #include "formationmanager.h"
 #include "ajouteruvwindow.h"
+#include "ajouterformationwindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -160,6 +161,11 @@ public slots:
      * @brief Ouvre une ajouterUVWindow pour ajouter une nouvelle UV
      */
     void on_btnAjouterUV_clicked();
+
+    /**
+     * @brief Ouvre une ajouterFormationWindow pour ajouter une nouvelle formation
+     */
+    void on_btnAjouterFormation_clicked();
 
     /**
      * @brief Demande confirmation puis supprime l'UV sélectionnée dans la liste déroulante.

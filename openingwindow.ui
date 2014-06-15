@@ -39,10 +39,17 @@
     <item>
      <layout class="QGridLayout" name="gridLayout">
       <item row="2" column="1">
-       <widget class="QLineEdit" name="txtEtudiant"/>
+       <widget class="QLineEdit" name="txtEtudiant">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
       </item>
       <item row="2" column="2">
        <widget class="QPushButton" name="btnParcourirEtudiant">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="text">
          <string>Parcourir</string>
         </property>

@@ -224,6 +224,13 @@ void MainWindow::on_btnDeleteUV_clicked(){
     }
 }
 
+void MainWindow::on_btnAjouterFormation_clicked(){
+    ajouterformationwindow *a = new ajouterformationwindow();
+    //une fois la fenêtre d'ajout refermée, si on reçoit un signal formationAdded, on actualise la liste des UV
+    connect(a, SIGNAL(formationAdded()), this, SLOT(refreshFormationList()));
+    a->exec();
+}
+
 void MainWindow::on_actionSaveUV_triggered(){ //menu Fichier -> Sauver le fichier d'UV
     uvM.save(uvM.file); //appel de la fonction save
 }
@@ -235,7 +242,7 @@ void MainWindow::on_actionSaveFormations_triggered() {
 void MainWindow::on_actionSaveTous_les_fichiers_triggered(){ //menu Fichier -> Sauver tous les fichiers
     uvM.save(uvM.file);
     fM.save(fM.file);
-    // TODO save formation et dossir étudiant
+    // TODO save dossier étudiant
 }
 
 MainWindow::~MainWindow() {
@@ -432,6 +439,7 @@ void MainWindow::on_tableFormationUVNeeded_clicked() {
 }
 
 void MainWindow::on_btnSauverFormation_clicked(){
+    int delta=0;
     //on récupère la clé (code formation) de la formation en cours d'édition
     QString codeFormationEditee = ui->listFormation->currentText();
     //puis la formation correspondant dans la map
@@ -439,19 +447,20 @@ void MainWindow::on_btnSauverFormation_clicked(){
     formationEditee.setCode(ui->txtCodeFormation->text());
     formationEditee.setTitre(ui->txtDescriptionFormation->toPlainText());
 
-    for (int i = 0; i < uvM.getCategorieManager().getAllCategories().count(); i++){
+    for (int i = 0; i < uvM.getCategorieManager().getAllCategories().count() - delta; i++){
         QString cat = (dynamic_cast<QLabel*>(ui->tableFormationCreditsNeeded->cellWidget(i,0)))->text();
         int creditsCat = (dynamic_cast<QSpinBox*>(ui->tableFormationCreditsNeeded->cellWidget(i,1)))->value();
         formationEditee.setCreditsNeeded(cat, creditsCat);
         //on met à jour les crédits de la formation à l'aide des éléments du tableau
     }
-    for (int i = uvM.getCategorieManager().getAllCategories().count(); i < ui->tableFormationCreditsNeeded->rowCount(); i++){
+    for (int i = uvM.getCategorieManager().getAllCategories().count() - delta; i < ui->tableFormationCreditsNeeded->rowCount(); i++){
         //on ajoute également les éventuels crédits de nouvelles catégories
         QString cat = (dynamic_cast<QLineEdit*>(ui->tableFormationCreditsNeeded->cellWidget(i,0)))->text();
         if (!cat.isEmpty()){
             int creditsCat = (dynamic_cast<QSpinBox*>(ui->tableFormationCreditsNeeded->cellWidget(i,1)))->value();
             formationEditee.setCreditsNeeded(cat, creditsCat);
             if (!uvM.getCategorieManager().getAllCategories().contains(cat)) {
+                delta++;
                 uvM.getCategorieManager().addItem(cat, "");
             }
         }
@@ -476,18 +485,19 @@ void MainWindow::on_btnSauverFormation_clicked(){
     }
 
     CreditsInUV cInUV;
-    for (int i = 0; i < uvM.getCategorieManager().getAllCategories().count(); i++){
+    for (int i = 0; i < uvM.getCategorieManager().getAllCategories().count() - delta; i++){
         QString cat = (dynamic_cast<QLabel*>(ui->tableFormationCreditsNeededInUVSet_Credits->cellWidget(i,0)))->text();
         int creditsCat = (dynamic_cast<QSpinBox*>(ui->tableFormationCreditsNeededInUVSet_Credits->cellWidget(i,1)))->value();
         cInUV.credits.insert(cat, creditsCat);
     }
-    for (int i = uvM.getCategorieManager().getAllCategories().count(); i < ui->tableFormationCreditsNeededInUVSet_Credits->rowCount(); i++){
+    for (int i = uvM.getCategorieManager().getAllCategories().count() - delta; i < ui->tableFormationCreditsNeededInUVSet_Credits->rowCount(); i++){
         //on ajoute également les éventuels crédits de nouvelles catégories
         QString cat = (dynamic_cast<QLineEdit*>(ui->tableFormationCreditsNeededInUVSet_Credits->cellWidget(i,0)))->text();
         if (!cat.isEmpty()){
             int creditsCat = (dynamic_cast<QSpinBox*>(ui->tableFormationCreditsNeededInUVSet_Credits->cellWidget(i,1)))->value();
             cInUV.credits.insert(cat, creditsCat);
             if (!uvM.getCategorieManager().getAllCategories().contains(cat)) {
+                delta++;
                 uvM.getCategorieManager().addItem(cat, "");
             }
         }
@@ -503,6 +513,6 @@ void MainWindow::on_btnSauverFormation_clicked(){
 
 
     //les changements ont été enregistrés, on verrouille le bouton "Sauver" jusqu'à la prochaine édition
-    ui->btnSauverUV->setEnabled(false);
+    ui->btnSauverFormation->setEnabled(false);
 
 }
